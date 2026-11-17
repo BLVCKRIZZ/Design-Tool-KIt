@@ -13,4 +13,4 @@ services:
       - key: OPENROUTER_API_KEY
         sync: false
       - key: FRONTEND_ORIGINS
-        value: https://blvckrizz.github.io
+        value: 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
