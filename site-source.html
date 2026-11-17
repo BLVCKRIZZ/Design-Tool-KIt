@@ -1,0 +1,1238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f3ee">
+  <meta name="description" content="A free design resource hub: discover creative tools, learn design essentials, build palettes, check contrast, convert images, and find practical workflows.">
+  <meta name="keywords" content="free design tools, design resources, free fonts, AI design tools, file formats, design tools lab">
+  <meta property="og:title" content="Free Design Toolkit — Everything a designer needs. Zero cost.">
+  <meta property="og:description" content="A practical, free-tools hub for designers and creators.">
+  <meta property="og:type" content="website">
+  <title>Free Design Toolkit — Everything a designer needs. Zero cost.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f3ee;
+      --surface: #fffefa;
+      --surface-2: #eeeae2;
+      --ink: #171714;
+      --muted: #625f58;
+      --line: #22221f;
+      --accent: #ff4d00;
+      --accent-soft: #ffdfcf;
+      --green: #24644b;
+      --shadow: 5px 5px 0 var(--line);
+      --display: "Archivo Black", Impact, sans-serif;
+      --body: "Space Grotesk", "DM Sans", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #11110f;
+      --surface: #1d1d19;
+      --surface-2: #292923;
+      --ink: #f6f3ee;
+      --muted: #c1bdb3;
+      --line: #f6f3ee;
+      --accent: #ff7440;
+      --accent-soft: #542816;
+      --green: #a7dfbd;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #11110f;
+        --surface: #1d1d19;
+        --surface-2: #292923;
+        --ink: #f6f3ee;
+        --muted: #c1bdb3;
+        --line: #f6f3ee;
+        --accent: #ff7440;
+        --accent-soft: #542816;
+        --green: #a7dfbd;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 145px; }
+    body {
+      margin: 0;
+      padding-top: env(safe-area-inset-top, 0);
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.55 var(--body);
+    }
+    img, canvas, svg { max-width: 100%; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    button, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      min-height: 42px;
+      padding: .55rem .85rem;
+      border: 2px solid var(--line);
+      border-radius: 0;
+      background: var(--surface);
+      color: var(--ink);
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    }
+    button:hover, .button:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--line); }
+    button:disabled { cursor: not-allowed; opacity: .58; transform: none; box-shadow: none; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .skip-link {
+      position: absolute;
+      z-index: 99;
+      top: .5rem;
+      left: .5rem;
+      padding: .65rem 1rem;
+      background: var(--ink);
+      color: var(--bg);
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 2px solid var(--line);
+      background: var(--bg);
+    }
+    .header-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      max-width: 1440px;
+      margin: auto;
+      padding: .65rem clamp(1rem, 3vw, 2rem);
+    }
+    .brand {
+      flex: 0 0 auto;
+      font: 1.05rem/1 var(--display);
+      letter-spacing: -.04em;
+      text-decoration: none;
+    }
+    .header-actions { display: flex; align-items: center; gap: .5rem; }
+    .header-search {
+      width: min(25vw, 240px);
+      min-width: 130px;
+      padding: .55rem .7rem;
+      border: 2px solid var(--line);
+      border-radius: 0;
+      background: var(--surface);
+      color: var(--ink);
+    }
+    .theme-button { min-width: 44px; padding-inline: .65rem; }
+    .nav-scroll {
+      overflow-x: auto;
+      border-top: 1px solid color-mix(in srgb, var(--line) 25%, transparent);
+      scrollbar-width: thin;
+    }
+    .main-nav {
+      display: flex;
+      width: max-content;
+      min-width: 100%;
+      max-width: 1440px;
+      margin: auto;
+      padding: 0 clamp(1rem, 3vw, 2rem);
+      gap: .15rem;
+    }
+    .main-nav a {
+      display: block;
+      padding: .6rem .7rem;
+      font-size: .82rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .main-nav a:hover, .main-nav a[aria-current="location"] { color: var(--accent); }
+    main { max-width: 1440px; margin: auto; padding: 0 clamp(1rem, 3vw, 2rem); }
+    section { padding: clamp(2.5rem, 6vw, 5rem) 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 28%, transparent); }
+    section:last-child { border-bottom: 0; }
+    h1, h2, h3, h4 { margin: 0; line-height: 1.06; }
+    h1, h2, h3 { font-family: var(--display); text-transform: uppercase; }
+    h1 { max-width: 1000px; font-size: clamp(3rem, 10.4vw, 9.5rem); letter-spacing: -.075em; }
+    h2 { font-size: clamp(2rem, 5vw, 4.4rem); letter-spacing: -.055em; }
+    h3 { font-size: clamp(1.15rem, 2.2vw, 1.6rem); letter-spacing: -.035em; }
+    h4 { font-size: 1rem; }
+    p { margin: .55rem 0 1rem; }
+    .eyebrow {
+      margin: 0 0 .75rem;
+      color: var(--accent);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .accent-text { color: var(--accent); }
+    .muted, .meta { color: var(--muted); }
+    .meta { font-size: .86rem; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .section-head > div { max-width: 760px; }
+    .section-intro { max-width: 720px; color: var(--muted); }
+    .hero { padding: clamp(3.2rem, 9vw, 8rem) 0 3rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero-copy { max-width: 650px; margin: 1.2rem 0 1.5rem; font-size: clamp(1.05rem, 2vw, 1.35rem); }
+    .hero-actions, .button-row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+    .button-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .button-dark { background: var(--ink); color: var(--bg); }
+    .search-wrap { max-width: 760px; }
+    .search-wrap label { display: block; margin-bottom: .35rem; font-size: .82rem; font-weight: 700; }
+    .hero-search {
+      display: flex;
+      width: 100%;
+      border: 3px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .hero-search input { width: 100%; min-width: 0; padding: 1rem; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 1rem; }
+    .hero-search button { border: 0; border-left: 2px solid var(--line); }
+    .search-status { min-height: 1.4rem; margin: .6rem 0 0; color: var(--muted); font-size: .82rem; }
+    .notice {
+      padding: .85rem 1rem;
+      border: 2px dashed var(--line);
+      background: var(--surface);
+      color: var(--ink);
+    }
+    .notice-warning { border-style: solid; border-color: var(--accent); background: var(--accent-soft); }
+    .notice p:last-child { margin-bottom: 0; }
+    .quick-links { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.4rem 0 0; }
+    .quick-links a { padding: .45rem .7rem; border: 1px solid var(--line); font-size: .86rem; font-weight: 700; text-decoration: none; }
+    .quick-links a:hover { background: var(--ink); color: var(--bg); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      min-width: 0;
+      padding: 1rem;
+      border: 2px solid var(--line);
+      background: var(--surface);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .card:hover { transform: translate(-3px, -3px); box-shadow: var(--shadow); }
+    .card > p { margin: 0; }
+    .card .button-row { margin-top: auto; padding-top: .4rem; }
+    .card-title-row { display: flex; align-items: start; justify-content: space-between; gap: .6rem; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: .15rem .45rem;
+      border: 1px solid var(--line);
+      font-size: .71rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+    .tag-accent { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .tag-ok { border-color: var(--green); color: var(--green); }
+    .tag-unknown { border-style: dashed; color: var(--muted); }
+    .filters { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1rem 0; }
+    .filters button { min-height: 36px; padding: .35rem .65rem; font-size: .86rem; }
+    .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+    .tool-card .meta { margin: 0; }
+    .tool-card .row-bottom { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: auto; padding-top: .5rem; }
+    .fav[aria-pressed="true"], .compare-toggle[aria-pressed="true"] { background: var(--accent); color: #fff; }
+    .fav { min-width: 42px; }
+    .empty-state { display: none; padding: 1rem; border: 2px dashed var(--line); color: var(--muted); }
+    .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); margin: 2.2rem 0 0; border: 2px solid var(--line); }
+    .stat-strip > div { padding: .8rem; border-right: 1px solid var(--line); }
+    .stat-strip > div:last-child { border: 0; }
+    .stat-strip strong { display: block; font: clamp(1.25rem, 3vw, 2rem) var(--display); }
+    .split { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(250px, .8fr); gap: 1.2rem; align-items: start; }
+    .path-card { position: relative; min-height: 190px; justify-content: space-between; overflow: hidden; }
+    .path-card::after { position: absolute; right: -15px; bottom: -65px; width: 180px; height: 180px; border: 18px solid var(--accent); border-radius: 50%; opacity: .16; content: ""; pointer-events: none; }
+    .path-steps { margin: .25rem 0 0; padding-left: 1.25rem; }
+    .path-steps li { padding: .15rem 0; }
+    .inline-link { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .inline-link:hover { color: var(--accent); }
+    .table-wrap { overflow-x: auto; border: 2px solid var(--line); background: var(--surface); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { min-width: 125px; padding: .75rem; border-bottom: 1px solid color-mix(in srgb, var(--line) 38%, transparent); text-align: left; vertical-align: top; font-size: .88rem; }
+    th { position: sticky; top: 0; background: var(--ink); color: var(--bg); font-size: .78rem; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
+    .table-link { font-weight: 700; }
+    .quiz-grid, .lab-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .panel { min-width: 0; padding: 1.15rem; border: 2px solid var(--line); background: var(--surface); }
+    .panel h3 { margin-bottom: .75rem; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+    .field { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .75rem; }
+    .field label, label.field-label { font-size: .83rem; font-weight: 700; }
+    input[type="text"], input[type="email"], input[type="url"], input[type="number"], input[type="search"], select, textarea {
+      width: 100%;
+      min-height: 42px;
+      padding: .6rem .7rem;
+      border: 2px solid var(--line);
+      border-radius: 0;
+      background: var(--surface);
+      color: var(--ink);
+    }
+    input[type="color"] { width: 100%; height: 44px; padding: .2rem; border: 2px solid var(--line); background: var(--surface); }
+    textarea { min-height: 110px; resize: vertical; }
+    .output-box { min-height: 44px; margin-top: .65rem; padding: .7rem; border: 1px dashed var(--line); background: var(--surface-2); overflow-wrap: anywhere; }
+    .palette { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .45rem; margin-top: .8rem; }
+    .swatch { display: flex; min-height: 96px; flex-direction: column; justify-content: end; padding: .4rem; border: 1px solid var(--line); text-align: left; cursor: pointer; }
+    .swatch span { width: fit-content; padding: .1rem .25rem; background: var(--surface); color: var(--ink); font-size: .7rem; font-weight: 800; }
+    .color-value-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; padding: .4rem 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 30%, transparent); }
+    .color-value-row:last-child { border-bottom: 0; }
+    .color-value-row .button { min-height: 32px; padding: .3rem .5rem; font-size: .75rem; }
+    .contrast-sample { padding: 1.2rem; border: 2px solid var(--line); font-size: 1.3rem; font-weight: 700; }
+    .preview-box { padding: 1rem; border: 1px dashed var(--line); background: var(--surface-2); }
+    .font-preview { min-height: 130px; }
+    .file-preview { display: block; max-width: 100%; max-height: 220px; margin: .7rem 0; object-fit: contain; }
+    .ratio-list { display: grid; gap: .5rem; margin-top: .8rem; }
+    .ratio-row { display: grid; grid-template-columns: minmax(110px, .8fr) 1fr auto; gap: .5rem; align-items: center; font-size: .82rem; }
+    .ratio-bar { height: 14px; border: 1px solid var(--line); background: var(--surface-2); }
+    .ratio-bar span { display: block; height: 100%; background: var(--accent); }
+    details { border: 2px solid var(--line); background: var(--surface); }
+    details + details { margin-top: .55rem; }
+    summary { padding: .85rem 1rem; font-weight: 800; cursor: pointer; }
+    details .details-body { padding: 0 1rem 1rem; }
+    details .details-body p:last-child { margin-bottom: 0; }
+    .format-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: .75rem; }
+    .format-grid details { margin: 0; }
+    .format-grid details[open] { box-shadow: 3px 3px 0 var(--accent); }
+    .good { color: var(--green); font-weight: 700; }
+    .bad { color: var(--accent); font-weight: 700; }
+    .learn-card { min-height: 200px; }
+    .level { color: var(--accent); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .glossary { columns: 2; column-gap: 1rem; }
+    .glossary details { break-inside: avoid; margin: 0 0 .55rem; }
+    .glossary summary { font-size: .9rem; }
+    .workflow-card { min-height: 270px; }
+    .numbered-list { display: grid; gap: .65rem; margin: .3rem 0; padding: 0; list-style: none; counter-reset: step; }
+    .numbered-list li { display: grid; grid-template-columns: 2rem 1fr; gap: .6rem; align-items: start; counter-increment: step; }
+    .numbered-list li::before { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid var(--line); content: counter(step, decimal-leading-zero); font-size: .75rem; font-weight: 800; }
+    .prompt-card { min-height: 245px; }
+    .prompt-text { flex: 1; padding: .75rem; border: 1px dashed var(--line); background: var(--surface-2); font-size: .91rem; }
+    .art-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; }
+    .art-tile { display: flex; min-height: 155px; align-items: end; padding: .7rem; border: 2px solid var(--line); font-size: .78rem; font-weight: 800; }
+    .art-tile:nth-child(1) { background: linear-gradient(135deg,#ed5b35 0 34%,#f2bd43 34% 50%,#25364a 50%); color: #fff; }
+    .art-tile:nth-child(2) { background: repeating-linear-gradient(45deg,#d9e3cb 0 14px,#8ca58a 14px 28px); color: #15291d; }
+    .art-tile:nth-child(3) { background: radial-gradient(circle at 30% 30%,#ee7a4c 0 12%,transparent 13%), radial-gradient(circle at 70% 65%,#c9b9de 0 17%,transparent 18%),#24213b; color: #fff; }
+    .art-tile:nth-child(4) { background: linear-gradient(120deg,#f3d9b1,#f3d9b1 30%,#5a3f34 30% 50%,#b5c7be 50%); color: #151515; }
+    .palette-row { display: flex; overflow: hidden; min-height: 46px; border: 1px solid var(--line); }
+    .palette-row span { flex: 1; }
+    .quote-card { padding: 1.4rem; border-left: 8px solid var(--accent); background: var(--surface-2); font-size: 1.1rem; }
+    .placeholder-image {
+      display: grid;
+      min-height: 140px;
+      place-items: center;
+      padding: 1rem;
+      border: 1px dashed var(--line);
+      background: repeating-linear-gradient(-45deg,var(--surface-2),var(--surface-2) 12px,var(--surface) 12px,var(--surface) 24px);
+      color: var(--muted);
+      text-align: center;
+      font-size: .8rem;
+    }
+    .compare-panel {
+      position: sticky;
+      z-index: 10;
+      bottom: .75rem;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      margin-top: 1rem;
+      padding: .8rem;
+      border: 2px solid var(--line);
+      background: var(--accent-soft);
+      box-shadow: var(--shadow);
+    }
+    .compare-panel.active { display: flex; }
+    .compare-panel p { margin: 0; }
+    .sheet-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,220px),1fr)); gap: .75rem; }
+    .footer {
+      padding: 2rem clamp(1rem, 3vw, 2rem) calc(2rem + env(safe-area-inset-bottom, 0));
+      border-top: 2px solid var(--line);
+      background: var(--surface-2);
+    }
+    .footer-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; max-width: 1440px; margin: auto; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: .5rem 1rem; }
+    .footer-links a { font-size: .87rem; font-weight: 700; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; clip-path: inset(50%); }
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 130px; }
+      .header-main { flex-wrap: wrap; gap: .5rem; }
+      .header-actions { flex: 1 1 100%; }
+      .header-search { flex: 1; width: auto; }
+      .section-head { align-items: start; flex-direction: column; }
+      .split, .grid-2, .quiz-grid, .footer-inner { grid-template-columns: 1fr; }
+      .lab-grid { grid-template-columns: minmax(0, 1fr); }
+      .stat-strip { grid-template-columns: repeat(2, 1fr); }
+      .stat-strip > div:nth-child(2) { border-right: 0; }
+      .stat-strip > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .art-grid { grid-template-columns: repeat(2, 1fr); }
+      .compare-panel { align-items: start; flex-direction: column; }
+      .glossary { columns: 1; }
+      th, td { padding: .6rem; }
+    }
+    @media (max-width: 420px) {
+      .hero-search { box-shadow: 3px 3px 0 var(--line); }
+      .hero-search input { padding: .75rem; }
+      .palette { grid-template-columns: repeat(3, 1fr); }
+      .form-grid { grid-template-columns: 1fr; gap: 0; }
+      .ratio-row { grid-template-columns: minmax(90px, .8fr) 1fr auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-main">
+      <a class="brand" href="#home" aria-label="Free Design Toolkit home">FREE DESIGN<br>TOOLKIT<span class="accent-text">.</span></a>
+      <div class="header-actions">
+        <label class="visually-hidden" for="header-search">Search all pages</label>
+        <input class="header-search" id="header-search" type="search" placeholder="Search everything… ( / )" autocomplete="off">
+        <button class="theme-button" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle light and dark mode">◐</button>
+      </div>
+    </div>
+    <div class="nav-scroll">
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#tools">Tools</a><a href="#ai">AI</a><a href="#formats">Formats</a><a href="#learn">Learn</a><a href="#workflows">Workflows</a><a href="#prompts">Prompts</a><a href="#inspiration">Inspiration</a><a href="#resources">Resources</a><a href="#lab">Tools Lab</a><a href="#downloads">Downloads</a><a href="#alternatives">Alternatives</a><a href="#about">About / Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <p class="eyebrow">Good design. Open doors.</p>
+      <h1 id="hero-title">Everything a designer needs. <span>Zero cost.</span></h1>
+      <p class="hero-copy">A field guide to free tools, smarter workflows, and the little design details that make a big difference. Made for curious creators, not gatekeeping.</p>
+      <div class="search-wrap">
+        <label for="hero-search">Search tools, guides, formats, prompts &amp; more</label>
+        <div class="hero-search">
+          <input id="hero-search" type="search" placeholder="Try “logo”, “contrast”, “SVG”…" autocomplete="off">
+          <button type="button" id="clear-search" aria-label="Clear search">Clear</button>
+        </div>
+        <p class="search-status" id="search-status" role="status" aria-live="polite">Search every section. Press / or Ctrl+K to jump to search.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#tools">Explore the toolkit ↓</a>
+        <a class="button" href="#lab">Open the tools lab</a>
+      </div>
+      <div class="quick-links" aria-label="Jump to a section">
+        <a href="#tools">Tool directory</a><a href="#learn">Learn the basics</a><a href="#workflows">Try a workflow</a><a href="#alternatives">Free alternatives</a>
+      </div>
+      <div class="stat-strip" aria-label="Toolkit overview">
+        <div><strong>13</strong><span class="meta">toolkit sections</span></div>
+        <div><strong>0</strong><span class="meta">paywalls to browse</span></div>
+        <div><strong>∞</strong><span class="meta">ways to experiment</span></div>
+        <div><strong>100%</strong><span class="meta">check the terms first</span></div>
+      </div>
+      <div class="notice notice-warning" style="margin-top:1.2rem">
+        <strong>Verification note:</strong> product terms, free-plan limits, availability, and license details change. Entries marked <span class="tag tag-unknown">Unverified</span> have not been independently checked; dates shown are placeholders, not evidence of verification.
+      </div>
+    </section>
+
+    <section aria-labelledby="featured-title">
+      <div class="section-head">
+        <div><p class="eyebrow">Start here</p><h2 id="featured-title">Featured tools<span class="accent-text">.</span></h2><p class="section-intro">A few versatile starting points. Check each product's current pricing and terms before using it for client work.</p></div>
+        <a class="inline-link" href="#tools">See the full directory →</a>
+      </div>
+      <div class="grid" id="featured-tools"></div>
+    </section>
+
+    <section aria-labelledby="week-title">
+      <div class="split">
+        <div data-search="Inkscape vector software free open source SVG logo illustration">
+          <p class="eyebrow">Tool of the week · rotating pick</p><h2 id="week-title">Inkscape<span class="accent-text">.</span></h2><p class="section-intro">A free, open-source vector editor for illustrations, icons, and scalable logo artwork. A solid place to learn vector thinking without a subscription.</p><div class="tag-row"><span class="tag">Vector software</span><span class="tag">Free / open source</span><span class="tag tag-ok">Commercial use OK · verify asset licenses</span></div><p class="meta">Last verified: <span class="tag tag-unknown">17 Nov 2026 · unverified placeholder</span></p><a class="button button-primary" href="https://inkscape.org/" target="_blank" rel="noopener noreferrer">Visit Inkscape ↗</a>
+        </div>
+        <div class="card" data-search="What's new design lab palette contrast image QR ratios logo brand verification">
+          <p class="eyebrow">What's new</p><h3>Fresh from the toolkit</h3><ul class="path-steps"><li>New browser-based design lab for palettes, contrast, images, QR, and ratios.</li><li>Quick paths for logo and brand projects.</li><li>Every tool listing now flags verification status.</li></ul><p class="meta">Editorial feed · entries are not product release announcements.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="paths-title">
+      <div class="section-head"><div><p class="eyebrow">No blank canvas panic</p><h2 id="paths-title">Pick a path<span class="accent-text">.</span></h2><p class="section-intro">A short route from idea to useful files. Make it yours as you go.</p></div></div>
+      <div class="grid-2">
+        <article class="card path-card" data-search="beginner logo mark vector logo export SVG PNG Recraft Inkscape">
+          <div><span class="tag tag-accent">Beginner path</span><h3 style="margin-top:.65rem">I'm making a logo</h3><ol class="path-steps"><li>Sketch a few shapes and wordmark ideas.</li><li><a class="inline-link" href="#tools">Explore Recraft</a> for concept directions (terms unverified).</li><li>Refine editable vectors with <a class="inline-link" href="#tools">Inkscape</a>.</li><li>Export SVG for scalable use and PNG for easy sharing.</li></ol></div><a class="inline-link" href="#formats">See the file-format guide →</a>
+        </article>
+        <article class="card path-card" data-search="brand identity colors fonts logo brand kit Canva Google Fonts QR code">
+          <div><span class="tag tag-accent">Beginner path</span><h3 style="margin-top:.65rem">I'm starting a brand</h3><ol class="path-steps"><li>Choose a short list of colors and typefaces.</li><li>Build a simple logo and social layout in Canva or Adobe Express.</li><li>Collect approved assets in a tidy brand folder.</li><li>Check contrast, licenses, and export settings before sharing.</li></ol></div><a class="inline-link" href="#workflows">Follow the brand workflow →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="tools" aria-labelledby="tools-title">
+      <div class="section-head"><div><p class="eyebrow">The directory</p><h2 id="tools-title">Tools worth knowing<span class="accent-text">.</span></h2><p class="section-intro">Filter by category, save favorites on this device, or compare a few options side by side.</p></div></div>
+      <div class="notice notice-warning"><strong>Research status:</strong> tool descriptions below reflect the supplied brief and have not been independently verified. Free-plan limits and commercial-use terms are especially changeable; read the official terms before relying on them.</div>
+      <div class="filters" id="tool-filters" role="group" aria-label="Filter tools by category"></div>
+      <div class="button-row" style="margin-bottom:1rem"><button id="favorites-filter" type="button" aria-pressed="false">♥ Show saved only</button><span class="meta" id="favorite-count">0 saved</span></div>
+      <div class="grid" id="tool-grid"></div>
+      <p class="empty-state" id="tools-empty">No tools match those filters. Try another category or search.</p>
+      <div class="compare-panel" id="compare-panel" aria-live="polite"><p id="compare-count">Choose up to 3 tools to compare.</p><div class="button-row"><button type="button" id="compare-show" class="button-primary">Compare selected</button><button type="button" id="compare-clear">Clear</button></div></div>
+      <div id="comparison-output" style="margin-top:1rem"></div>
+    </section>
+
+    <section id="ai" aria-labelledby="ai-title">
+      <div class="section-head"><div><p class="eyebrow">Make with intention</p><h2 id="ai-title">AI generators<span class="accent-text">.</span></h2><p class="section-intro">A practical comparison based on the supplied brief. This is not a guarantee of output rights or current product features.</p></div></div>
+      <div class="tag-row" style="margin-bottom:1rem"><span class="tag">Photorealistic · Meta AI</span><span class="tag">Logos / vectors · Recraft</span><span class="tag">Text in images · Ideogram</span><span class="tag">Commercial-safe intent · Firefly</span><span class="tag">Illustration · Leonardo</span></div>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Tool</th><th scope="col">Best for</th><th scope="col">Strengths</th><th scope="col">Weaknesses</th><th scope="col">Free limits</th><th scope="col">Commercial use?</th></tr></thead><tbody id="ai-body"></tbody></table></div>
+      <div class="notice notice-warning" style="margin-top:1rem"><strong>Client-work tip:</strong> For client work, always read the tool's current terms on commercial use and ownership. Free limits change often. A “commercial-safe” label is not legal advice or a blanket guarantee.</div>
+      <p class="meta">Last updated: 17 Nov 2026 (editorial placeholder; details not independently verified).</p>
+      <div class="panel" data-search="AI quiz choose generator best for text logo realistic photo illustration commercial safe social post general image" style="margin-top:1rem">
+        <p class="eyebrow">Quick picker</p><h3>Which AI should I use?</h3>
+        <div class="quiz-grid">
+          <div class="field"><label for="ai-need">What are you making?</label><select id="ai-need"><option value="photo">Realistic photo or quick idea</option><option value="vector">Logo, icon, or vector</option><option value="text">Poster with readable text</option><option value="commercial">Commercial-safe starting point</option><option value="illustration">Game art or illustration</option><option value="social">Social post or quick graphic</option><option value="general">General image or idea</option></select></div>
+          <div class="field"><label for="ai-priority">What matters most?</label><select id="ai-priority"><option value="easy">Ease and speed</option><option value="control">Creative control</option><option value="terms">Clearer commercial workflow</option></select></div>
+        </div>
+        <button type="button" id="ai-quiz-button">Show a starting point</button><div class="output-box" id="ai-quiz-result" role="status" aria-live="polite">Pick your needs to get a suggestion. Always verify current terms.</div>
+      </div>
+    </section>
+
+    <section id="formats" aria-labelledby="formats-title">
+      <div class="section-head"><div><p class="eyebrow">Export smarter</p><h2 id="formats-title">File formats, decoded<span class="accent-text">.</span></h2><p class="section-intro">Open any card for what a format does well, where it struggles, and when to leave it behind.</p></div></div>
+      <div class="format-grid" id="format-grid"></div>
+      <div class="notice" style="margin-top:1rem"><strong>Quick rules:</strong> logo → SVG (plus PNG for sharing); web photo → WebP or JPG; print → PDF; transparency → PNG or SVG; animation → MP4/WebM, or Lottie for apps.</div>
+      <div class="grid-2" style="margin-top:1rem">
+        <div class="panel" data-search="file size quality AVIF WebP JPG PNG comparison compression photo"><h3>Size vs. quality</h3><p class="meta">Illustrative comparison only: actual file size depends on image, settings, and encoder.</p><div class="ratio-list" aria-label="Illustrative relative file sizes"><div class="ratio-row"><span>AVIF photo</span><span class="ratio-bar"><span style="width:28%"></span></span><b>small*</b></div><div class="ratio-row"><span>WebP photo</span><span class="ratio-bar"><span style="width:40%"></span></span><b>smaller*</b></div><div class="ratio-row"><span>JPG photo</span><span class="ratio-bar"><span style="width:58%"></span></span><b>medium*</b></div><div class="ratio-row"><span>PNG photo</span><span class="ratio-bar"><span style="width:100%"></span></span><b>large*</b></div></div></div>
+        <div class="panel" data-search="format quiz decision web print logo photograph animation SVG PNG JPG PDF MP4 WebM Lottie"><h3>Which format should I use?</h3><div class="field"><label for="format-use">Choose your job</label><select id="format-use"><option value="web">Web graphic</option><option value="print">Print document</option><option value="logo">Logo or icon</option><option value="photo">Photograph</option><option value="animation">Animation or video</option></select></div><button id="format-quiz" type="button">Recommend a format</button><div class="output-box" id="format-result" role="status" aria-live="polite">Your recommendation will appear here.</div></div>
+      </div>
+    </section>
+
+    <section id="learn" aria-labelledby="learn-title">
+      <div class="section-head"><div><p class="eyebrow">Build your design vocabulary</p><h2 id="learn-title">Learn by doing<span class="accent-text">.</span></h2><p class="section-intro">Short guides that make the fundamentals feel less mysterious. Search the page to find a topic.</p></div></div>
+      <div class="grid" id="learn-grid"></div>
+      <h3 style="margin:2rem 0 .8rem">A tiny searchable glossary</h3>
+      <div class="glossary" id="glossary"></div>
+    </section>
+
+    <section id="workflows" aria-labelledby="workflows-title">
+      <div class="section-head"><div><p class="eyebrow">From blank page to finished files</p><h2 id="workflows-title">Free workflows<span class="accent-text">.</span></h2><p class="section-intro">Practical sequences assembled from free or freemium tools. Availability and plan details are unverified.</p></div></div>
+      <div class="grid" id="workflow-grid"></div>
+    </section>
+
+    <section id="prompts" aria-labelledby="prompts-title">
+      <div class="section-head"><div><p class="eyebrow">A useful starting point, not a magic spell</p><h2 id="prompts-title">Prompt library<span class="accent-text">.</span></h2><p class="section-intro">Copy, customize, and check the output rights before use. Example tiles are abstract placeholders, not generated product samples.</p></div></div>
+      <div class="grid" id="prompt-grid"></div>
+    </section>
+
+    <section id="inspiration" aria-labelledby="inspiration-title">
+      <div class="section-head"><div><p class="eyebrow">Look around. Make it yours.</p><h2 id="inspiration-title">Inspiration board<span class="accent-text">.</span></h2><p class="section-intro">Reference points for building a visual direction. Use them to learn principles—not to copy another creator's work.</p></div></div>
+      <div class="art-grid" aria-label="Abstract moodboard placeholders">
+        <div class="art-tile" role="img" aria-label="Abstract warm poster composition with geometric color blocks">Poster shapes · color blocking</div>
+        <div class="art-tile" role="img" aria-label="Abstract muted green botanical pattern">Botanical · soft texture</div>
+        <div class="art-tile" role="img" aria-label="Abstract dark editorial composition with bright circles">Editorial · unexpected contrast</div>
+        <div class="art-tile" role="img" aria-label="Abstract neutral palette with architectural blocks">Architecture · material palette</div>
+      </div>
+      <div class="grid-2" style="margin-top:1rem">
+        <article class="card" data-search="type specimen Playfair Display typography fonts serif"><h3>Type specimen</h3><p style="font:clamp(2rem,6vw,4rem)/1 'Playfair Display',serif">Make room<br>for the idea.</p><p class="meta">Playfair Display · editorial serif specimen. Browse usage and licenses at Google Fonts; verify each font's license.</p><a class="inline-link" href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">Explore Google Fonts ↗</a></article>
+        <article class="card" data-search="color palette terracotta yellow navy cream olive"><h3>Palette study</h3><div class="palette-row" role="img" aria-label="Five-color palette: terracotta, pale yellow, deep navy, warm cream, and olive"><span style="background:#d85c3d"></span><span style="background:#f2c14e"></span><span style="background:#26364a"></span><span style="background:#f3ead9"></span><span style="background:#66734e"></span></div><p class="meta">A playful warm/cool mix to use as a moodboard seed—not a prescribed brand palette.</p><a class="inline-link" href="#lab">Remix this palette in the lab →</a></article>
+      </div>
+      <article class="quote-card" data-search="Virgil Abloh 3% rule Off-White quotation marks industrial labels remix design culture" style="margin-top:1rem">
+        <p class="eyebrow">Design culture spotlight</p><h3>Virgil Abloh: remix with intention</h3>
+        <p>Abloh's widely discussed “3% rule” is often summarized as changing a small part of an existing idea to make it feel new. Treat that as a prompt for critical iteration—not permission to copy. His Off-White visual language made quotation marks, industrial labels, and familiar graphic conventions feel deliberately self-aware.</p>
+        <p class="meta">Interpretive summary; not a direct quotation. Study context, credit sources, and make meaningful original work.</p>
+      </article>
+    </section>
+
+    <section id="resources" aria-labelledby="resources-title">
+      <div class="section-head"><div><p class="eyebrow">Good places to look</p><h2 id="resources-title">Resource shelf<span class="accent-text">.</span></h2><p class="section-intro">Curated starting points for fonts, imagery, mockups, icons, textures, and color. Read the license on the specific asset you download.</p></div></div>
+      <div class="grid" id="resource-grid"></div>
+    </section>
+
+    <section id="lab" aria-labelledby="lab-title">
+      <div class="section-head"><div><p class="eyebrow">Small tools, right in your browser</p><h2 id="lab-title">Design tools lab<span class="accent-text">.</span></h2><p class="section-intro">These utilities run client-side in this page. Image files and QR content stay in your browser; no QR service is contacted.</p></div></div>
+      <div class="lab-grid">
+        <article class="panel" data-search="color palette generator harmony HEX RGB HSL copy base color"><h3>Color palette generator</h3><p class="meta">Pick a base color, then copy HEX, RGB, or HSL values.</p><div class="field"><label for="base-color">Base color</label><input id="base-color" type="color" value="#ff4d00"></div><div class="field"><label for="palette-harmony">Harmony</label><select id="palette-harmony"><option value="complement">Complementary</option><option value="analogous">Analogous</option><option value="triadic">Triadic</option><option value="split">Split complementary</option></select></div><div class="palette" id="palette-output" aria-label="Generated palette"></div><div class="output-box" id="palette-values" aria-live="polite"></div></article>
+        <article class="panel" data-search="WCAG contrast checker text background color ratio AA AAA accessibility"><h3>Contrast checker</h3><p class="meta">WCAG contrast ratio estimate for the selected text and background colors.</p><div class="form-grid"><div class="field"><label for="contrast-fg">Text color</label><input id="contrast-fg" type="color" value="#171714"></div><div class="field"><label for="contrast-bg">Background</label><input id="contrast-bg" type="color" value="#ffffff"></div></div><div class="contrast-sample" id="contrast-sample">Readable is usable.</div><div class="output-box" id="contrast-result" role="status" aria-live="polite"></div><p class="meta">WCAG ratios are a guide; check the full interface, font size, and non-text contrast requirements.</p></article>
+        <article class="panel" data-search="font pairing tester Google Fonts typeface preview custom text heading body"><h3>Font pairing tester</h3><p class="meta">Preview Google Fonts pairings. Font download is served by Google Fonts; preview text stays on this page.</p><div class="form-grid"><div class="field"><label for="font-heading">Heading font</label><select id="font-heading"><option>Archivo Black</option><option>Manrope</option><option>Playfair Display</option><option>Space Grotesk</option><option>DM Sans</option></select></div><div class="field"><label for="font-body">Body font</label><select id="font-body"><option>Space Grotesk</option><option>DM Sans</option><option>Manrope</option><option>Playfair Display</option><option>Archivo Black</option></select></div></div><div class="field"><label for="font-copy">Your sample text</label><input id="font-copy" type="text" value="Make good things happen."></div><div class="preview-box font-preview"><h4 id="font-preview-heading">Make good things happen.</h4><p id="font-preview-body">The right type pairing can bring rhythm, clarity, and a little personality to a layout.</p></div></article>
+        <article class="panel" data-search="image converter compress convert PNG JPG WebP browser canvas local file"><h3>Image converter</h3><p class="meta">Convert a local image to PNG, JPG, or WebP using the browser canvas.</p><div class="field"><label for="image-file">Choose an image</label><input id="image-file" type="file" accept="image/*"></div><div class="form-grid"><div class="field"><label for="image-type">Output format</label><select id="image-type"><option value="image/webp">WebP</option><option value="image/jpeg">JPG</option><option value="image/png">PNG</option></select></div><div class="field"><label for="image-quality">Quality (JPG/WebP)</label><input id="image-quality" type="number" min=".1" max="1" step=".1" value=".85"></div></div><button type="button" id="convert-image">Convert image</button><img id="image-preview" class="file-preview" alt="Preview of the selected image" hidden><div class="output-box" id="image-output" role="status" aria-live="polite">No image selected.</div><a id="image-download" class="button" hidden download="converted-image">Download converted image</a></article>
+        <article class="panel" data-search="QR code generator QR Code Monkey link URL branded code browser"><h3>Quick QR code</h3><p class="meta">Create a simple QR code in-browser. For branded codes, try QR Code Monkey and verify its current terms.</p><div class="field"><label for="qr-content">Text or URL to encode</label><input id="qr-content" type="url" placeholder="https://example.com"></div><button type="button" id="make-qr">Generate QR code</button><div class="output-box" id="qr-output" role="status" aria-live="polite">Enter a URL or text. The content is encoded locally in your browser.</div><canvas id="qr-canvas" hidden aria-label="Generated QR code"></canvas><a id="qr-download" class="button" hidden download="design-toolkit-qr.png">Download PNG</a><p><a class="inline-link" href="https://www.qrcode-monkey.com/" target="_blank" rel="noopener noreferrer">Branded QR codes at QR Code Monkey ↗</a></p></article>
+        <article class="panel" data-search="aspect ratio social media sizes calculator dimensions pixels square portrait story landscape"><h3>Aspect ratio &amp; social sizes</h3><p class="meta">Calculate a ratio and compare common canvas sizes. Platform specs may change; verify before publishing.</p><div class="form-grid"><div class="field"><label for="ratio-width">Width (px)</label><input id="ratio-width" type="number" min="1" value="1080"></div><div class="field"><label for="ratio-height">Height (px)</label><input id="ratio-height" type="number" min="1" value="1080"></div></div><button type="button" id="calculate-ratio">Calculate</button><div class="output-box" id="ratio-output" aria-live="polite"></div><div class="meta">Common starting points: square 1080×1080 · portrait 1080×1350 · story 1080×1920 · landscape 1200×630.</div></article>
+        <article class="panel" data-search="format decision tool web print logo photograph animation"><h3>Format decision tool</h3><p class="meta">Quick recommendation by intended use.</p><div class="field"><label for="lab-format-use">What are you making?</label><select id="lab-format-use"><option value="web">A web image</option><option value="print">A print file</option><option value="logo">A logo or icon</option><option value="photo">A photograph</option><option value="motion">An animation</option></select></div><button id="lab-format-button" type="button">Choose a format</button><div class="output-box" id="lab-format-output" role="status" aria-live="polite">Choose a use to see a starting point.</div></article>
+      </div>
+    </section>
+
+    <section id="downloads" aria-labelledby="downloads-title">
+      <div class="section-head"><div><p class="eyebrow">Keep the good bits handy</p><h2 id="downloads-title">Free cheat sheets<span class="accent-text">.</span></h2><p class="section-intro">No email required. Open a print-ready sheet, then use your browser's Print → Save as PDF.</p></div></div>
+      <div class="notice">These printable pages are generated locally in your browser; no file is uploaded. Email signup below is optional and is a non-sending demo.</div>
+      <div class="sheet-grid" id="sheet-grid" style="margin-top:1rem"></div>
+      <form class="panel" id="newsletter-form" data-search="optional newsletter email signup free no backend demo" style="margin-top:1rem">
+        <h3>Optional newsletter signup</h3><p class="meta">This prototype has no mailing-list backend. Submitting will not subscribe or send your address anywhere.</p>
+        <div class="form-grid"><div class="field"><label for="newsletter-email">Email address (optional)</label><input id="newsletter-email" type="email" placeholder="you@example.com"></div><div class="field"><label for="newsletter-consent">What's the deal?</label><div id="newsletter-consent" class="output-box">Free to browse. Signup is optional. Not connected in this demo.</div></div></div>
+        <button type="submit">Preview signup</button><p class="meta" id="newsletter-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="alternatives" aria-labelledby="alternatives-title">
+      <div class="section-head"><div><p class="eyebrow">Keep creating on a budget</p><h2 id="alternatives-title">Free alternatives<span class="accent-text">.</span></h2><p class="section-intro">Options to explore when a paid plan is out of reach. Each has tradeoffs; availability and free-plan terms are unverified.</p></div></div>
+      <div class="grid" id="alternatives-grid"></div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="section-head"><div><p class="eyebrow">Good tools are a community effort</p><h2 id="about-title">About &amp; get in touch<span class="accent-text">.</span></h2><p class="section-intro">Free Design Toolkit is a practical, independent resource hub concept for designers and creators. It is not affiliated with listed products.</p></div></div>
+      <div class="grid-2">
+        <article class="panel" data-search="suggest a tool submission contact suggestion form tool name URL">
+          <h3>Suggest a tool</h3><p class="meta">This form is a front-end demo only. It does not send or store submissions.</p>
+          <form id="suggest-form"><div class="field"><label for="suggest-name">Tool name</label><input id="suggest-name" type="text" required></div><div class="field"><label for="suggest-url">Official URL (if known)</label><input id="suggest-url" type="url" placeholder="https://"></div><div class="field"><label for="suggest-why">What is it useful for?</label><textarea id="suggest-why" required></textarea></div><button type="submit">Preview suggestion</button><p class="meta" id="suggest-status" role="status" aria-live="polite"></p></form>
+        </article>
+        <article class="panel" data-search="community ratings upvotes local demo contact credits disclaimer tools free limits change">
+          <h3>Community pulse · placeholder</h3><p class="meta">Community ratings are not connected yet. Your upvote stays in this browser; no community service is connected.</p><div class="card-title-row"><strong>Was this toolkit useful?</strong><span id="vote-count" aria-live="polite">0 upvotes</span></div><button id="upvote" type="button" aria-pressed="false" style="margin-top:.6rem">▲ Upvote locally</button>
+          <hr style="border:0;border-top:1px solid var(--line);margin:1rem 0">
+          <h3>Contact</h3><p>For now, use the tool-suggestion form above. A real submission endpoint and contact address have not been configured.</p>
+          <h4>Credits &amp; disclaimer</h4><p class="meta">Product names and marks belong to their owners. Information is provided for discovery, not legal or licensing advice. Products, links, free limits, and terms may change without notice. Verify details with the official source.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><a class="brand" href="#home">FREE DESIGN TOOLKIT<span class="accent-text">.</span></a><p class="meta">Make more. Spend less. Verify the fine print.</p><p class="meta">© <span id="year"></span> Free Design Toolkit · Independent resource hub concept.</p></div>
+      <div><p><strong>Jump around</strong></p><div class="footer-links"><a href="#tools">Tools</a><a href="#learn">Learn</a><a href="#lab">Tools Lab</a><a href="#downloads">Downloads</a><a href="#about">Suggest a tool</a></div><p class="meta">Accessibility: semantic landmarks, keyboard navigation, visible focus, labels, and reduced-motion support are included. Please report issues through the suggestion form.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+    const VERIFIED_PLACEHOLDER = "17 Nov 2026 · unverified placeholder";
+    const tools = [
+      {name:"Flaticon",category:"Icons",description:"A large icon library for interface and graphic projects.",best:"Quick icon sourcing",limits:"Free-plan attribution and download limits need verification.",pros:"Broad library; multiple formats may be available.",cons:"Attribution and asset-specific license may apply.",license:"Check each asset's current license.",url:"https://www.flaticon.com/",status:"Unverified"},
+      {name:"QR Code Monkey",category:"QR Codes",description:"Generate QR codes with visual customization options.",best:"Branded QR concepts",limits:"Limits and reuse terms need verification.",pros:"Branding options; supports common QR use cases.",cons:"Check destination, tracking, and print quality before use.",license:"Verify current terms.",url:"https://www.qrcode-monkey.com/",status:"Unverified"},
+      {name:"Canva",category:"Design platforms",description:"Browser-based layouts for social posts, presentations, and quick graphics.",best:"Fast layouts",limits:"Some features and assets require a paid plan.",pros:"Approachable templates; quick collaboration.",cons:"Template-driven work can look familiar; asset terms vary.",license:"Check the license for each included asset.",url:"https://www.canva.com/",status:"Unverified"},
+      {name:"Adobe Express",category:"Design platforms",description:"Quick branded graphics and content in Adobe's web and mobile tools.",best:"Social graphics",limits:"Free and premium feature availability needs verification.",pros:"Templates and Adobe integrations.",cons:"Features and assets vary by plan and region.",license:"Verify terms for each asset and output.",url:"https://www.adobe.com/express/",status:"Unverified"},
+      {name:"Recraft",category:"AI",description:"AI-assisted image generation with vector-oriented workflows.",best:"Logos, icons, vector concepts",limits:"Free tier and public-output rules need verification.",pros:"Vector workflow; style consistency is highlighted in the supplied brief.",cons:"Free limits and output visibility may change.",license:"Verify output ownership and commercial terms.",url:"https://www.recraft.ai/",status:"Unverified"},
+      {name:"Adobe Firefly",category:"AI",description:"Adobe's generative AI tools for images and design workflows.",best:"Adobe-connected generation",limits:"Free credits and feature access need verification.",pros:"Integrates with Adobe apps; trained on licensed content according to Adobe's product positioning.",cons:"Credit limits; commercial terms depend on product and context.",license:"Review current Adobe terms; no blanket guarantee.",url:"https://firefly.adobe.com/",status:"Unverified"},
+      {name:"Google Fonts",category:"Fonts",description:"Browse type families for web and design projects.",best:"Finding web-ready type",limits:"Free to browse and download; check the selected font's license.",pros:"Large searchable catalog; common web embed options.",cons:"Font quality and language coverage vary by family.",license:"Many families use open licenses; verify each font.",url:"https://fonts.google.com/",status:"Unverified"},
+      {name:"Fonts In Use",category:"Fonts",description:"An archive of typefaces shown in real-world design.",best:"Typography research",limits:"Free to browse; not a font download service.",pros:"Useful visual references and context.",cons:"Reference entries do not grant rights to the displayed work or fonts.",license:"Reference only; follow the source licenses.",url:"https://fontsinuse.com/",status:"Unverified"},
+      {name:"iLoveIMG",category:"Image tools",description:"Browser tools for resizing, compressing, converting, and cropping images.",best:"Quick image edits",limits:"File, batch, and plan limits need verification.",pros:"Convenient common image operations.",cons:"Check upload privacy, file-size limits, and retention terms.",license:"Use only files you have rights to; verify service terms.",url:"https://www.iloveimg.com/",status:"Unverified"},
+      {name:"Cosmos",category:"Inspiration",description:"A visual discovery and collecting space for references.",best:"Moodboards and visual research",limits:"Account and feature availability need verification.",pros:"Collect and organize visual references.",cons:"Respect original creators; references are not reusable assets.",license:"Reference only; check rights with the original source.",url:"https://www.cosmos.so/",status:"Unverified"},
+      {name:"Same.energy",category:"Inspiration",description:"Visual search for finding related imagery and references.",best:"Finding visual directions",limits:"Availability and current features need verification.",pros:"Explore visual similarity and adjacent references.",cons:"Search results remain owned by their original creators.",license:"Reference only; verify original asset rights.",url:"https://same.energy/",status:"Unverified"},
+      {name:"Gridpic",category:"Inspiration",description:"Placeholder entry from the supplied brief; exact product identity and URL need verification.",best:"Unverified",limits:"Unknown — verify product and plan.",pros:"Not assessed.",cons:"Exact tool identity is unclear.",license:"Unverified.",url:"",status:"Placeholder"},
+      {name:"Inkscape",category:"Vector software",description:"Free, open-source vector illustration software.",best:"Editing SVG and vector artwork",limits:"Desktop software; no paid-plan limit stated here.",pros:"Editable vector tools; open-source project.",cons:"Learning curve; some professional workflows differ from commercial suites.",license:"Commercial use is generally possible under GPL; review the license and third-party assets.",url:"https://inkscape.org/",status:"Unverified"},
+      {name:"Animos.app",category:"Animation",description:"Placeholder entry from the supplied brief; exact product identity, features, and URL need verification.",best:"Unverified",limits:"Unknown — verify product and plan.",pros:"Not assessed.",cons:"Exact tool identity is unclear.",license:"Unverified.",url:"",status:"Placeholder"},
+      {name:"Kojima",category:"Placeholder",description:"Placeholder from the supplied brief; exact tool identity and URL need verification.",best:"Unverified",limits:"Unknown.",pros:"Not assessed.",cons:"Name may refer to multiple things.",license:"Unverified.",url:"",status:"Placeholder"},
+      {name:"Freegame",category:"Placeholder",description:"Placeholder from the supplied brief; exact tool identity and URL need verification.",best:"Unverified",limits:"Unknown.",pros:"Not assessed.",cons:"Exact product identity is unclear.",license:"Unverified.",url:"",status:"Placeholder"}
+    ];
+    const aiTools = [
+      {name:"Meta AI",best:"Realistic photos and quick ideas",strengths:"Free and easy to try; good photorealism (as described in the supplied brief).",weaknesses:"Less control; weaker text rendering.",limits:"Free access and daily limits: verify.",commercial:"Check current terms before commercial use.",badge:"Photorealistic",url:"https://www.meta.ai/"},
+      {name:"Adobe Firefly",best:"Commercial-aware image workflows",strengths:"Integrates with Adobe apps; Adobe describes training sources as licensed content.",weaknesses:"Free credits are limited; terms vary by feature.",limits:"Credits and plan: verify.",commercial:"Review current Adobe terms; not a blanket guarantee.",badge:"Commercial-safe intent",url:"https://firefly.adobe.com/"},
+      {name:"Recraft",best:"Logos, icons, and vector concepts",strengths:"SVG export and consistent styles are highlighted in the supplied brief.",weaknesses:"Free tier is limited; free outputs may be public.",limits:"Verify current tier and public-output settings.",commercial:"Verify current terms and output visibility.",badge:"Logos / vectors",url:"https://www.recraft.ai/"},
+      {name:"Ideogram",best:"Text inside images and posters",strengths:"Strong typography rendering (as described in the supplied brief).",weaknesses:"Daily limits; free images may be public.",limits:"Daily limits: verify.",commercial:"Verify current terms and visibility.",badge:"Text in images",url:"https://ideogram.ai/"},
+      {name:"Leonardo AI",best:"Game art, concept art, illustration",strengths:"Many styles and models; fine control.",weaknesses:"Token-based daily limits.",limits:"Token allowance: verify.",commercial:"Verify current plan and output terms.",badge:"Illustration",url:"https://leonardo.ai/"},
+      {name:"Microsoft Designer / Copilot",best:"Social posts and quick graphics",strengths:"Easy to use; free access with an account is stated in the supplied brief.",weaknesses:"Less artistic range.",limits:"Availability and account requirements: verify.",commercial:"Check Microsoft terms for the feature and output.",badge:"Quick graphics",url:"https://designer.microsoft.com/"},
+      {name:"Google ImageFX / Gemini",best:"General images and ideas",strengths:"Clean results and a simple interface (as described in the supplied brief).",weaknesses:"Availability varies by region.",limits:"Regional availability and limits: verify.",commercial:"Check current Google terms and regional rules.",badge:"General ideas",url:"https://gemini.google.com/"}
+    ];
+    const formats = [
+      ["SVG","Logos, icons, and illustrations","Infinitely scalable; often small; editable vector paths.","Not suited to photos or complex raster textures.","Avoid for photographs, complex textures, or apps that do not support SVG."],
+      ["PNG","Transparency, screenshots, and crisp graphics","Lossless; supports transparency; broadly supported.","Large file sizes for photographs.","Avoid for large photos when a compressed format is more appropriate."],
+      ["JPG","Photographs","Small files at useful quality; universal support.","Lossy compression; no transparency; artifacts around fine text.","Avoid for transparent artwork, logos, and crisp text-heavy graphics."],
+      ["WebP","Web images","Usually smaller than PNG/JPG at comparable visual quality; supports transparency and animation.","Older software or workflows may not support it.","Avoid for print handoff or very old software without a fallback."],
+      ["AVIF","Next-generation web photos","Excellent compression potential and strong image quality.","Editing and browser support vary by workflow.","Avoid when tool support or universal compatibility matters most."],
+      ["GIF","Simple looping animation","Broad legacy support; simple to embed.","Limited to 256 colors; can create large files.","Avoid for quality animation; prefer MP4/WebM when appropriate."],
+      ["PDF","Print, documents, and sharing","Can preserve page layout, fonts, and vector artwork when exported correctly.","Not ideal for responsive web imagery; export settings matter.","Avoid for displaying a single web image when an image format fits better."],
+      ["EPS / AI","Professional vector source files and print vendors","Editable vector artwork; common in professional print handoffs.","Software compatibility varies; AI is Adobe's proprietary format.","Avoid for web display; export SVG, PNG, or PDF as needed."],
+      ["PSD","Layered Photoshop work","Preserves layers, masks, and effects for editing.","Large; not a finished universal delivery format.","Avoid for final sharing when a flattened export is expected."],
+      ["MP4 / WebM","Video and animated content","Efficient video delivery with broad web support.","Transparency support and codec support vary; MP4 generally does not carry alpha.","Avoid when you need guaranteed transparency; some WebM workflows support alpha."],
+      ["Lottie (JSON)","UI and web animation","Can be compact, scalable, and interactive for supported animations.","Requires a compatible renderer; not accepted by many social platforms.","Avoid for social uploads or environments without a Lottie player."]
+    ];
+    const learnItems = [
+      ["Vector vs. raster","Beginner","Vectors use paths that scale cleanly; raster images use pixels. Pick vectors for logos and icons, pixels for photos and textured images."],
+      ["RGB vs. CMYK","Beginner","RGB is a light-based color model used by screens; CMYK is a print process model. Convert with a printer's profile and proof the result."],
+      ["DPI / PPI: web vs. print","Beginner","Pixel dimensions determine screen image detail. Print dimensions and pixel density work together; 300 PPI is a common print target, not a universal rule."],
+      ["Color theory","Beginner","Hue, saturation, value, and contrast shape how a palette feels. Start with a clear role for each color and test combinations for readability."],
+      ["Typography pairing","Intermediate","Pair typefaces by contrast and shared details. Limit the number of families, establish hierarchy, and test real text at actual sizes."],
+      ["Image & font licensing","Intermediate","A free download is not automatically free for every use. Check the exact asset license, attribution rules, client use, and redistribution restrictions."],
+      ["Accessibility & contrast","Intermediate","Use semantic structure, keyboard support, readable contrast, descriptive alternatives, and more than color alone to convey meaning."],
+      ["Logo file packages","Intermediate","Provide vector master files plus transparent raster exports, clear-space guidance, and light/dark variants where needed."],
+      ["Print-ready exports","Advanced","Confirm dimensions, bleed, color profile, embedded/outlined fonts as required, image resolution, and the vendor's PDF preset."],
+      ["Designing with grids","Intermediate","A grid gives alignment and rhythm; treat it as a flexible structure rather than a cage. Check spacing at multiple viewport widths."]
+    ];
+    const glossaryItems = [
+      ["Aspect ratio","The proportional relationship between width and height, commonly written 16:9 or 1:1."],
+      ["Bleed","Artwork that extends beyond the trim edge so tiny cutting shifts do not reveal an unprinted border."],
+      ["CMYK","Cyan, magenta, yellow, and key/black: a subtractive color model used in many print workflows."],
+      ["DPI / PPI","Dots per inch describes printer output; pixels per inch describes image pixel density at a physical size."],
+      ["Kerning","Adjusting spacing between a specific pair of characters."],
+      ["Leading","The vertical distance between lines of type."],
+      ["Raster","An image made of a fixed grid of pixels; enlarging it too far can make it look soft or blocky."],
+      ["RGB","Red, green, and blue: an additive color model used by screens and many digital images."],
+      ["SVG","Scalable Vector Graphics: a text-based vector image format for paths and shapes."],
+      ["Vector","Artwork described by paths and shapes rather than a fixed pixel grid."]
+    ];
+    const workflows = [
+      {title:"Logo concept → clean vector",best:"A simple mark or wordmark",steps:["Sketch a few distinct directions and choose one idea to refine.","Use Recraft for concept exploration; check the current tier and output terms first.","Rebuild or clean the artwork in Inkscape so shapes and paths are intentional.","Export an SVG master and transparent PNG sizes for sharing.","Test legibility at small sizes and verify fonts/assets are licensed."]},
+      {title:"Social post in Canva",best:"A quick campaign graphic",steps:["Choose a platform size; verify current specs before publishing.","Set a type hierarchy and a small palette before opening a template.","Build or adapt a Canva layout; check whether every asset is allowed on your plan.","Preview mobile readability and color contrast.","Export an appropriate PNG/JPG and keep an editable source copy."]},
+      {title:"Branded QR code",best:"A campaign link or event",steps:["Use a stable HTTPS destination and test the link on mobile.","Generate a plain code with the browser QR tool or explore QR Code Monkey for branding.","Keep strong contrast and a clear quiet zone around the code.","Print a test at the final size and scan it from multiple devices.","Use a redirect you control if you need to change the destination later."]},
+      {title:"Fast mockup presentation",best:"Showing a design in context",steps:["Find a mockup with a clear commercial-use license and attribution requirements.","Open a PSD in a compatible editor such as Photopea (verify current terms) or use a template tool.","Place your artwork, check crop and perspective, and avoid implying a real product endorsement.","Export a web-friendly image and keep the original layered file.","Credit the mockup creator when required by its license."]}
+    ];
+    const prompts = [
+      {title:"Logo directions",label:"Logo",prompt:"Create 4 distinct logo direction concepts for [brand], a [type of organization] for [audience]. Explore [visual idea] using [2–3 colors]. Show simple, flat vector-like shapes on a plain background. No mockups, no tiny details, no existing brand marks. Keep any lettering blank so I can typeset it myself.",tips:"Use an image model for broad concept directions, then draw and refine the final vector yourself. Do not treat generated marks as cleared trademarks."},
+      {title:"Editorial poster",label:"Poster",prompt:"Design a bold editorial poster about [topic] for [audience]. Use [visual metaphor], oversized geometric shapes, and a [color palette] palette. Leave a clean, empty area for the headline and event details. High contrast, intentional negative space, print-inspired composition. No logos or fabricated small text.",tips:"Ideogram may help explore text-in-image, but proofread every character and check output visibility and usage terms."},
+      {title:"Product photo concept",label:"Product photo",prompt:"A studio product photograph concept for [product], on a [surface] with [lighting] and [mood]. Camera angle: [angle]. Background: [background]. Keep the product shape and label area clean, no fake brand names, no extra objects, no watermark.",tips:"Use photoreal models for art direction exploration; do not present synthetic scenes as documentary product evidence."},
+      {title:"Icon family",label:"Icons",prompt:"A cohesive set of 6 simple icons for [app or topic]: [list concepts]. Use one consistent [stroke weight] outline style, rounded corners, a square viewBox, balanced negative space, and one-color black shapes on transparent-looking plain background. No letters, gradients, shadows, or existing symbols.",tips:"Rebuild the selected ideas as actual editable vectors; check accessibility and avoid confusingly similar protected symbols."},
+      {title:"Repeat pattern",label:"Pattern",prompt:"A seamless repeating pattern inspired by [subject], using [palette]. Make the motifs [style], vary their scale subtly, keep spacing balanced, and ensure the edges tile cleanly. No text, logos, or recognizable copyrighted characters.",tips:"Inspect the repeat edges and check licensing before using generated patterns in products or client work."}
+    ];
+    const resources = [
+      ["Fonts","Google Fonts","Browse type families; verify the license for each family and the correct embedding terms.","https://fonts.google.com/","Fonts"],
+      ["Stock images","Unsplash","A source for imagery; confirm the current license and any model/property rights for each use.","https://unsplash.com/","Image tools"],
+      ["Mockups","Mockup World","Directory-style mockup discovery; check the original creator's license and attribution requirements.","https://www.mockupworld.co/","Mockups"],
+      ["Icon packs","Flaticon","Large icon library; free use may require attribution and asset-level terms apply.","https://www.flaticon.com/","Icons"],
+      ["Textures","Poly Haven","Open asset library with CC0 assets according to its stated licensing; still check each asset page.","https://polyhaven.com/","Textures"],
+      ["Color palettes","Coolors","Palette discovery and generation; verify current free features and account requirements.","https://coolors.co/","Color"],
+      ["Creative Commons search","Openverse","Search across openly licensed and public-domain media; verify the source license and attribution for each item.","https://openverse.org/","Licensing"]
+    ];
+    const alternatives = [
+      ["Photoshop","Photopea · GIMP · Krita","Photopea: familiar browser editor; GIMP: broad raster editing; Krita: illustration and painting.","Tradeoffs include interface differences, workflow compatibility, and learning curve.","Best for: photo edits, raster graphics, and painting."],
+      ["Illustrator","Inkscape · Figma free tier · Vectr","Inkscape: open-source vectors; Figma: collaborative interface work; Vectr: simple vector tasks.","Check feature limits, offline needs, and export requirements.","Best for: vector artwork, UI, and simple graphics."],
+      ["Figma paid tiers","Penpot · Figma free tier · Lunacy","Penpot: open-source design/collaboration option; Figma free tier: familiar entry point; Lunacy: another design app to evaluate.","Team, file, library, and collaboration limits can change; verify each option's current free plan.","Best for: interface design and collaborative prototyping."],
+      ["InDesign","Scribus · Canva · LibreOffice Draw","Scribus: desktop page layout; Canva: quick templated documents; LibreOffice Draw: simple page and diagram work.","Professional prepress workflows and fine typographic controls may differ.","Best for: brochures, flyers, and short documents."],
+      ["Lightroom","Darktable · RawTherapee · digiKam","Free photo workflows with different approaches; digiKam adds photo organization and management features.","Expect setup and workflow learning; verify camera support and current features.","Best for: raw photo development and catalog workflows."],
+      ["Premiere Pro","DaVinci Resolve · CapCut · Kdenlive","Resolve offers editing and color workflows; CapCut offers quick social video editing; Kdenlive is a free desktop editor.","Hardware needs, plan terms, and feature availability differ.","Best for: longer-form editing or quick social cuts."],
+      ["After Effects","Blender · DaVinci Fusion · Natron","Blender: 3D and motion graphics; Fusion: node-based compositing in Resolve; Natron: open-source compositing.","Not one-to-one replacements; each has a different workflow curve.","Best for: 3D motion, compositing, and visual effects."],
+      ["Canva Pro","Adobe Express · Canva free tier · VistaCreate","Explore free-tier templates and editing across these design platforms.","Premium assets, storage, and brand features may be limited; verify current plans.","Best for: lightweight branded content and social graphics."]
+    ];
+    const alternativeOptions = {
+      "Photoshop": [
+        ["Photopea","Browser-based editing with PSD-oriented workflows.","Browser access, file support, and privacy terms need checking.","Quick layered-file edits.","https://www.photopea.com/"],
+        ["GIMP","Desktop raster editing with an open-source workflow.","Interface and plugin workflows differ from Photoshop.","Photo edits and raster graphics.","https://www.gimp.org/"],
+        ["Krita","Painting and illustration tools with a desktop workflow.","Photo-retouching and asset-management workflows differ.","Digital painting and illustration.","https://krita.org/"]
+      ],
+      "Illustrator": [
+        ["Inkscape","Open-source vector illustration and SVG editing.","AI-file fidelity and print-vendor compatibility need checking.","SVG artwork, icons, and vector learning.","https://inkscape.org/"],
+        ["Figma free tier","Collaborative interface design with vector drawing tools.","Not a full substitute for illustration and print-prepress workflows; verify current plan limits.","UI design and collaborative prototypes.","https://www.figma.com/"],
+        ["Vectr","A lightweight entry point for vector graphics.","Current availability, export options, and plan terms need verification.","Simple vector tasks and quick graphics.","https://www.vectr.com/"]
+      ],
+      "Figma paid tiers": [
+        ["Penpot","Open-source design and prototyping workflows.","Import fidelity, integrations, and collaboration needs may differ.","Collaborative interface design.","https://penpot.app/"],
+        ["Figma free tier","Stay in the same ecosystem while evaluating a free plan.","Free-tier file, team, library, and feature caps can change.","Small projects or individual exploration.","https://www.figma.com/"],
+        ["Lunacy","A design app to evaluate for interface and vector workflows.","Platform support, asset terms, and current features need verification.","Exploring another design-app workflow.","https://icons8.com/lunacy"]
+      ],
+      "InDesign": [
+        ["Scribus","Desktop page-layout workflows with open-source software.","Prepress setup and typography workflows may take extra learning.","Brochures and print page layouts.","https://www.scribus.net/"],
+        ["Canva","Templated layouts for quick documents and graphics.","Fine-grained long-document layout and print controls may be limited.","Short documents and fast marketing layouts.","https://www.canva.com/"],
+        ["LibreOffice Draw","Simple page, diagram, and document graphics.","Not aimed at complex editorial publishing or advanced prepress.","Basic flyers, diagrams, and one-page documents.","https://www.libreoffice.org/"]
+      ],
+      "Lightroom": [
+        ["Darktable","A non-destructive raw photo development workflow.","Catalog and editing workflows differ; check camera support.","Raw photo development.","https://www.darktable.org/"],
+        ["RawTherapee","Detailed raw processing and image adjustments.","Workflow and library-management needs may differ.","Raw processing and image quality experiments.","https://rawtherapee.com/"],
+        ["digiKam","Photo-library organization and metadata workflows.","Not a one-to-one Lightroom editing/catalog experience.","Organizing photo collections and metadata.","https://www.digikam.org/"]
+      ],
+      "Premiere Pro": [
+        ["DaVinci Resolve","Video editing with color and post-production tools.","Hardware demands and workflow learning can be substantial.","Editing and color-focused projects.","https://www.blackmagicdesign.com/products/davinciresolve"],
+        ["CapCut","Quick video workflows aimed at social content.","Current free features, platform availability, and privacy terms need checking.","Short social edits.","https://www.capcut.com/"],
+        ["Kdenlive","Desktop video editing in an open-source workflow.","Templates, integrations, and workflow differ from Premiere.","General desktop video editing.","https://kdenlive.org/"]
+      ],
+      "After Effects": [
+        ["Blender","3D, motion graphics, and compositing in a broad creative suite.","Different interface and animation model; not a direct project-file replacement.","3D motion and custom animation.","https://www.blender.org/"],
+        ["DaVinci Fusion","Node-based compositing within the Resolve ecosystem.","Node workflow and project interchange differ from After Effects.","Compositing and effects work.","https://www.blackmagicdesign.com/products/davinciresolve/fusion"],
+        ["Natron","Node-based compositing in an open-source application.","Current maintenance, compatibility, and integration needs should be checked.","Compositing experiments and node workflows.","https://natrongithub.github.io/"]
+      ],
+      "Canva Pro": [
+        ["Adobe Express","Quick branded graphics and template-based content.","Premium assets and features can be plan-limited; verify current terms.","Social posts and lightweight branded content.","https://www.adobe.com/express/"],
+        ["Canva free tier","Keep existing Canva workflows while using free features.","Some assets, brand tools, and plan features may require payment.","Individual projects and basic templates.","https://www.canva.com/"],
+        ["VistaCreate","Template-based graphics and social content.","Current free features, account requirements, and asset terms need checking.","Quick marketing graphics and social layouts.","https://create.vista.com/"]
+      ]
+    };
+    const sheets = [
+      ["File Formats","SVG for scalable vector artwork; PNG for transparency; JPG for photos; WebP for modern web delivery; PDF for documents and print; keep source files for future edits."],
+      ["RGB vs CMYK + DPI","RGB is for light-emitting screens; CMYK is common for print. Set physical size and effective PPI together; confirm color profile, bleed, and resolution with the print vendor."],
+      ["Logo Package Checklist","Include editable vector master; SVG; transparent PNG; light/dark variants; horizontal/stacked lockups; favicon/app icon; color and clear-space notes; font and asset license details."],
+      ["Brand Kit Checklist","Logo files; color values; type hierarchy; imagery direction; voice notes; templates; usage examples; accessibility checks; source and license records."],
+      ["Social Media Sizes","Square 1080×1080; portrait 1080×1350; story 1080×1920; landscape/link preview 1200×630. These are starting points only—verify current platform specs."]
+    ];
+    const formatRecs = {
+      web:"WebP or JPG for photos; SVG for simple vector artwork; PNG when transparency or lossless detail is needed. Keep a fallback where support matters.",
+      print:"PDF from the print vendor's required preset. Confirm bleed, color profile, fonts, and image resolution with the printer.",
+      logo:"Keep a vector master such as SVG (and any source format your collaborator needs), plus transparent PNG exports for easy sharing.",
+      photo:"JPG for broad compatibility; WebP or AVIF for web delivery when your pipeline supports them. Preserve an original.",
+      animation:"MP4 or WebM for video; Lottie for supported app/web UI motion. Check alpha/transparency and target platform support."
+    };
+
+    const $ = (selector, root=document) => root.querySelector(selector);
+    const $$ = (selector, root=document) => Array.from(root.querySelectorAll(selector));
+    const listen = (selector, event, handler) => { const element=$(selector); if(element) element.addEventListener(event,handler); };
+    const state = {category:"All", favoritesOnly:false, favorites:[], compare:new Set(), query:""};
+    const status = (message) => { const el=$("#search-status"); if (el) el.textContent=message; };
+    try {
+      const saved=JSON.parse(localStorage.getItem("fdt-favorites") || "[]");
+      if (Array.isArray(saved)) state.favorites=saved.filter(name=>tools.some(tool=>tool.name===name));
+    } catch (error) {
+      status("Saved favorites could not be read from this browser. You can still use the directory for this visit.");
+    }
+
+    function safeText(value) { return String(value).replace(/[&<>"']/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch])); }
+    function saveFavorites() {
+      try { localStorage.setItem("fdt-favorites", JSON.stringify(state.favorites)); }
+      catch (error) { status("Favorites are saved for this visit only because browser storage is unavailable."); }
+      const count=$("#favorite-count");
+      if(count) count.textContent=`${state.favorites.length} saved`;
+    }
+    function toolCard(tool, featured=false) {
+      const search = [tool.name,tool.category,tool.description,tool.best,tool.limits,tool.pros,tool.cons,tool.license].join(" ");
+      const noUrl = !tool.url;
+      const freeTag = tool.category==="AI" || tool.category==="Design platforms" ? "Free / Freemium" : "Free access · verify";
+      const commercialOk = tool.name==="Inkscape";
+      const id=`tool-${tool.name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}`;
+      return `<article class="card tool-card${featured?" featured-card":""}" id="${id}" data-tool="${safeText(tool.name)}" data-category="${safeText(tool.category)}" data-search="${safeText(search)}">
+        <div class="card-title-row"><h3>${safeText(tool.name)}</h3><span class="tag">${safeText(tool.category)}</span></div>
+        <div class="tag-row"><span class="tag">${freeTag}</span><span class="tag ${commercialOk?"tag-ok":"tag-unknown"}">${commercialOk?"Commercial use OK · verify assets":"Commercial terms unverified"}</span>${tool.status==="Placeholder"?'<span class="tag tag-accent">Placeholder</span>':''}</div>
+        <p>${safeText(tool.description)}</p><p class="meta"><strong>Best for:</strong> ${safeText(tool.best)}</p>
+        <p class="meta"><strong>Free-plan limits:</strong> ${safeText(tool.limits)}</p>
+        <p class="meta"><strong>Pros:</strong> ${safeText(tool.pros)}</p><p class="meta"><strong>Cons:</strong> ${safeText(tool.cons)}</p>
+        <p class="meta"><strong>License:</strong> ${safeText(tool.license)}</p>
+        <p class="meta"><strong>Last verified:</strong> <span class="tag tag-unknown">${VERIFIED_PLACEHOLDER}</span></p>
+        <div class="row-bottom">${noUrl?'<span class="tag tag-unknown">Verify exact tool and URL</span>':`<a class="button" href="${safeText(tool.url)}" target="_blank" rel="noopener noreferrer">Visit ↗</a>`}
+          <button type="button" class="fav" data-favorite="${safeText(tool.name)}" aria-pressed="${state.favorites.includes(tool.name)}" aria-label="${state.favorites.includes(tool.name)?"Remove":"Add"} ${safeText(tool.name)} ${state.favorites.includes(tool.name)?"from":"to"} favorites">${state.favorites.includes(tool.name)?"♥ Saved":"♡ Save"}</button>
+          ${featured?"":`<button type="button" class="compare-toggle" data-compare="${safeText(tool.name)}" aria-pressed="${state.compare.has(tool.name)}" aria-label="Select ${safeText(tool.name)} for comparison">Compare</button>`}
+        </div>
+      </article>`;
+    }
+    function renderFeatured() {
+      if(!$("#featured-tools")) return;
+      const picks=["Canva","Inkscape","Google Fonts","Recraft"].map(name=>tools.find(tool=>tool.name===name));
+      $("#featured-tools").innerHTML=picks.map(tool=>toolCard(tool,true)).join("");
+    }
+    function renderTools() {
+      if(!$("#tool-grid")) return;
+      const cats=["All",...new Set(tools.map(tool=>tool.category))];
+      $("#tool-filters").innerHTML=cats.map(category=>`<button type="button" data-category-filter="${safeText(category)}" aria-pressed="${state.category===category}">${safeText(category)}</button>`).join("");
+      const list=tools.filter(tool=>(state.category==="All"||tool.category===state.category)&&(!state.favoritesOnly||state.favorites.includes(tool.name))&&(!state.query||[tool.name,tool.category,tool.description,tool.best,tool.limits,tool.pros,tool.cons,tool.license].join(" ").toLowerCase().includes(state.query)));
+      $("#tool-grid").innerHTML=list.map(tool=>toolCard(tool)).join("");
+      $("#tools-empty").style.display=list.length?"none":"block";
+      $("#favorite-count").textContent=`${state.favorites.length} saved`;
+      $("#favorites-filter").setAttribute("aria-pressed",String(state.favoritesOnly));
+      $("#favorites-filter").textContent=state.favoritesOnly?"♥ Show all tools":"♥ Show saved only";
+      $("#compare-panel").classList.toggle("active",state.compare.size>0);
+      $("#compare-count").textContent=`${state.compare.size} selected · choose up to 3 tools`;
+    }
+    function renderAI() {
+      if(!$("#ai-body")) return;
+      $("#ai-body").innerHTML=aiTools.map(tool=>`<tr data-search="${safeText(Object.values(tool).join(" "))}"><td><a class="table-link" href="${safeText(tool.url)}" target="_blank" rel="noopener noreferrer">${safeText(tool.name)} ↗</a><br><span class="tag">${safeText(tool.badge)}</span><br><span class="meta">Last verified: ${VERIFIED_PLACEHOLDER}</span></td><td>${safeText(tool.best)}</td><td>${safeText(tool.strengths)}</td><td>${safeText(tool.weaknesses)}</td><td>${safeText(tool.limits)}</td><td>${safeText(tool.commercial)} <span class="tag tag-unknown">Unverified</span></td></tr>`).join("");
+    }
+    function renderFormats() {
+      if(!$("#format-grid")) return;
+      $("#format-grid").innerHTML=formats.map(([name,best,pros,cons,avoid])=>`<details data-search="${safeText([name,best,pros,cons,avoid].join(" "))}"><summary>${safeText(name)} <span class="meta">· ${safeText(best)}</span></summary><div class="details-body"><p><strong>What it is / best use:</strong> ${safeText(best)}.</p><p class="good">Pros: ${safeText(pros)}</p><p class="bad">Cons: ${safeText(cons)}</p><p><strong>Avoid when:</strong> ${safeText(avoid)}</p></div></details>`).join("");
+    }
+    function renderLearn() {
+      const grid=$("#learn-grid"),glossary=$("#glossary");
+      if(grid) grid.innerHTML=learnItems.map(([title,level,description])=>`<article class="card learn-card" data-search="${safeText([title,level,description].join(" "))}"><span class="level">${safeText(level)}</span><h3>${safeText(title)}</h3><p>${safeText(description)}</p><button type="button" class="copy-button" data-copy="${safeText(`${title}: ${description}`)}">Copy notes</button></article>`).join("");
+      if(glossary) glossary.innerHTML=glossaryItems.map(([term,description])=>`<details data-search="${safeText(`${term} ${description}`)}"><summary>${safeText(term)}</summary><div class="details-body"><p>${safeText(description)}</p></div></details>`).join("");
+    }
+    function renderWorkflows() {
+      if(!$("#workflow-grid")) return;
+      $("#workflow-grid").innerHTML=workflows.map(workflow=>`<article class="card workflow-card" data-search="${safeText([workflow.title,workflow.best,...workflow.steps].join(" "))}"><span class="tag">Best for: ${safeText(workflow.best)}</span><h3>${safeText(workflow.title)}</h3><ol class="numbered-list">${workflow.steps.map(step=>`<li>${safeText(step)}</li>`).join("")}</ol><button type="button" class="copy-button" data-copy="${safeText(`${workflow.title}\n${workflow.steps.map((step,index)=>`${index+1}. ${step}`).join("\n")}`)}">Copy workflow</button></article>`).join("");
+    }
+    function renderPrompts() {
+      if(!$("#prompt-grid")) return;
+      $("#prompt-grid").innerHTML=prompts.map((prompt,index)=>`<article class="card prompt-card" data-search="${safeText([prompt.title,prompt.label,prompt.prompt,prompt.tips].join(" "))}"><span class="tag">${safeText(prompt.label)}</span><h3>${safeText(prompt.title)}</h3><div class="placeholder-image" role="img" aria-label="Example image placeholder for ${safeText(prompt.label)}">Example visual placeholder · add a cleared reference or generated sample</div><div class="prompt-text" id="prompt-${index}">${safeText(prompt.prompt)}</div><p class="meta"><strong>Tip:</strong> ${safeText(prompt.tips)}</p><button type="button" class="copy-button" data-copy-target="prompt-${index}">Copy prompt</button></article>`).join("");
+    }
+    function renderResources() {
+      if(!$("#resource-grid")) return;
+      $("#resource-grid").innerHTML=resources.map(([category,name,license,url,best])=>`<article class="card" data-search="${safeText([category,name,license,best].join(" "))}"><span class="tag">${safeText(category)}</span><h3>${safeText(name)}</h3><p>${safeText(license)}</p><p class="meta"><strong>Best for:</strong> ${safeText(best)}</p><p class="meta"><strong>License note:</strong> verify the specific asset before use.</p><a class="button" href="${safeText(url)}" target="_blank" rel="noopener noreferrer">Explore ↗</a></article>`).join("");
+    }
+    function renderAlternatives() {
+      if(!$("#alternatives-grid")) return;
+      $("#alternatives-grid").innerHTML=alternatives.map(([paid,options,pros,cons,best])=>{
+        const slug=paid.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+        return `<article class="card" data-search="${safeText([paid,options,pros,cons,best].join(" "))}"><span class="tag tag-accent">Instead of ${safeText(paid)}</span><h3>${safeText(options)}</h3><p><strong>Pros:</strong> ${safeText(pros)}</p><p><strong>Tradeoffs:</strong> ${safeText(cons)}</p><p class="meta"><strong>${safeText(best)}</strong></p><span class="tag tag-unknown">Free tier / terms unverified</span><a class="inline-link" href="alternatives/${slug}.html">Compare ${safeText(paid)} alternatives →</a></article>`;
+      }).join("");
+    }
+    function renderAlternativeDetail() {
+      const output=$("#alternative-detail-content");
+      if(!output) return;
+      const slug=document.body.dataset.alternative;
+      const alternative=alternatives.find(([paid])=>paid.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")===slug);
+      if(!alternative){output.innerHTML='<div class="notice notice-warning">This alternative guide could not be found. <a href="../alternatives.html">Return to alternatives</a>.</div>';return;}
+      const [paid,names,pros,cons,best]=alternative;
+      const options=names.split(" · ");
+      const bestFor=best.replace(/^Best for:\s*/i,"");
+      const details=alternativeOptions[paid]||[];
+      output.innerHTML=`<p class="eyebrow">Free alternatives to</p><h1>${safeText(paid)}<span class="accent-text">.</span></h1><p class="section-intro">${safeText(bestFor)} Compare starting points before deciding; these products are not one-to-one replacements.</p><div class="notice notice-warning" style="margin:1rem 0">Product descriptions, free-plan details, and licenses are unverified and can change. Visit each official product and read its current terms before client or commercial use.</div><div class="grid">${options.map((name,index)=>{const [,upside,tradeoffs,optionBest,url]=details[index]||[name,pros,cons,bestFor,""];return `<article class="card" data-search="${safeText(`${paid} ${name} ${upside} ${tradeoffs} ${optionBest}`)}"><span class="tag">Option ${index+1}</span><h2>${safeText(name)}</h2><p><strong>Potential upside:</strong> ${safeText(upside)}</p><p><strong>Tradeoffs:</strong> ${safeText(tradeoffs)}</p><p class="meta"><strong>Best for:</strong> ${safeText(optionBest)}</p><span class="tag tag-unknown">Free plan / license: verify</span>${url?`<a class="button" href="${safeText(url)}" target="_blank" rel="noopener noreferrer">Visit official site ↗</a>`:""}</article>`;}).join("")}</div><p style="margin-top:1.2rem"><a class="button" href="../alternatives.html">← All alternatives</a></p>`;
+    }
+    function renderSheets() {
+      if(!$("#sheet-grid")) return;
+      $("#sheet-grid").innerHTML=sheets.map(([title,body],index)=>`<article class="card" data-search="${safeText(`${title} ${body}`)}"><span class="tag">Free · no email</span><h3>${safeText(title)}</h3><p>${safeText(body)}</p><button type="button" class="print-sheet" data-sheet="${index}">Open print-ready sheet ↗</button></article>`).join("");
+    }
+    function applySearch(query) {
+      state.query=query.trim().toLowerCase();
+      const countable= $$("[data-search]");
+      let matches=0;
+      countable.forEach(el=>{
+        const content=(el.dataset.search || el.textContent || "").toLowerCase();
+        const show=!state.query||content.includes(state.query);
+        el.hidden=!show;
+        if(show) matches++;
+      });
+      renderTools();
+      const results=$("#global-search-results");
+      if(results){
+        const found=(window.FDT_PAGE_INDEX||[]).filter(item=>`${item.title} ${item.search}`.toLowerCase().includes(state.query)).slice(0,12);
+        results.innerHTML=state.query?found.map(item=>`<a class="search-result" href="${safeText((window.FDT_BASE_PATH||"")+item.url)}"><strong>${safeText(item.title)}</strong><span>${safeText(item.description)}</span></a>`).join(""):"";
+        results.hidden=!state.query||!found.length;
+      }
+      const text=state.query?`${matches} items on this page; ${((window.FDT_PAGE_INDEX||[]).filter(item=>`${item.title} ${item.search}`.toLowerCase().includes(state.query)).length)} results across all pages.`:"Search every page. Press / or Ctrl+K to jump to search.";
+      status(text);
+    }
+    function renderCompare() {
+      if(!$("#comparison-output")) return;
+      const selected=tools.filter(tool=>state.compare.has(tool.name));
+      if (!selected.length) { $("#comparison-output").innerHTML=""; return; }
+      $("#comparison-output").innerHTML=`<h3>Tool comparison</h3><div class="table-wrap"><table><thead><tr><th scope="col">Detail</th>${selected.map(tool=>`<th scope="col">${safeText(tool.name)}</th>`).join("")}</tr></thead><tbody>${[["Category","category"],["Best for","best"],["Free-plan limits","limits"],["Pros","pros"],["Cons","cons"],["License","license"],["Last verified",null]].map(([label,key])=>`<tr><th scope="row">${label}</th>${selected.map(tool=>`<td>${key?safeText(tool[key]):VERIFIED_PLACEHOLDER}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    }
+    function setTheme(theme) {
+      document.documentElement.dataset.theme=theme;
+      $("#theme-toggle").setAttribute("aria-label",`Switch to ${theme==="dark"?"light":"dark"} mode`);
+      try { localStorage.setItem("fdt-theme",theme); } catch (error) { status("Theme changed for this visit, but browser storage is unavailable."); }
+    }
+    function syncSearch(value) {
+      const header=$("#header-search"),hero=$("#hero-search");
+      if(header) header.value=value;
+      if(hero) hero.value=value;
+      applySearch(value);
+    }
+    async function copyText(text, button) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+        else {
+          const field=document.createElement("textarea");
+          field.value=text; field.setAttribute("readonly",""); field.style.position="fixed"; field.style.opacity="0";
+          document.body.append(field); field.select();
+          const copied=document.execCommand("copy"); field.remove();
+          if (!copied) throw new Error("Clipboard permission is unavailable.");
+        }
+        if (button) { const before=button.textContent; button.textContent="Copied!"; setTimeout(()=>button.textContent=before,1400); }
+        status("Copied to clipboard.");
+      } catch (error) {
+        status(`Could not copy: ${error.message || "clipboard access was denied"}`);
+      }
+    }
+
+    renderFeatured(); renderTools(); renderAI(); renderFormats(); renderLearn(); renderWorkflows(); renderPrompts(); renderResources(); renderAlternatives(); renderSheets(); renderAlternativeDetail();
+    const year=$("#year"); if(year) year.textContent=new Date().getFullYear();
+    try { const theme=localStorage.getItem("fdt-theme"); if(theme==="dark"||theme==="light") setTheme(theme); } catch (error) { status("Theme preference could not be loaded; using your system setting."); }
+    listen("#header-search","input",event=>syncSearch(event.target.value));
+    listen("#hero-search","input",event=>syncSearch(event.target.value));
+    listen("#clear-search","click",()=>{syncSearch("");$("#hero-search")?.focus();});
+    listen("#tool-filters","click",event=>{
+      const button=event.target.closest("[data-category-filter]"); if(!button)return;
+      state.category=button.dataset.categoryFilter; renderTools();
+    });
+    listen("#favorites-filter","click",()=>{state.favoritesOnly=!state.favoritesOnly;renderTools();});
+    document.addEventListener("click",event=>{
+      const favorite=event.target.closest("[data-favorite]");
+      if(favorite){
+        const name=favorite.dataset.favorite;
+        state.favorites=state.favorites.includes(name)?state.favorites.filter(item=>item!==name):[...state.favorites,name];
+        saveFavorites(); renderFeatured(); renderTools(); return;
+      }
+      const compare=event.target.closest("[data-compare]");
+      if(compare){
+        const name=compare.dataset.compare;
+        if(state.compare.has(name)) state.compare.delete(name);
+        else if(state.compare.size<3) state.compare.add(name);
+        else { status("Compare up to 3 tools at a time. Remove one before adding another."); return; }
+        renderTools(); renderCompare(); return;
+      }
+      const copy=event.target.closest(".copy-button");
+      if(copy){
+        const target=copy.dataset.copyTarget?document.getElementById(copy.dataset.copyTarget):null;
+        copyText(copy.dataset.copy || target?.textContent || "",copy); return;
+      }
+      const print=event.target.closest(".print-sheet");
+      if(print){ openSheet(Number(print.dataset.sheet)); return; }
+    });
+    listen("#compare-show","click",()=>{renderCompare();$("#comparison-output")?.scrollIntoView({behavior:"smooth",block:"start"});});
+    listen("#compare-clear","click",()=>{state.compare.clear();renderTools();renderCompare();});
+    listen("#theme-toggle","click",()=>{
+      const current=document.documentElement.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+      setTheme(current==="dark"?"light":"dark");
+    });
+    document.addEventListener("keydown",event=>{
+      const tag=(event.target.tagName||"").toLowerCase();
+      const typing=["input","textarea","select"].includes(tag)||event.target.isContentEditable;
+      if ((event.key==="/"&&!typing)||(event.key.toLowerCase()==="k"&&(event.ctrlKey||event.metaKey))) { event.preventDefault();$("#header-search")?.focus(); }
+      if(event.key==="Escape"&&(document.activeElement===$("#header-search")||document.activeElement===$("#hero-search"))) syncSearch("");
+    });
+    const navLinks=$$(".main-nav a");
+    const currentPage=document.body.dataset.page;
+    navLinks.forEach(link=>{if(link.dataset.pageLink===currentPage)link.setAttribute("aria-current","page");});
+
+    function hexToRgb(hex){const value=hex.replace("#","");return {r:parseInt(value.slice(0,2),16),g:parseInt(value.slice(2,4),16),b:parseInt(value.slice(4,6),16)};}
+    function rgbToHex({r,g,b}){return "#"+[r,g,b].map(value=>Math.round(value).toString(16).padStart(2,"0")).join("").toUpperCase();}
+    function rgbToHsl({r,g,b}) {
+      r/=255;g/=255;b/=255;const max=Math.max(r,g,b),min=Math.min(r,g,b);let h=0,s=0;const l=(max+min)/2;
+      if(max!==min){const d=max-min;s=l>.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;default:h=(r-g)/d+4;}h*=60;}
+      return {h:Math.round(h),s:Math.round(s*100),l:Math.round(l*100)};
+    }
+    function hslToHex(h,s,l) {
+      h=((h%360)+360)%360;s/=100;l/=100;
+      const c=(1-Math.abs(2*l-1))*s,x=c*(1-Math.abs((h/60)%2-1)),m=l-c/2;let rgb;
+      if(h<60)rgb=[c,x,0];else if(h<120)rgb=[x,c,0];else if(h<180)rgb=[0,c,x];else if(h<240)rgb=[0,x,c];else if(h<300)rgb=[x,0,c];else rgb=[c,0,x];
+      return rgbToHex({r:(rgb[0]+m)*255,g:(rgb[1]+m)*255,b:(rgb[2]+m)*255});
+    }
+    function generatePalette() {
+      const color=$("#base-color").value;const {h,s,l}=rgbToHsl(hexToRgb(color));const mode=$("#palette-harmony").value;
+      const offsets=mode==="analogous"?[-30,-15,0,15,30]:mode==="triadic"?[0,120,240,180,60]:mode==="split"?[0,150,210,30,330]:[0,0,180,30,330];
+      const colors=offsets.map((offset,index)=>hslToHex(h+offset,Math.max(28,s),Math.max(22,Math.min(78,l+(index===0?0:(index%2?7:-7))))));
+      colors[0]=color.toUpperCase();
+      $("#palette-output").innerHTML=colors.map((hex,index)=>`<button class="swatch" type="button" style="background:${hex}" data-color="${hex}" aria-label="Copy color ${hex}"><span>${hex}</span></button>`).join("");
+      $("#palette-values").innerHTML=colors.map(hex=>{
+        const rgb=hexToRgb(hex),hsl=rgbToHsl(rgb);
+        const values=[["HEX",hex],["RGB",`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`],["HSL",`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`]];
+        return `<div class="color-value-row"><strong>${hex}</strong>${values.map(([label,value])=>`<button class="button copy-button" type="button" data-copy="${safeText(value)}">${label}</button>`).join("")}</div>`;
+      }).join("");
+    }
+    listen("#base-color","input",generatePalette);listen("#palette-harmony","change",generatePalette);if($("#palette-output"))generatePalette();
+    listen("#palette-output","click",event=>{const swatch=event.target.closest("[data-color]");if(swatch)copyText(swatch.dataset.color,swatch);});
+    function luminance(hex) {
+      const rgb=hexToRgb(hex);
+      const channels=[rgb.r,rgb.g,rgb.b].map(value=>{const c=value/255;return c<=.04045?c/12.92:((c+.055)/1.055)**2.4;});
+      return .2126*channels[0]+.7152*channels[1]+.0722*channels[2];
+    }
+    function updateContrast() {
+      const fg=$("#contrast-fg").value,bg=$("#contrast-bg").value;
+      const values=[luminance(fg),luminance(bg)].sort((a,b)=>b-a);const ratio=(values[0]+.05)/(values[1]+.05);
+      $("#contrast-sample").style.color=fg;$("#contrast-sample").style.backgroundColor=bg;
+      $("#contrast-result").textContent=`Contrast ratio: ${ratio.toFixed(2)}:1 · AA normal ${ratio>=4.5?"PASS":"FAIL"} · AA large ${ratio>=3?"PASS":"FAIL"} · AAA normal ${ratio>=7?"PASS":"FAIL"} · AAA large ${ratio>=4.5?"PASS":"FAIL"}`;
+    }
+    listen("#contrast-fg","input",updateContrast);listen("#contrast-bg","input",updateContrast);if($("#contrast-result"))updateContrast();
+    function updateFontPreview() {
+      const heading=$("#font-heading").value,body=$("#font-body").value,text=$("#font-copy").value||"Your type specimen.";
+      $("#font-preview-heading").textContent=text;$("#font-preview-heading").style.fontFamily=`"${heading}", sans-serif`;
+      $("#font-preview-body").style.fontFamily=`"${body}", sans-serif`;
+      $("#font-preview-heading").style.fontWeight=heading==="Archivo Black"?"400":"700";
+      const families=[heading,body].map(name=>name.replaceAll(" ","+")).filter((name,index,array)=>array.indexOf(name)===index);
+      let link=$("#dynamic-fonts");
+      if(!link){link=document.createElement("link");link.id="dynamic-fonts";link.rel="stylesheet";document.head.append(link);}
+      link.href=`https://fonts.googleapis.com/css2?${families.map(name=>`family=${name}:wght@400;500;700`).join("&")}&display=swap`;
+    }
+    ["font-heading","font-body","font-copy"].forEach(id=>listen("#"+id,"input",updateFontPreview));if($("#font-preview-heading"))updateFontPreview();
+    let convertedUrl="";
+    listen("#convert-image","click",()=>{
+      const file=$("#image-file").files[0];if(!file){$("#image-output").textContent="Choose an image file first.";return;}
+      if(!file.type.startsWith("image/")){$("#image-output").textContent="That file is not a supported image.";return;}
+      const reader=new FileReader();
+      reader.onerror=()=>{$("#image-output").textContent="The selected image could not be read.";};
+      reader.onload=()=>{
+        const image=new Image();
+        image.onerror=()=>{$("#image-output").textContent="This image could not be decoded by the browser.";};
+        image.onload=()=>{
+          const canvas=document.createElement("canvas");canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;
+          const context=canvas.getContext("2d");if(!context){$("#image-output").textContent="Canvas is unavailable in this browser.";return;}
+          const type=$("#image-type").value;const quality=Math.max(.1,Math.min(1,Number($("#image-quality").value)||.85));
+          context.fillStyle="#ffffff";if(type==="image/jpeg")context.fillRect(0,0,canvas.width,canvas.height);
+          context.drawImage(image,0,0);
+          canvas.toBlob(blob=>{
+            if(!blob){$("#image-output").textContent="Conversion failed. Try another image or format.";return;}
+            if(convertedUrl)URL.revokeObjectURL(convertedUrl);
+            convertedUrl=URL.createObjectURL(blob);
+            const ext=type==="image/jpeg"?"jpg":type==="image/png"?"png":"webp";
+            $("#image-download").href=convertedUrl;$("#image-download").download=`converted-image.${ext}`;$("#image-download").hidden=false;
+            $("#image-preview").src=convertedUrl;$("#image-preview").hidden=false;
+            $("#image-output").textContent=`Converted ${image.naturalWidth}×${image.naturalHeight} image · ${(blob.size/1024).toFixed(1)} KB · ${ext.toUpperCase()}. Images remain in this browser.`;
+          },type,quality);
+        };
+        image.src=reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+    function qrFieldMultiply(x,y) {
+      let product=0;
+      for(let bit=7;bit>=0;bit--){
+        const high=(product>>>7)&1;
+        product=((product<<1)&0xff)^(high?0x1d:0);
+        product^=((y>>>bit)&1)*x;
+      }
+      return product;
+    }
+    function qrErrorCorrection(data,length) {
+      let generator=[1],root=1;
+      for(let i=0;i<length;i++){
+        const next=Array(generator.length+1).fill(0);
+        for(let j=0;j<generator.length;j++){next[j]^=generator[j];next[j+1]^=qrFieldMultiply(generator[j],root);}
+        generator=next;root=qrFieldMultiply(root,2);
+      }
+      const remainder=data.concat(Array(length).fill(0));
+      for(let i=0;i<data.length;i++){
+        const factor=remainder[i];
+        if(factor)for(let j=0;j<generator.length;j++)remainder[i+j]^=qrFieldMultiply(generator[j],factor);
+      }
+      return remainder.slice(data.length);
+    }
+    function qrPenalty(matrix) {
+      const size=matrix.length;let score=0;
+      for(let axis=0;axis<2;axis++){
+        for(let line=0;line<size;line++){
+          let runColor=null,runLength=0,values=[];
+          for(let index=0;index<size;index++){
+            const dark=axis?matrix[index][line]:matrix[line][index];values.push(dark);
+            if(dark===runColor)runLength++;else{if(runLength>=5)score+=runLength-2;runColor=dark;runLength=1;}
+          }
+          if(runLength>=5)score+=runLength-2;
+          for(let index=0;index<=size-7;index++){
+            if(values[index]&&!values[index+1]&&values[index+2]&&values[index+3]&&values[index+4]&&!values[index+5]&&values[index+6]){
+              const before=index>=4&&values.slice(index-4,index).every(value=>!value);
+              const after=index+11<=size&&values.slice(index+7,index+11).every(value=>!value);
+              if(before||after)score+=40;
+            }
+          }
+        }
+      }
+      for(let y=0;y<size-1;y++)for(let x=0;x<size-1;x++){
+        const value=matrix[y][x];
+        if(value===matrix[y][x+1]&&value===matrix[y+1][x]&&value===matrix[y+1][x+1])score+=3;
+      }
+      const dark=matrix.flat().filter(Boolean).length,total=size*size;
+      score+=Math.floor(Math.abs(dark*20-total*10)/total)*10;
+      return score;
+    }
+    function makeQrMatrix(text) {
+      // Byte-mode QR with low error correction supports short links and labels without a network dependency.
+      const bytes=Array.from(new TextEncoder().encode(text));
+      const dataLengths=[19,34,55,80,108],eccLengths=[7,10,15,20,26];
+      const version=dataLengths.findIndex(length=>4+8+bytes.length*8<=length*8)+1;
+      if(version<1)throw new RangeError("Keep the encoded text under 107 UTF-8 bytes.");
+      const bits=[];
+      const appendBits=(value,count)=>{for(let bit=count-1;bit>=0;bit--)bits.push((value>>>bit)&1);};
+      appendBits(4,4);appendBits(bytes.length,8);bytes.forEach(byte=>appendBits(byte,8));
+      const capacity=dataLengths[version-1]*8;
+      for(let i=0;i<Math.min(4,capacity-bits.length);i++)bits.push(0);
+      while(bits.length%8)bits.push(0);
+      const data=[];
+      for(let i=0;i<bits.length;i+=8)data.push(bits.slice(i,i+8).reduce((value,bit)=>(value<<1)|bit,0));
+      for(let pad=0xec;data.length<dataLengths[version-1];pad^=0xfd)data.push(pad);
+      const codewords=data.concat(qrErrorCorrection(data,eccLengths[version-1]));
+      const size=17+4*version;
+      const matrix=Array.from({length:size},()=>Array(size).fill(false));
+      const functions=Array.from({length:size},()=>Array(size).fill(false));
+      const setFunction=(x,y,dark)=>{if(x>=0&&y>=0&&x<size&&y<size){matrix[y][x]=Boolean(dark);functions[y][x]=true;}};
+      const finder=(left,top)=>{
+        for(let dy=-1;dy<=7;dy++)for(let dx=-1;dx<=7;dx++){
+          const x=left+dx,y=top+dy;
+          const dark=dx>=0&&dx<=6&&dy>=0&&dy<=6&&(dx===0||dx===6||dy===0||dy===6||(dx>=2&&dx<=4&&dy>=2&&dy<=4));
+          setFunction(x,y,dark);
+        }
+      };
+      finder(0,0);finder(size-7,0);finder(0,size-7);
+      for(let index=8;index<size-8;index++){setFunction(6,index,index%2===0);setFunction(index,6,index%2===0);}
+      const alignment=[[],[6,18],[6,22],[6,26],[6,30]][version-1];
+      for(const y of alignment)for(const x of alignment){
+        if(functions[y][x])continue;
+        for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++)setFunction(x+dx,y+dy,Math.max(Math.abs(dx),Math.abs(dy))!==1);
+      }
+      for(let i=0;i<=5;i++)setFunction(8,i,false);
+      setFunction(8,7,false);setFunction(8,8,false);setFunction(7,8,false);
+      for(let i=9;i<15;i++)setFunction(14-i,8,false);
+      for(let i=0;i<8;i++)setFunction(size-1-i,8,false);
+      for(let i=8;i<15;i++)setFunction(8,size-15+i,false);
+      setFunction(8,size-8,true);
+      let bitIndex=0,upward=true;
+      for(let right=size-1;right>=1;right-=2){
+        if(right===6)right=5;
+        for(let step=0;step<size;step++){
+          const y=upward?size-1-step:step;
+          for(let offset=0;offset<2;offset++){
+            const x=right-offset;
+            if(!functions[y][x]){
+              matrix[y][x]=bitIndex<codewords.length*8?Boolean((codewords[bitIndex>>>3]>>>(7-(bitIndex&7)))&1):false;
+              bitIndex++;
+            }
+          }
+        }
+        upward=!upward;
+      }
+      const maskCondition=(mask,x,y)=>[
+        (x+y)%2===0,y%2===0,x%3===0,(x+y)%3===0,
+        (Math.floor(y/2)+Math.floor(x/3))%2===0,
+        (x*y)%2+(x*y)%3===0,((x*y)%2+(x*y)%3)%2===0,
+        ((x+y)%2+(x*y)%3)%2===0
+      ][mask];
+      const drawFormat=(target,mask)=>{
+        const dataBits=(1<<3)|mask;let remainder=dataBits;
+        for(let i=0;i<10;i++)remainder=(remainder<<1)^(((remainder>>>9)&1)*0x537);
+        const format=((dataBits<<10)|remainder)^0x5412;
+        const put=(x,y,index)=>{target[y][x]=Boolean((format>>>index)&1);};
+        for(let i=0;i<=5;i++)put(8,i,i);
+        put(8,7,6);put(8,8,7);put(7,8,8);
+        for(let i=9;i<15;i++)put(14-i,8,i);
+        for(let i=0;i<8;i++)put(size-1-i,8,i);
+        for(let i=8;i<15;i++)put(8,size-15+i,i);
+        target[size-8][8]=true;
+      };
+      let best=null,bestScore=Infinity;
+      for(let mask=0;mask<8;mask++){
+        const candidate=matrix.map(row=>row.slice());
+        for(let y=0;y<size;y++)for(let x=0;x<size;x++)if(!functions[y][x]&&maskCondition(mask,x,y))candidate[y][x]=!candidate[y][x];
+        drawFormat(candidate,mask);
+        const score=qrPenalty(candidate);
+        if(score<bestScore){bestScore=score;best=candidate;}
+      }
+      return best;
+    }
+    listen("#make-qr","click",()=>{
+      const content=$("#qr-content").value.trim();
+      if(!content){$("#qr-output").textContent="Enter a URL or text to encode.";return;}
+      try{
+        const matrix=makeQrMatrix(content),canvas=$("#qr-canvas"),moduleSize=8,quietZone=4;
+        canvas.width=canvas.height=(matrix.length+quietZone*2)*moduleSize;
+        const context=canvas.getContext("2d");
+        if(!context)throw new Error("Canvas is unavailable in this browser.");
+        context.fillStyle="#fff";context.fillRect(0,0,canvas.width,canvas.height);context.fillStyle="#000";
+        matrix.forEach((row,y)=>row.forEach((dark,x)=>{if(dark)context.fillRect((x+quietZone)*moduleSize,(y+quietZone)*moduleSize,moduleSize,moduleSize);}));
+        canvas.hidden=false;$("#qr-download").href=canvas.toDataURL("image/png");$("#qr-download").hidden=false;
+        $("#qr-output").textContent="QR code generated locally. Scan-test it before printing or sharing.";
+      }catch(error){$("#qr-output").textContent=`Could not make QR code: ${error.message}`;$("#qr-download").hidden=true;$("#qr-canvas").hidden=true;}
+    });
+    function calculateRatio() {
+      const w=Number($("#ratio-width").value),h=Number($("#ratio-height").value);
+      if(!Number.isFinite(w)||!Number.isFinite(h)||w<=0||h<=0){$("#ratio-output").textContent="Enter positive pixel dimensions.";return;}
+      let a=Math.round(w),b=Math.round(h);const gcd=(x,y)=>y?gcd(y,x%y):x;const divisor=gcd(a,b);
+      $("#ratio-output").textContent=`Ratio: ${a/divisor}:${b/divisor} · ${a} × ${b} px · ${w>h?"landscape":w<h?"portrait":"square"}.`;
+    }
+    listen("#calculate-ratio","click",calculateRatio);if($("#ratio-output"))calculateRatio();
+    listen("#format-quiz","click",()=>$("#format-result").textContent=formatRecs[$("#format-use").value]);
+    listen("#lab-format-button","click",()=>$("#lab-format-output").textContent=formatRecs[$("#lab-format-use").value==="motion"?"animation":$("#lab-format-use").value]);
+    listen("#ai-quiz-button","click",()=>{
+      const need=$("#ai-need").value,priority=$("#ai-priority").value;
+      const pick=priority==="terms"?"Adobe Firefly":({photo:"Meta AI",vector:"Recraft",text:"Ideogram",commercial:"Adobe Firefly",illustration:"Leonardo AI",social:"Microsoft Designer / Copilot",general:"Google ImageFX / Gemini"})[need];
+      $("#ai-quiz-result").textContent=`Starting point: ${pick}. This is a discovery suggestion, not an endorsement. Verify availability, free limits, privacy, output ownership, and commercial terms before use.`;
+    });
+    function openSheet(index) {
+      const sheet=sheets[index];if(!sheet){status("That cheat sheet is unavailable.");return;}
+      const win=window.open("","_blank");
+      if(!win){status("Popup was blocked. Allow this page to open the print-ready sheet, then try again.");return;}
+      const content=`<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>${safeText(sheet[0])} · Free Design Toolkit</title><style>body{max-width:760px;margin:3rem auto;padding:0 1.5rem;color:#171714;font:18px/1.6 Arial,sans-serif}h1{font-size:2.4rem}button{padding:.7rem 1rem;font:inherit;font-weight:bold}@media print{button{display:none}body{margin:0 auto}}</style><h1>${safeText(sheet[0])}</h1><p>${safeText(sheet[1])}</p><p>Free Design Toolkit · Verify product and platform details before use.</p><button onclick="window.print()">Print / Save as PDF</button></html>`;
+      win.document.open();win.document.write(content);win.document.close();
+    }
+    listen("#newsletter-form","submit",event=>{event.preventDefault();$("#newsletter-status").textContent="Demo only: no signup was sent or saved. The email field can be left blank.";});
+    listen("#suggest-form","submit",event=>{event.preventDefault();$("#suggest-status").textContent="Demo only: your suggestion was not sent or stored.";});
+    let hasVoted=false,votes=0;
+    try { hasVoted=localStorage.getItem("fdt-upvoted")==="yes";votes=Number(localStorage.getItem("fdt-votes")||0);if(!Number.isFinite(votes)||votes<0)votes=0; } catch (error) { status("Community demo preference could not be loaded."); }
+    function renderVote(){ $("#vote-count").textContent=`${votes} local demo upvote${votes===1?"":"s"}`;$("#upvote").setAttribute("aria-pressed",String(hasVoted));$("#upvote").textContent=hasVoted?"✓ Upvoted on this device":"▲ Upvote locally"; }
+    if($("#upvote"))renderVote();
+    listen("#upvote","click",()=>{
+      hasVoted=!hasVoted;votes=Math.max(0,votes+(hasVoted?1:-1));
+      try { localStorage.setItem("fdt-upvoted",hasVoted?"yes":"no");localStorage.setItem("fdt-votes",String(votes)); }
+      catch (error) { status("Vote updated for this visit, but browser storage is unavailable."); }
+      renderVote();
+    });
+  </script>
+</body>
+</html>

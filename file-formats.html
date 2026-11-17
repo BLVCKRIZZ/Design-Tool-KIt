@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f3ee">
+  <meta name="description" content="A practical guide to choosing SVG, PNG, JPG, WebP, PDF, video, and more.">
+  <meta property="og:title" content="File formats · Free Design Toolkit">
+  <meta property="og:description" content="A practical guide to choosing SVG, PNG, JPG, WebP, PDF, video, and more.">
+  <meta property="og:type" content="website">
+  <title>File formats · Free Design Toolkit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>window.FDT_BASE_PATH="";</script>
+  <script src="assets/search-index.js" defer></script>
+  <script src="assets/site.js" defer></script>
+</head>
+<body data-page="formats">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-main">
+      <a class="brand" href="index.html" aria-label="Free Design Toolkit home">FREE DESIGN<br>TOOLKIT<span class="accent-text">.</span></a>
+      <div class="header-actions">
+        <div class="search-shell">
+          <label class="visually-hidden" for="header-search">Search all pages</label>
+          <input class="header-search" id="header-search" type="search" placeholder="Search every page… ( / )" autocomplete="off" aria-controls="global-search-results">
+          <div class="search-results" id="global-search-results" role="list" aria-label="Search results" hidden></div>
+        </div>
+        <button class="theme-button" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle light and dark mode">◐</button>
+      </div>
+      <p class="visually-hidden" id="search-status" role="status" aria-live="polite">Search every page. Press / or Ctrl+K to jump to search.</p>
+    </div>
+    <div class="nav-scroll"><nav class="main-nav" aria-label="Main navigation"><a href="index.html" data-page-link="home">Home</a><a href="tools.html" data-page-link="tools">Tools</a><a href="ai-generators.html" data-page-link="ai">AI</a><a href="file-formats.html" data-page-link="formats">Formats</a><a href="learn.html" data-page-link="learn">Learn</a><a href="workflows.html" data-page-link="workflows">Workflows</a><a href="prompt-library.html" data-page-link="prompts">Prompts</a><a href="inspiration.html" data-page-link="inspiration">Inspiration</a><a href="resources.html" data-page-link="resources">Resources</a><a href="design-tools-lab.html" data-page-link="lab">Tools Lab</a><a href="downloads.html" data-page-link="downloads">Downloads</a><a href="alternatives.html" data-page-link="alternatives">Alternatives</a><a href="about.html" data-page-link="about">About / Contact</a></nav></div>
+  </header>
+  <main id="main" class="page-content">
+    <section id="formats" aria-labelledby="formats-title">
+      <div class="section-head"><div><p class="eyebrow">Export smarter</p><h2 id="formats-title">File formats, decoded<span class="accent-text">.</span></h2><p class="section-intro">Open any card for what a format does well, where it struggles, and when to leave it behind.</p></div></div>
+      <div class="format-grid" id="format-grid"></div>
+      <div class="notice" style="margin-top:1rem"><strong>Quick rules:</strong> logo → SVG (plus PNG for sharing); web photo → WebP or JPG; print → PDF; transparency → PNG or SVG; animation → MP4/WebM, or Lottie for apps.</div>
+      <div class="grid-2" style="margin-top:1rem">
+        <div class="panel" data-search="file size quality AVIF WebP JPG PNG comparison compression photo"><h3>Size vs. quality</h3><p class="meta">Illustrative comparison only: actual file size depends on image, settings, and encoder.</p><div class="ratio-list" aria-label="Illustrative relative file sizes"><div class="ratio-row"><span>AVIF photo</span><span class="ratio-bar"><span style="width:28%"></span></span><b>small*</b></div><div class="ratio-row"><span>WebP photo</span><span class="ratio-bar"><span style="width:40%"></span></span><b>smaller*</b></div><div class="ratio-row"><span>JPG photo</span><span class="ratio-bar"><span style="width:58%"></span></span><b>medium*</b></div><div class="ratio-row"><span>PNG photo</span><span class="ratio-bar"><span style="width:100%"></span></span><b>large*</b></div></div></div>
+        <div class="panel" data-search="format quiz decision web print logo photograph animation SVG PNG JPG PDF MP4 WebM Lottie"><h3>Which format should I use?</h3><div class="field"><label for="format-use">Choose your job</label><select id="format-use"><option value="web">Web graphic</option><option value="print">Print document</option><option value="logo">Logo or icon</option><option value="photo">Photograph</option><option value="animation">Animation or video</option></select></div><button id="format-quiz" type="button">Recommend a format</button><div class="output-box" id="format-result" role="status" aria-live="polite">Your recommendation will appear here.</div></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><a class="brand" href="index.html#home">FREE DESIGN TOOLKIT<span class="accent-text">.</span></a><p class="meta">Make more. Spend less. Verify the fine print.</p><p class="meta">© <span id="year"></span> Free Design Toolkit · Independent resource hub concept.</p></div>
+      <div><p><strong>Jump around</strong></p><div class="footer-links"><a href="tools.html#tools">Tools</a><a href="learn.html#learn">Learn</a><a href="design-tools-lab.html#lab">Tools Lab</a><a href="downloads.html#downloads">Downloads</a><a href="about.html#about">Suggest a tool</a></div><p class="meta">Accessibility: semantic landmarks, keyboard navigation, visible focus, labels, and reduced-motion support are included. Please report issues through the suggestion form.</p></div>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>
