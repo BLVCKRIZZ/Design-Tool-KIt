@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: free-design-toolkit-assistant
+    runtime: python
+    plan: free
+    buildCommand: python -m py_compile assistant_server.py
+    startCommand: python assistant_server.py
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: OPENROUTER_MODEL
+        value: openrouter/auto
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: FRONTEND_ORIGINS
+        value: https://blvckrizz.github.io

@@ -1,5 +1,6 @@
 import html
 import json
+import os
 import re
 from pathlib import Path
 
@@ -25,10 +26,13 @@ PAGES = [
 ]
 
 NAV_ITEMS = [
-    ("home", "Home"), ("tools", "Tools"), ("ai", "AI"), ("formats", "Formats"),
-    ("learn", "Learn"), ("workflows", "Workflows"), ("prompts", "Prompts"),
-    ("inspiration", "Inspiration"), ("resources", "Resources"), ("lab", "Tools Lab"),
-    ("downloads", "Downloads"), ("alternatives", "Alternatives"), ("about", "About / Contact"),
+    ("home", "Home"), ("tools", "Tools"), ("learn", "Learn"), ("lab", "Tools Lab"),
+    ("alternatives", "Alternatives"),
+]
+MORE_NAV_ITEMS = [
+    ("ai", "AI generators"), ("formats", "File formats"), ("workflows", "Workflows"),
+    ("prompts", "Prompts"), ("inspiration", "Inspiration"), ("resources", "Resources"),
+    ("downloads", "Downloads"), ("about", "About / Contact"),
 ]
 
 VARIABLES = {
@@ -150,19 +154,82 @@ def build():
     .search-result:last-child { border-bottom: 0; }
     .search-result:hover, .search-result:focus-visible { background: var(--accent-soft); }
     .search-result span { color: var(--muted); font-size: .8rem; }
+    .search-results-heading {
+      margin: 0;
+      padding: .55rem .85rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .search-empty { display: grid; gap: .25rem; padding: 1rem; }
+    .search-empty span { color: var(--muted); font-size: .86rem; }
     .page-content > section { min-height: 65vh; border-bottom: 0; }
     .page-content > section > .section-head:first-child { padding-top: 1rem; }
     .page-content > section > .section-head:first-child h2 { font-size: clamp(2.4rem, 7vw, 6rem); }
     .footer a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
     .footer a:hover { color: var(--accent); }
+    .back-to-top {
+      position: fixed;
+      z-index: 15;
+      right: 1rem;
+      bottom: calc(1rem + env(safe-area-inset-bottom, 0));
+      min-height: 40px;
+      padding-inline: .7rem;
+      box-shadow: var(--shadow);
+    }
+    .nav-more-button, .footer-links a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .search-result { min-height: 44px; }
+    details, .panel, .table-wrap, .compare-panel {
+      border-radius: 8px;
+    }
+    details {
+      border-width: 1px;
+    }
+    .format-grid details[open] {
+      box-shadow: 0 8px 22px rgba(32,37,34,.08);
+    }
+    .main-nav a[aria-current="page"], .nav-more a[aria-current="page"] {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-underline-offset: .35rem;
+    }
     @media (max-width: 760px) {
       .search-shell { flex: 1 1 0; min-width: 0; }
       .header-actions { min-width: 0; }
+      .simple-start-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-scroll { overflow: visible; }
+      .main-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        gap: 0;
+        padding: .35rem 1rem .6rem;
+      }
+      .main-nav a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 22%, transparent);
+      }
     }
     """
     ASSETS.mkdir(exist_ok=True)
     (ASSETS / "site.css").write_text(css, encoding="utf-8")
     (ASSETS / "site.js").write_text(script, encoding="utf-8")
+    (ASSETS / "chat-config.js").write_text(
+        "window.FDT_CHAT_ENDPOINT=" + json.dumps(os.environ.get("FDT_CHAT_ENDPOINT", "").strip()) + ";\n",
+        encoding="utf-8",
+    )
     (ASSETS / "search-index.js").write_text(
         "window.FDT_PAGE_INDEX=" + json.dumps(search_index, ensure_ascii=False) + ";\n",
         encoding="utf-8",
@@ -216,6 +283,10 @@ def render_page(key, filename, title, description, content, nav_by_key, search_i
         f'<a href="{prefix}{nav_by_key[page_key][0]}" data-page-link="{page_key}">{label}</a>'
         for page_key, label in NAV_ITEMS
     )
+    nav += "".join(
+        f'<a href="{prefix}{nav_by_key[page_key][0]}" data-page-link="{page_key}">{label}</a>'
+        for page_key, label in MORE_NAV_ITEMS
+    )
     content = re.sub(r'id="search-status"', 'id="hero-search-status"', content)
     content = re.sub(
         r'href="#([a-z][a-z0-9-]*)"',
@@ -230,12 +301,33 @@ def render_page(key, filename, title, description, content, nav_by_key, search_i
         lambda match: f'href="{prefix}{nav_by_key.get(match.group(1), ("index.html",))[0]}#{match.group(1)}"',
         footer,
     )
+    assistant_markup = """<button class="assistant-launcher" id="assistant-launcher" type="button" aria-controls="assistant-panel" aria-expanded="false">Ask for help</button>
+  <aside class="assistant-panel" id="assistant-panel" aria-label="Design assistant" hidden>
+    <div class="assistant-heading">
+      <div><h2 id="assistant-title">Design helper</h2><p>Friendly guidance for your next design step</p></div>
+      <button class="assistant-close" id="assistant-close" type="button" aria-label="Close design assistant">Close</button>
+    </div>
+    <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text">
+      <div class="assistant-message" data-role="assistant"><p>Hi! Tell me what you’re making, and I’ll help you choose a next step, tool, color, or file type. You don’t need to know the technical terms.</p></div>
+    </div>
+    <div class="assistant-suggestions" id="assistant-suggestions" aria-label="Suggested questions">
+      <button type="button" data-assistant-prompt="I want to make a logo. Where should I start?">Make a logo</button>
+      <button type="button" data-assistant-prompt="Help me choose colors for a project.">Choose colors</button>
+      <button type="button" data-assistant-prompt="Which file format should I use for my design?">Pick a file type</button>
+    </div>
+    <p class="assistant-status" id="assistant-status" role="status" aria-live="polite"></p>
+    <form class="assistant-form" id="assistant-form">
+      <label class="visually-hidden" for="assistant-input">Ask the design assistant</label>
+      <textarea class="assistant-input" id="assistant-input" rows="1" maxlength="2000" placeholder="What are you trying to make?"></textarea>
+      <button class="assistant-send" id="assistant-send" type="submit">Send</button>
+    </form>
+  </aside>"""
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f6f3ee">
+  <meta name="theme-color" content="#ad442d">
   <meta name="description" content="{escaped_description}">
   <meta property="og:title" content="{escaped_title} · Free Design Toolkit">
   <meta property="og:description" content="{escaped_description}">
@@ -243,21 +335,22 @@ def render_page(key, filename, title, description, content, nav_by_key, search_i
   <title>{escaped_title} · Free Design Toolkit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{prefix}assets/site.css">
   <script>window.FDT_BASE_PATH="{prefix}";</script>
   <script src="{prefix}assets/search-index.js" defer></script>
+  <script src="{prefix}assets/chat-config.js" defer></script>
   <script src="{prefix}assets/site.js" defer></script>
 </head>
 <body data-page="{key}"{body_alternative}>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-main">
-      <a class="brand" href="{prefix}index.html" aria-label="Free Design Toolkit home">FREE DESIGN<br>TOOLKIT<span class="accent-text">.</span></a>
+      <a class="brand" href="{prefix}index.html" aria-label="Free Design Toolkit home">Free Design<br>Toolkit<span class="accent-text">.</span></a>
       <div class="header-actions">
         <div class="search-shell">
-          <label class="visually-hidden" for="header-search">Search all pages</label>
-          <input class="header-search" id="header-search" type="search" placeholder="Search every page… ( / )" autocomplete="off" aria-controls="global-search-results">
+          <label class="visually-hidden" for="header-search">Search for a tool or topic</label>
+          <input class="header-search" id="header-search" type="search" placeholder="Search tools or topics…" autocomplete="off" aria-controls="global-search-results">
           <div class="search-results" id="global-search-results" role="list" aria-label="Search results" hidden></div>
         </div>
         <button class="theme-button" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle light and dark mode">◐</button>
@@ -269,6 +362,8 @@ def render_page(key, filename, title, description, content, nav_by_key, search_i
   <main id="main" class="page-content">
     {content}
   </main>
+  <a class="button back-to-top" href="#main" aria-label="Back to top">↑ Top</a>
+  {assistant_markup}
   {footer}
   <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
 </body>

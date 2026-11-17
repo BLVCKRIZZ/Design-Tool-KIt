@@ -1,5 +1,5 @@
 "use strict";
-    const VERIFIED_PLACEHOLDER = "17 Nov 2026 · unverified placeholder";
+    const VERIFIED_PLACEHOLDER = "Not yet verified";
     const tools = [
       {name:"Flaticon",category:"Icons",description:"A large icon library for interface and graphic projects.",best:"Quick icon sourcing",limits:"Free-plan attribution and download limits need verification.",pros:"Broad library; multiple formats may be available.",cons:"Attribution and asset-specific license may apply.",license:"Check each asset's current license.",url:"https://www.flaticon.com/",status:"Unverified"},
       {name:"QR Code Monkey",category:"QR Codes",description:"Generate QR codes with visual customization options.",best:"Branded QR concepts",limits:"Limits and reuse terms need verification.",pros:"Branding options; supports common QR use cases.",cons:"Check destination, tracking, and print quality before use.",license:"Verify current terms.",url:"https://www.qrcode-monkey.com/",status:"Unverified"},
@@ -7,6 +7,8 @@
       {name:"Adobe Express",category:"Design platforms",description:"Quick branded graphics and content in Adobe's web and mobile tools.",best:"Social graphics",limits:"Free and premium feature availability needs verification.",pros:"Templates and Adobe integrations.",cons:"Features and assets vary by plan and region.",license:"Verify terms for each asset and output.",url:"https://www.adobe.com/express/",status:"Unverified"},
       {name:"Recraft",category:"AI",description:"AI-assisted image generation with vector-oriented workflows.",best:"Logos, icons, vector concepts",limits:"Free tier and public-output rules need verification.",pros:"Vector workflow; style consistency is highlighted in the supplied brief.",cons:"Free limits and output visibility may change.",license:"Verify output ownership and commercial terms.",url:"https://www.recraft.ai/",status:"Unverified"},
       {name:"Adobe Firefly",category:"AI",description:"Adobe's generative AI tools for images and design workflows.",best:"Adobe-connected generation",limits:"Free credits and feature access need verification.",pros:"Integrates with Adobe apps; trained on licensed content according to Adobe's product positioning.",cons:"Credit limits; commercial terms depend on product and context.",license:"Review current Adobe terms; no blanket guarantee.",url:"https://firefly.adobe.com/",status:"Unverified"},
+      {name:"ChatGPT",category:"AI",description:"Conversational AI for briefs, concepts, copy, planning, and supported creative workflows.",best:"Creative planning and design copy",limits:"Free and paid tiers; usage limits and image features need verification.",pros:"Versatile; useful for ideation, critiques, and document work.",cons:"Generated visuals may need a specialized tool; outputs require review.",license:"Check current OpenAI terms for output ownership and commercial use.",url:"https://chatgpt.com/",status:"Unverified"},
+      {name:"Claude",category:"AI",description:"Conversational AI for writing, document analysis, critiques, and structured thinking.",best:"Writing and creative strategy",limits:"Free messages and feature availability need verification.",pros:"Strong long-form reasoning and useful structured feedback.",cons:"Primary strengths are text and analysis; image generation varies.",license:"Check current Anthropic terms for output use and commercial rights.",url:"https://claude.ai/",status:"Unverified"},
       {name:"Google Fonts",category:"Fonts",description:"Browse type families for web and design projects.",best:"Finding web-ready type",limits:"Free to browse and download; check the selected font's license.",pros:"Large searchable catalog; common web embed options.",cons:"Font quality and language coverage vary by family.",license:"Many families use open licenses; verify each font.",url:"https://fonts.google.com/",status:"Unverified"},
       {name:"Fonts In Use",category:"Fonts",description:"An archive of typefaces shown in real-world design.",best:"Typography research",limits:"Free to browse; not a font download service.",pros:"Useful visual references and context.",cons:"Reference entries do not grant rights to the displayed work or fonts.",license:"Reference only; follow the source licenses.",url:"https://fontsinuse.com/",status:"Unverified"},
       {name:"iLoveIMG",category:"Image tools",description:"Browser tools for resizing, compressing, converting, and cropping images.",best:"Quick image edits",limits:"File, batch, and plan limits need verification.",pros:"Convenient common image operations.",cons:"Check upload privacy, file-size limits, and retention terms.",license:"Use only files you have rights to; verify service terms.",url:"https://www.iloveimg.com/",status:"Unverified"},
@@ -25,7 +27,9 @@
       {name:"Ideogram",best:"Text inside images and posters",strengths:"Strong typography rendering (as described in the supplied brief).",weaknesses:"Daily limits; free images may be public.",limits:"Daily limits: verify.",commercial:"Verify current terms and visibility.",badge:"Text in images",url:"https://ideogram.ai/"},
       {name:"Leonardo AI",best:"Game art, concept art, illustration",strengths:"Many styles and models; fine control.",weaknesses:"Token-based daily limits.",limits:"Token allowance: verify.",commercial:"Verify current plan and output terms.",badge:"Illustration",url:"https://leonardo.ai/"},
       {name:"Microsoft Designer / Copilot",best:"Social posts and quick graphics",strengths:"Easy to use; free access with an account is stated in the supplied brief.",weaknesses:"Less artistic range.",limits:"Availability and account requirements: verify.",commercial:"Check Microsoft terms for the feature and output.",badge:"Quick graphics",url:"https://designer.microsoft.com/"},
-      {name:"Google ImageFX / Gemini",best:"General images and ideas",strengths:"Clean results and a simple interface (as described in the supplied brief).",weaknesses:"Availability varies by region.",limits:"Regional availability and limits: verify.",commercial:"Check current Google terms and regional rules.",badge:"General ideas",url:"https://gemini.google.com/"}
+      {name:"Google ImageFX / Gemini",best:"General images and ideas",strengths:"Clean results and a simple interface (as described in the supplied brief).",weaknesses:"Availability varies by region.",limits:"Regional availability and limits: verify.",commercial:"Check current Google terms and regional rules.",badge:"General ideas",url:"https://gemini.google.com/"},
+      {name:"ChatGPT",best:"Creative planning, design copy, and concept iteration",strengths:"Versatile conversation, image and document workflows vary by plan and feature.",weaknesses:"Visual generation and editing are less direct than specialized image tools.",limits:"Free tier availability and usage limits: verify.",commercial:"Check current OpenAI terms and workspace or plan rules.",badge:"Creative assistant",url:"https://chatgpt.com/"},
+      {name:"Claude",best:"Writing, critique, briefs, and structured creative thinking",strengths:"Strong long-form reasoning and document analysis.",weaknesses:"Image-generation features are not the primary tool; availability and limits vary.",limits:"Free message and usage limits: verify.",commercial:"Check current Anthropic terms and applicable plan rules.",badge:"Writing & critique",url:"https://claude.ai/"}
     ];
     const formats = [
       ["SVG","Logos, icons, and illustrations","Infinitely scalable; often small; editable vector paths.","Not suited to photos or complex raster textures.","Avoid for photographs, complex textures, or apps that do not support SVG."],
@@ -182,10 +186,15 @@
         <div class="card-title-row"><h3>${safeText(tool.name)}</h3><span class="tag">${safeText(tool.category)}</span></div>
         <div class="tag-row"><span class="tag">${freeTag}</span><span class="tag ${commercialOk?"tag-ok":"tag-unknown"}">${commercialOk?"Commercial use OK · verify assets":"Commercial terms unverified"}</span>${tool.status==="Placeholder"?'<span class="tag tag-accent">Placeholder</span>':''}</div>
         <p>${safeText(tool.description)}</p><p class="meta"><strong>Best for:</strong> ${safeText(tool.best)}</p>
-        <p class="meta"><strong>Free-plan limits:</strong> ${safeText(tool.limits)}</p>
-        <p class="meta"><strong>Pros:</strong> ${safeText(tool.pros)}</p><p class="meta"><strong>Cons:</strong> ${safeText(tool.cons)}</p>
-        <p class="meta"><strong>License:</strong> ${safeText(tool.license)}</p>
-        <p class="meta"><strong>Last verified:</strong> <span class="tag tag-unknown">${VERIFIED_PLACEHOLDER}</span></p>
+        <details class="tool-details">
+          <summary>Free limits, pros &amp; license</summary>
+          <div class="tool-details-body">
+            <p class="meta"><strong>Free-plan limits:</strong> ${safeText(tool.limits)}</p>
+            <p class="meta"><strong>Pros:</strong> ${safeText(tool.pros)}</p><p class="meta"><strong>Cons:</strong> ${safeText(tool.cons)}</p>
+            <p class="meta"><strong>License:</strong> ${safeText(tool.license)}</p>
+          </div>
+        </details>
+        <p class="meta"><strong>Verification:</strong> <span class="tag tag-unknown">${VERIFIED_PLACEHOLDER}</span></p>
         <div class="row-bottom">${noUrl?'<span class="tag tag-unknown">Verify exact tool and URL</span>':`<a class="button" href="${safeText(tool.url)}" target="_blank" rel="noopener noreferrer">Visit ↗</a>`}
           <button type="button" class="fav" data-favorite="${safeText(tool.name)}" aria-pressed="${state.favorites.includes(tool.name)}" aria-label="${state.favorites.includes(tool.name)?"Remove":"Add"} ${safeText(tool.name)} ${state.favorites.includes(tool.name)?"from":"to"} favorites">${state.favorites.includes(tool.name)?"♥ Saved":"♡ Save"}</button>
           ${featured?"":`<button type="button" class="compare-toggle" data-compare="${safeText(tool.name)}" aria-pressed="${state.compare.has(tool.name)}" aria-label="Select ${safeText(tool.name)} for comparison">Compare</button>`}
@@ -205,6 +214,11 @@
       $("#tool-grid").innerHTML=list.map(tool=>toolCard(tool)).join("");
       $("#tools-empty").style.display=list.length?"none":"block";
       $("#favorite-count").textContent=`${state.favorites.length} saved`;
+      const clearButton=$("#favorites-clear");
+      if(clearButton){
+        clearButton.hidden=state.favorites.length===0;
+        clearButton.disabled=state.favorites.length===0;
+      }
       $("#favorites-filter").setAttribute("aria-pressed",String(state.favoritesOnly));
       $("#favorites-filter").textContent=state.favoritesOnly?"♥ Show all tools":"♥ Show saved only";
       $("#compare-panel").classList.toggle("active",state.compare.size>0);
@@ -212,7 +226,7 @@
     }
     function renderAI() {
       if(!$("#ai-body")) return;
-      $("#ai-body").innerHTML=aiTools.map(tool=>`<tr data-search="${safeText(Object.values(tool).join(" "))}"><td><a class="table-link" href="${safeText(tool.url)}" target="_blank" rel="noopener noreferrer">${safeText(tool.name)} ↗</a><br><span class="tag">${safeText(tool.badge)}</span><br><span class="meta">Last verified: ${VERIFIED_PLACEHOLDER}</span></td><td>${safeText(tool.best)}</td><td>${safeText(tool.strengths)}</td><td>${safeText(tool.weaknesses)}</td><td>${safeText(tool.limits)}</td><td>${safeText(tool.commercial)} <span class="tag tag-unknown">Unverified</span></td></tr>`).join("");
+      $("#ai-body").innerHTML=aiTools.map(tool=>`<tr data-search="${safeText(Object.values(tool).join(" "))}"><td><a class="table-link" href="${safeText(tool.url)}" target="_blank" rel="noopener noreferrer">${safeText(tool.name)} ↗</a><br><span class="tag">${safeText(tool.badge)}</span><br><span class="meta">Verification: ${VERIFIED_PLACEHOLDER}</span></td><td>${safeText(tool.best)}</td><td>${safeText(tool.strengths)}</td><td>${safeText(tool.weaknesses)}</td><td>${safeText(tool.limits)}</td><td>${safeText(tool.commercial)} <span class="tag tag-unknown">Unverified</span></td></tr>`).join("");
     }
     function renderFormats() {
       if(!$("#format-grid")) return;
@@ -272,8 +286,16 @@
       const results=$("#global-search-results");
       if(results){
         const found=(window.FDT_PAGE_INDEX||[]).filter(item=>`${item.title} ${item.search}`.toLowerCase().includes(state.query)).slice(0,12);
-        results.innerHTML=state.query?found.map(item=>`<a class="search-result" href="${safeText((window.FDT_BASE_PATH||"")+item.url)}"><strong>${safeText(item.title)}</strong><span>${safeText(item.description)}</span></a>`).join(""):"";
-        results.hidden=!state.query||!found.length;
+        if(!state.query){
+          results.innerHTML="";
+          results.hidden=true;
+        }else if(found.length){
+          results.innerHTML=`<p class="search-results-heading">${found.length===12?"Top 12 results":"Matching pages"}</p>`+found.map(item=>`<a class="search-result" href="${safeText((window.FDT_BASE_PATH||"")+item.url)}"><strong>${safeText(item.title)}</strong><span>${safeText(item.description)}</span></a>`).join("");
+          results.hidden=false;
+        }else{
+          results.innerHTML=`<div class="search-empty"><strong>No results for “${safeText(query.trim())}”</strong><span>Try “logo”, “fonts”, “SVG”, or “contrast”.</span></div>`;
+          results.hidden=false;
+        }
       }
       const text=state.query?`${matches} items on this page; ${((window.FDT_PAGE_INDEX||[]).filter(item=>`${item.title} ${item.search}`.toLowerCase().includes(state.query)).length)} results across all pages.`:"Search every page. Press / or Ctrl+K to jump to search.";
       status(text);
@@ -282,7 +304,7 @@
       if(!$("#comparison-output")) return;
       const selected=tools.filter(tool=>state.compare.has(tool.name));
       if (!selected.length) { $("#comparison-output").innerHTML=""; return; }
-      $("#comparison-output").innerHTML=`<h3>Tool comparison</h3><div class="table-wrap"><table><thead><tr><th scope="col">Detail</th>${selected.map(tool=>`<th scope="col">${safeText(tool.name)}</th>`).join("")}</tr></thead><tbody>${[["Category","category"],["Best for","best"],["Free-plan limits","limits"],["Pros","pros"],["Cons","cons"],["License","license"],["Last verified",null]].map(([label,key])=>`<tr><th scope="row">${label}</th>${selected.map(tool=>`<td>${key?safeText(tool[key]):VERIFIED_PLACEHOLDER}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+      $("#comparison-output").innerHTML=`<h3>Tool comparison</h3><div class="table-wrap"><table><thead><tr><th scope="col">Detail</th>${selected.map(tool=>`<th scope="col">${safeText(tool.name)}</th>`).join("")}</tr></thead><tbody>${[["Category","category"],["Best for","best"],["Free-plan limits","limits"],["Pros","pros"],["Cons","cons"],["License","license"],["Verification status",null]].map(([label,key])=>`<tr><th scope="row">${label}</th>${selected.map(tool=>`<td>${key?safeText(tool[key]):VERIFIED_PLACEHOLDER}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
     }
     function setTheme(theme) {
       document.documentElement.dataset.theme=theme;
@@ -323,6 +345,15 @@
       state.category=button.dataset.categoryFilter; renderTools();
     });
     listen("#favorites-filter","click",()=>{state.favoritesOnly=!state.favoritesOnly;renderTools();});
+    listen("#favorites-clear","click",()=>{
+      if(!state.favorites.length)return;
+      state.favorites=[];
+      state.favoritesOnly=false;
+      saveFavorites();
+      renderFeatured();
+      renderTools();
+      status("All saved tools cleared.");
+    });
     document.addEventListener("click",event=>{
       const favorite=event.target.closest("[data-favorite]");
       if(favorite){
@@ -356,7 +387,11 @@
       const tag=(event.target.tagName||"").toLowerCase();
       const typing=["input","textarea","select"].includes(tag)||event.target.isContentEditable;
       if ((event.key==="/"&&!typing)||(event.key.toLowerCase()==="k"&&(event.ctrlKey||event.metaKey))) { event.preventDefault();$("#header-search")?.focus(); }
-      if(event.key==="Escape"&&(document.activeElement===$("#header-search")||document.activeElement===$("#hero-search"))) syncSearch("");
+      if(event.key==="Escape"){
+        if(document.activeElement===$("#header-search")||document.activeElement===$("#hero-search")){
+          syncSearch("");
+        }
+      }
     });
     const navLinks=$$(".main-nav a");
     const currentPage=document.body.dataset.page;
@@ -375,20 +410,45 @@
       if(h<60)rgb=[c,x,0];else if(h<120)rgb=[x,c,0];else if(h<180)rgb=[0,c,x];else if(h<240)rgb=[0,x,c];else if(h<300)rgb=[x,0,c];else rgb=[c,0,x];
       return rgbToHex({r:(rgb[0]+m)*255,g:(rgb[1]+m)*255,b:(rgb[2]+m)*255});
     }
+    let generatedPalette=[];
     function generatePalette() {
-      const color=$("#base-color").value;const {h,s,l}=rgbToHsl(hexToRgb(color));const mode=$("#palette-harmony").value;
-      const offsets=mode==="analogous"?[-30,-15,0,15,30]:mode==="triadic"?[0,120,240,180,60]:mode==="split"?[0,150,210,30,330]:[0,0,180,30,330];
-      const colors=offsets.map((offset,index)=>hslToHex(h+offset,Math.max(28,s),Math.max(22,Math.min(78,l+(index===0?0:(index%2?7:-7))))));
-      colors[0]=color.toUpperCase();
-      $("#palette-output").innerHTML=colors.map((hex,index)=>`<button class="swatch" type="button" style="background:${hex}" data-color="${hex}" aria-label="Copy color ${hex}"><span>${hex}</span></button>`).join("");
-      $("#palette-values").innerHTML=colors.map(hex=>{
+      const color=$("#base-color").value;const {h,s,l}=rgbToHsl(hexToRgb(color));const mode=$("#palette-harmony").value;const purpose=$("#palette-purpose")?.value||"brand";
+      const offsets=mode==="analogous"?[-28,-14,0,14,28]:mode==="triadic"?[0,120,240,30,210]:mode==="split"?[0,150,210,20,200]:[0,0,180,42,222];
+      const purposeStyle={
+        brand:{sat:0,lum:[0,18,-32,44,-18],label:"Use: primary, supporting, accent, light neutral, deep neutral"},
+        editorial:{sat:-8,lum:[0,24,-26,48,-20],label:"Use: headline, secondary, accent, paper, ink"},
+        interface:{sat:-15,lum:[0,28,-35,52,-24],label:"Use: action, hover, dark state, surface, text"},
+        social:{sat:12,lum:[0,16,-20,42,-12],label:"Use: hero, highlight, contrast, background, type"},
+        packaging:{sat:-3,lum:[0,20,-30,46,-16],label:"Use: label, detail, accent, substrate, ink"}
+      }[purpose];
+      const roles={
+        brand:["Primary","Support","Accent","Soft neutral","Deep neutral"],
+        editorial:["Headline","Secondary","Accent","Paper","Ink"],
+        interface:["Action","Hover","Dark state","Surface","Text"],
+        social:["Hero","Highlight","Contrast","Background","Type"],
+        packaging:["Label","Detail","Accent","Substrate","Ink"]
+      }[purpose];
+      generatedPalette=offsets.map((offset,index)=>{
+        if(index===0)return color.toUpperCase();
+        const saturation=Math.max(12,Math.min(92,s+purposeStyle.sat+(index===2?8:0)));
+        const lightness=Math.max(8,Math.min(88,l+purposeStyle.lum[index]));
+        return hslToHex(h+offset,saturation,lightness);
+      });
+      $("#palette-output").innerHTML=generatedPalette.map((hex,index)=>`<button class="swatch" type="button" style="background:${hex}" data-color="${hex}" aria-label="Copy ${roles[index]} color ${hex}"><strong>${roles[index]}</strong><span>${hex}</span></button>`).join("");
+      $("#palette-values").innerHTML=generatedPalette.map((hex,index)=>{
         const rgb=hexToRgb(hex),hsl=rgbToHsl(rgb);
         const values=[["HEX",hex],["RGB",`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`],["HSL",`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`]];
-        return `<div class="color-value-row"><strong>${hex}</strong>${values.map(([label,value])=>`<button class="button copy-button" type="button" data-copy="${safeText(value)}">${label}</button>`).join("")}</div>`;
+        return `<div class="color-value-row"><strong>${roles[index]} · ${hex}</strong>${values.map(([label,value])=>`<button class="button copy-button" type="button" data-copy="${safeText(value)}">${label}</button>`).join("")}</div>`;
       }).join("");
+      $("#palette-note").textContent=purposeStyle.label+". The deep/ink color is a candidate for text—check contrast against light surfaces.";
     }
-    listen("#base-color","input",generatePalette);listen("#palette-harmony","change",generatePalette);if($("#palette-output"))generatePalette();
+    listen("#base-color","input",generatePalette);listen("#palette-harmony","change",generatePalette);listen("#palette-purpose","change",generatePalette);if($("#palette-output"))generatePalette();
     listen("#palette-output","click",event=>{const swatch=event.target.closest("[data-color]");if(swatch)copyText(swatch.dataset.color,swatch);});
+    listen("#copy-palette-css","click",()=>{
+      if(!generatedPalette.length)return;
+      const names=["primary","support","accent","surface","ink"];
+      copyText(":root {\n"+generatedPalette.map((hex,index)=>`  --color-${names[index]}: ${hex};`).join("\n")+"\n}",$("#copy-palette-css"));
+    });
     function luminance(hex) {
       const rgb=hexToRgb(hex);
       const channels=[rgb.r,rgb.g,rgb.b].map(value=>{const c=value/255;return c<=.04045?c/12.92:((c+.055)/1.055)**2.4;});
@@ -401,17 +461,61 @@
       $("#contrast-result").textContent=`Contrast ratio: ${ratio.toFixed(2)}:1 · AA normal ${ratio>=4.5?"PASS":"FAIL"} · AA large ${ratio>=3?"PASS":"FAIL"} · AAA normal ${ratio>=7?"PASS":"FAIL"} · AAA large ${ratio>=4.5?"PASS":"FAIL"}`;
     }
     listen("#contrast-fg","input",updateContrast);listen("#contrast-bg","input",updateContrast);if($("#contrast-result"))updateContrast();
+    const fontPairings={
+      brand:[
+        {heading:"Newsreader",body:"Public Sans",note:"Editorial character with a clear, practical voice"},
+        {heading:"Public Sans",body:"Public Sans",note:"Consistent and understated for direct identities"}
+      ],
+      editorial:[
+        {heading:"Newsreader",body:"Public Sans",note:"Readable long-form contrast with a human rhythm"},
+        {heading:"Newsreader",body:"IBM Plex Mono",note:"Reference-like contrast for details and captions"}
+      ],
+      interface:[
+        {heading:"Public Sans",body:"Public Sans",note:"Consistent and highly usable across dense screens"},
+        {heading:"Newsreader",body:"Public Sans",note:"A calmer reading voice with restrained hierarchy"}
+      ],
+      social:[
+        {heading:"Newsreader",body:"Public Sans",note:"Direct headlines that feel crafted rather than loud"},
+        {heading:"Public Sans",body:"Public Sans",note:"Clean, repeatable text for campaign layouts"}
+      ],
+      poster:[
+        {heading:"Newsreader",body:"IBM Plex Mono",note:"Cultured contrast with useful technical detail"},
+        {heading:"Public Sans",body:"Newsreader",note:"Bold wayfinding with an expressive supporting voice"}
+      ],
+      luxury:[
+        {heading:"Newsreader",body:"Public Sans",note:"Premium editorial character without a generic corporate feel"},
+        {heading:"Georgia",body:"Public Sans",note:"Classic proportions with a familiar, credible voice"}
+      ]
+    };
+    function applyFontPairing(heading,body) {
+      $("#font-heading").value=heading;
+      $("#font-body").value=body;
+      updateFontPreview();
+    }
+    function updateFontRecommendations() {
+      const purpose=$("#font-purpose")?.value||"brand";
+      const pairings=fontPairings[purpose];
+      $("#pairing-recommendations").innerHTML=pairings.map((pair,index)=>`<button type="button" class="pairing-option" data-heading="${safeText(pair.heading)}" data-body="${safeText(pair.body)}" aria-label="Use ${safeText(pair.heading)} with ${safeText(pair.body)}"><strong>${safeText(pair.heading)} + ${safeText(pair.body)}</strong><span>${safeText(pair.note)}</span></button>`).join("");
+      $("#pairing-note").textContent=`Recommended for ${$("#font-purpose").selectedOptions[0].textContent}—choose a pairing or test your own fonts.`;
+      if($("#pairing-recommendations"))applyFontPairing(pairings[0].heading,pairings[0].body);
+    }
     function updateFontPreview() {
       const heading=$("#font-heading").value,body=$("#font-body").value,text=$("#font-copy").value||"Your type specimen.";
       $("#font-preview-heading").textContent=text;$("#font-preview-heading").style.fontFamily=`"${heading}", sans-serif`;
       $("#font-preview-body").style.fontFamily=`"${body}", sans-serif`;
-      $("#font-preview-heading").style.fontWeight=heading==="Archivo Black"?"400":"700";
-      const families=[heading,body].map(name=>name.replaceAll(" ","+")).filter((name,index,array)=>array.indexOf(name)===index);
+      $("#font-preview-heading").style.fontWeight=heading==="Public Sans"?"700":"400";
+      const families=[heading,body].map(name=>name.replaceAll(" ","+")).filter((name,index,array)=>array.indexOf(name)===index&&!["Georgia","Trebuchet+MS"].includes(name));
       let link=$("#dynamic-fonts");
       if(!link){link=document.createElement("link");link.id="dynamic-fonts";link.rel="stylesheet";document.head.append(link);}
-      link.href=`https://fonts.googleapis.com/css2?${families.map(name=>`family=${name}:wght@400;500;700`).join("&")}&display=swap`;
+      link.href=families.length?`https://fonts.googleapis.com/css2?${families.map(name=>name==="Newsreader"?`family=${name}:opsz,wght@6..72,400;6..72,700`:`family=${name}:wght@400;500;700;600`).join("&")}&display=swap`:"";
     }
-    ["font-heading","font-body","font-copy"].forEach(id=>listen("#"+id,"input",updateFontPreview));if($("#font-preview-heading"))updateFontPreview();
+    ["font-heading","font-body","font-copy"].forEach(id=>listen("#"+id,"input",updateFontPreview));
+    listen("#font-purpose","change",updateFontRecommendations);
+    listen("#pairing-recommendations","click",event=>{
+      const option=event.target.closest("[data-heading]");
+      if(option)applyFontPairing(option.dataset.heading,option.dataset.body);
+    });
+    if($("#font-preview-heading"))updateFontRecommendations();
     let convertedUrl="";
     listen("#convert-image","click",()=>{
       const file=$("#image-file").files[0];if(!file){$("#image-output").textContent="Choose an image file first.";return;}
@@ -599,8 +703,116 @@
     listen("#lab-format-button","click",()=>$("#lab-format-output").textContent=formatRecs[$("#lab-format-use").value==="motion"?"animation":$("#lab-format-use").value]);
     listen("#ai-quiz-button","click",()=>{
       const need=$("#ai-need").value,priority=$("#ai-priority").value;
-      const pick=priority==="terms"?"Adobe Firefly":({photo:"Meta AI",vector:"Recraft",text:"Ideogram",commercial:"Adobe Firefly",illustration:"Leonardo AI",social:"Microsoft Designer / Copilot",general:"Google ImageFX / Gemini"})[need];
+      const pick=priority==="terms"?"Adobe Firefly":({photo:"Meta AI",vector:"Recraft",text:"Ideogram",commercial:"Adobe Firefly",illustration:"Leonardo AI",social:"Microsoft Designer / Copilot",general:"Google ImageFX / Gemini",writing:"ChatGPT",critique:"Claude"})[need];
       $("#ai-quiz-result").textContent=`Starting point: ${pick}. This is a discovery suggestion, not an endorsement. Verify availability, free limits, privacy, output ownership, and commercial terms before use.`;
+    });
+    const assistantHistory=[{role:"assistant",content:"Hi! Tell me what you’re making, and I’ll help you choose a next step, tool, color, or file type. You don’t need to know the technical terms."}];
+    function appendAssistantInline(parent,text) {
+      const pattern=/\*\*([^*]+)\*\*|`([^`]+)`|\*([^*\n]+)\*/g;
+      let offset=0,match;
+      while((match=pattern.exec(text))) {
+        parent.append(document.createTextNode(text.slice(offset,match.index)));
+        const tag=match[1]!==undefined?"strong":match[2]!==undefined?"code":"em";
+        const formatted=document.createElement(tag);
+        formatted.textContent=match[1]??match[2]??match[3];
+        parent.append(formatted);
+        offset=pattern.lastIndex;
+      }
+      parent.append(document.createTextNode(text.slice(offset)));
+    }
+    function renderAssistantText(container,text) {
+      let list=null,listTag="";
+      for(const line of String(text).replace(/\r/g,"").split("\n")) {
+        const bullet=line.match(/^\s*[-*]\s+(.+)$/);
+        const numbered=line.match(/^\s*\d+[.)]\s+(.+)$/);
+        if(bullet||numbered) {
+          const nextTag=bullet?"ul":"ol";
+          if(!list||listTag!==nextTag) {
+            list=document.createElement(nextTag);
+            container.append(list);
+            listTag=nextTag;
+          }
+          const item=document.createElement("li");
+          appendAssistantInline(item,(bullet||numbered)[1]);
+          list.append(item);
+          continue;
+        }
+        list=null;
+        listTag="";
+        if(!line.trim())continue;
+        const heading=line.match(/^#{1,3}\s+(.+)$/);
+        const paragraph=document.createElement("p");
+        appendAssistantInline(paragraph,heading?heading[1]:line);
+        if(heading)paragraph.className="assistant-subheading";
+        container.append(paragraph);
+      }
+    }
+    function addAssistantMessage(role,text) {
+      const message=document.createElement("div");
+      message.className="assistant-message";
+      message.dataset.role=role;
+      if(role==="assistant")renderAssistantText(message,text);
+      else message.textContent=text;
+      $("#assistant-messages").append(message);
+      $("#assistant-messages").scrollTop=$("#assistant-messages").scrollHeight;
+    }
+    function openAssistant() {
+      $("#assistant-panel").hidden=false;
+      $("#assistant-launcher").setAttribute("aria-expanded","true");
+      $("#assistant-input").focus();
+    }
+    function closeAssistant() {
+      $("#assistant-panel").hidden=true;
+      $("#assistant-launcher").setAttribute("aria-expanded","false");
+      $("#assistant-launcher").focus();
+    }
+    async function sendAssistantMessage(text) {
+      const question=text.trim();
+      if(!question||$("#assistant-send").disabled)return;
+      $("#assistant-suggestions").hidden=true;
+      addAssistantMessage("user",question);
+      assistantHistory.push({role:"user",content:question});
+      const messages=assistantHistory.slice(-12);
+      $("#assistant-input").value="";
+      $("#assistant-send").disabled=true;
+      $("#assistant-status").textContent="Thinking…";
+      try {
+        const endpoint=window.FDT_CHAT_ENDPOINT||`${window.FDT_BASE_PATH||""}api/chat`;
+        const response=await fetch(endpoint,{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({messages})
+        });
+        let result;
+        try { result=await response.json(); }
+        catch (error) { throw new Error("The assistant server returned an unreadable response. Make sure its server is running, then try again."); }
+        if(!response.ok)throw new Error(result.error||`The assistant service returned an error (${response.status}).`);
+        if(typeof result.reply!=="string"||!result.reply.trim())throw new Error("The assistant returned an empty reply. Please try again.");
+        assistantHistory.push({role:"assistant",content:result.reply});
+        addAssistantMessage("assistant",result.reply);
+        $("#assistant-status").textContent="";
+      } catch(error) {
+        const detail=error instanceof TypeError
+          ?"I couldn’t connect to the assistant service. Make sure the assistant server is running, then try again."
+          :error.message;
+        $("#assistant-status").textContent=detail;
+      } finally {
+        $("#assistant-send").disabled=false;
+        $("#assistant-input").focus();
+      }
+    }
+    listen("#assistant-launcher","click",openAssistant);
+    listen("#assistant-close","click",closeAssistant);
+    listen("#assistant-form","submit",event=>{event.preventDefault();sendAssistantMessage($("#assistant-input").value);});
+    listen("#assistant-input","keydown",event=>{
+      if(event.key==="Enter"&&!event.shiftKey){event.preventDefault();$("#assistant-form").requestSubmit();}
+    });
+    document.addEventListener("click",event=>{
+      const suggestion=event.target.closest("[data-assistant-prompt]");
+      if(suggestion)sendAssistantMessage(suggestion.dataset.assistantPrompt);
+    });
+    document.addEventListener("keydown",event=>{
+      if(event.key==="Escape"&&!$("#assistant-panel").hidden)closeAssistant();
     });
     function openSheet(index) {
       const sheet=sheets[index];if(!sheet){status("That cheat sheet is unavailable.");return;}

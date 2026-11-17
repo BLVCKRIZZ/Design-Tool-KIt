@@ -6,28 +6,28 @@
   <meta name="theme-color" content="#f6f3ee">
   <meta name="description" content="A free design resource hub: discover creative tools, learn design essentials, build palettes, check contrast, convert images, and find practical workflows.">
   <meta name="keywords" content="free design tools, design resources, free fonts, AI design tools, file formats, design tools lab">
-  <meta property="og:title" content="Free Design Toolkit — Everything a designer needs. Zero cost.">
+  <meta property="og:title" content="Free Design Toolkit — Practical resources for creative work">
   <meta property="og:description" content="A practical, free-tools hub for designers and creators.">
   <meta property="og:type" content="website">
-  <title>Free Design Toolkit — Everything a designer needs. Zero cost.</title>
+  <title>Free Design Toolkit — Practical resources for creative work</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f6f3ee;
-      --surface: #fffefa;
-      --surface-2: #eeeae2;
-      --ink: #171714;
-      --muted: #625f58;
-      --line: #22221f;
-      --accent: #ff4d00;
-      --accent-soft: #ffdfcf;
-      --green: #24644b;
-      --shadow: 5px 5px 0 var(--line);
-      --display: "Archivo Black", Impact, sans-serif;
-      --body: "Space Grotesk", "DM Sans", sans-serif;
+      --bg: #f1eee5;
+      --surface: #fffdf7;
+      --surface-2: #e6e2d7;
+      --ink: #1b1b18;
+      --muted: #68675f;
+      --line: #cbc7bb;
+      --accent: #ad442d;
+      --accent-soft: #f1dfd5;
+      --green: #345842;
+      --shadow: 8px 8px 0 rgba(27,27,24,.08);
+      --display: "Newsreader", Georgia, serif;
+      --body: "Public Sans", "Trebuchet MS", sans-serif;
       font-synthesis: none;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
@@ -35,28 +35,28 @@
     }
     :root[data-theme="dark"] {
       color-scheme: dark;
-      --bg: #11110f;
-      --surface: #1d1d19;
-      --surface-2: #292923;
-      --ink: #f6f3ee;
-      --muted: #c1bdb3;
-      --line: #f6f3ee;
-      --accent: #ff7440;
-      --accent-soft: #542816;
-      --green: #a7dfbd;
+      --bg: #171a18;
+      --surface: #202420;
+      --surface-2: #292e29;
+      --ink: #f2f4ef;
+      --muted: #b7beb7;
+      --line: #3b433d;
+      --accent: #91b7cf;
+      --accent-soft: #263742;
+      --green: #a2c4a9;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
         color-scheme: dark;
-        --bg: #11110f;
-        --surface: #1d1d19;
-        --surface-2: #292923;
-        --ink: #f6f3ee;
-        --muted: #c1bdb3;
-        --line: #f6f3ee;
-        --accent: #ff7440;
-        --accent-soft: #542816;
-        --green: #a7dfbd;
+        --bg: #171a18;
+        --surface: #202420;
+        --surface-2: #292e29;
+        --ink: #f2f4ef;
+        --muted: #b7beb7;
+        --line: #3b433d;
+        --accent: #91b7cf;
+        --accent-soft: #263742;
+        --green: #a2c4a9;
       }
     }
     * { box-sizing: border-box; }
@@ -66,7 +66,7 @@
       padding-top: env(safe-area-inset-top, 0);
       background: var(--bg);
       color: var(--ink);
-      font: 16px/1.55 var(--body);
+      font: 16px/1.68 var(--body);
     }
     img, canvas, svg { max-width: 100%; }
     a { color: inherit; }
@@ -76,10 +76,11 @@
       align-items: center;
       justify-content: center;
       gap: .45rem;
-      min-height: 42px;
-      padding: .55rem .85rem;
-      border: 2px solid var(--line);
-      border-radius: 0;
+      min-height: 44px;
+      padding: .65rem .9rem;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 8px;
       background: var(--surface);
       color: var(--ink);
       font-weight: 700;
@@ -88,9 +89,10 @@
       cursor: pointer;
       transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
     }
-    button:hover, .button:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--line); }
+    button:hover, .button:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(32,37,34,.10); }
     button:disabled { cursor: not-allowed; opacity: .58; transform: none; box-shadow: none; }
-    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
     .skip-link {
       position: absolute;
       z-index: 99;
@@ -106,7 +108,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      border-bottom: 2px solid var(--line);
+      border-bottom: 1px solid var(--line);
       background: var(--bg);
     }
     .header-main {
@@ -116,20 +118,22 @@
       gap: 1rem;
       max-width: 1440px;
       margin: auto;
-      padding: .65rem clamp(1rem, 3vw, 2rem);
+      padding: .55rem clamp(1rem, 3vw, 2rem);
     }
     .brand {
       flex: 0 0 auto;
-      font: 1.05rem/1 var(--display);
-      letter-spacing: -.04em;
+      font: 700 1rem/1.02 var(--display);
+      letter-spacing: -.025em;
       text-decoration: none;
     }
     .header-actions { display: flex; align-items: center; gap: .5rem; }
     .header-search {
       width: min(25vw, 240px);
       min-width: 130px;
-      padding: .55rem .7rem;
-      border: 2px solid var(--line);
+      min-height: 44px;
+      padding: .65rem .75rem;
+      border: 0;
+      border-bottom: 1px solid var(--line);
       border-radius: 0;
       background: var(--surface);
       color: var(--ink);
@@ -151,21 +155,147 @@
     }
     .main-nav a {
       display: block;
-      padding: .6rem .7rem;
-      font-size: .82rem;
+      min-height: 44px;
+      padding: .72rem .75rem;
+      font-size: .88rem;
       font-weight: 700;
       text-decoration: none;
       white-space: nowrap;
     }
-    .main-nav a:hover, .main-nav a[aria-current="location"] { color: var(--accent); }
+    .main-nav a:hover, .main-nav a[aria-current="page"], .nav-more-button:hover { color: var(--accent); }
+    .main-nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: .35rem; }
+    .nav-more { position: relative; margin-left: auto; }
+    .nav-more-button { min-height: 44px; border: 0; border-left: 1px solid var(--line); padding: .65rem .85rem; background: transparent; }
+    .nav-more-button[aria-expanded="true"] { background: var(--ink); color: var(--bg); }
+    .nav-more-links {
+      position: absolute;
+      z-index: 35;
+      top: calc(100% + .75rem);
+      right: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(130px, 1fr));
+      min-width: 360px;
+      border: 2px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      padding: .35rem;
+    }
+    .nav-more-links[hidden] { display: none; }
+    .nav-more-links a { width: 100%; border-bottom: 1px solid color-mix(in srgb, var(--line) 20%, transparent); }
+    .back-to-top { position: fixed; z-index: 15; right: 1rem; bottom: 1rem; min-height: 40px; padding-inline: .7rem; }
+    .assistant-launcher {
+      position: fixed;
+      z-index: 40;
+      right: 1rem;
+      bottom: 4.5rem;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .assistant-panel {
+      position: fixed;
+      z-index: 41;
+      right: 1rem;
+      bottom: 8.25rem;
+      display: flex;
+      flex-direction: column;
+      width: min(390px, calc(100vw - 2rem));
+      height: min(540px, calc(100dvh - 10rem));
+      min-height: 320px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 16px 48px rgba(20, 25, 22, .22);
+    }
+    .assistant-panel[hidden] { display: none; }
+    .assistant-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .75rem;
+      padding: .85rem 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .assistant-heading h2 { margin: 0; font: 600 1.25rem/1.2 var(--display); }
+    .assistant-heading p { margin: .2rem 0 0; color: var(--muted); font-size: .78rem; }
+    .assistant-close { min-width: 44px; padding: .5rem; }
+    .assistant-messages {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .65rem;
+      overflow-y: auto;
+      padding: .9rem;
+      overscroll-behavior: contain;
+    }
+    .assistant-message {
+      max-width: 92%;
+      margin: 0;
+      padding: .65rem .8rem;
+      border-radius: 10px;
+      background: var(--surface-2);
+      overflow-wrap: anywhere;
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+    .assistant-message p { margin: 0 0 .45rem; }
+    .assistant-message p:last-child { margin-bottom: 0; }
+    .assistant-subheading { font-weight: 700; }
+    .assistant-message ul, .assistant-message ol { margin: .15rem 0 .5rem; padding-left: 1.25rem; }
+    .assistant-message li + li { margin-top: .15rem; }
+    .assistant-message code {
+      padding: .08rem .25rem;
+      border-radius: 4px;
+      background: var(--bg);
+      font: .86em "IBM Plex Mono", monospace;
+    }
+    .assistant-message[data-role="user"] {
+      align-self: flex-end;
+      background: var(--accent-soft);
+      white-space: pre-wrap;
+    }
+    .assistant-suggestions { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0 .9rem .65rem; }
+    .assistant-suggestions button { min-height: 38px; padding: .45rem .65rem; font-size: .78rem; }
+    .assistant-form { display: flex; align-items: flex-end; gap: .5rem; padding: .75rem; border-top: 1px solid var(--line); }
+    .assistant-input {
+      flex: 1;
+      min-height: 44px;
+      max-height: 120px;
+      resize: vertical;
+      padding: .65rem .7rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: .9rem;
+    }
+    .assistant-send { min-height: 44px; }
+    .assistant-status { min-height: 1.3em; margin: 0; padding: 0 .9rem .55rem; color: var(--muted); font-size: .78rem; }
+    .assistant-status:empty { display: none; }
+    @media (max-width: 520px) {
+      .assistant-panel {
+        right: .5rem;
+        bottom: calc(7.8rem + env(safe-area-inset-bottom, 0));
+        width: calc(100vw - 1rem);
+        height: min(68dvh, 560px);
+      }
+      .assistant-launcher { right: 1rem; bottom: calc(4.5rem + env(safe-area-inset-bottom, 0)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .assistant-panel, .assistant-launcher { scroll-behavior: auto; }
+    }
     main { max-width: 1440px; margin: auto; padding: 0 clamp(1rem, 3vw, 2rem); }
     section { padding: clamp(2.5rem, 6vw, 5rem) 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 28%, transparent); }
     section:last-child { border-bottom: 0; }
     h1, h2, h3, h4 { margin: 0; line-height: 1.06; }
-    h1, h2, h3 { font-family: var(--display); text-transform: uppercase; }
-    h1 { max-width: 1000px; font-size: clamp(3rem, 10.4vw, 9.5rem); letter-spacing: -.075em; }
-    h2 { font-size: clamp(2rem, 5vw, 4.4rem); letter-spacing: -.055em; }
-    h3 { font-size: clamp(1.15rem, 2.2vw, 1.6rem); letter-spacing: -.035em; }
+    h1, h2, h3 { font-family: var(--display); text-transform: none; }
+    h1 { max-width: 820px; font-size: clamp(3.2rem, 7vw, 6.5rem); letter-spacing: -.065em; font-weight: 700; line-height: .92; }
+    h1 span { font-style: italic; }
+    h2 { font-size: clamp(2.1rem, 4.2vw, 3.8rem); letter-spacing: -.045em; font-weight: 700; }
+    h3 { font-size: clamp(1.15rem, 1.8vw, 1.45rem); letter-spacing: -.025em; font-weight: 700; }
     h4 { font-size: 1rem; }
     p { margin: .55rem 0 1rem; }
     .eyebrow {
@@ -188,9 +318,22 @@
     }
     .section-head > div { max-width: 760px; }
     .section-intro { max-width: 720px; color: var(--muted); }
-    .hero { padding: clamp(3.2rem, 9vw, 8rem) 0 3rem; }
+    .hero { position: relative; padding: clamp(3rem, 6vw, 5.5rem) 0 3.5rem; border-bottom: 3px double var(--line); }
+    .hero::after {
+      position: absolute;
+      right: 4%;
+      bottom: 2.5rem;
+      width: clamp(90px, 12vw, 180px);
+      height: clamp(90px, 12vw, 180px);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 12px var(--bg), inset 0 0 0 13px var(--accent);
+      content: "";
+      opacity: .38;
+      pointer-events: none;
+    }
     .hero h1 span { color: var(--accent); }
-    .hero-copy { max-width: 650px; margin: 1.2rem 0 1.5rem; font-size: clamp(1.05rem, 2vw, 1.35rem); }
+    .hero-copy { max-width: 680px; margin: 1.2rem 0 1.5rem; color: var(--muted); font-size: clamp(1.08rem, 1.6vw, 1.25rem); }
     .hero-actions, .button-row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
     .button-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
     .button-dark { background: var(--ink); color: var(--bg); }
@@ -199,7 +342,9 @@
     .hero-search {
       display: flex;
       width: 100%;
-      border: 3px solid var(--line);
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
       background: var(--surface);
       box-shadow: var(--shadow);
     }
@@ -217,6 +362,14 @@
     .quick-links { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.4rem 0 0; }
     .quick-links a { padding: .45rem .7rem; border: 1px solid var(--line); font-size: .86rem; font-weight: 700; text-decoration: none; }
     .quick-links a:hover { background: var(--ink); color: var(--bg); }
+    .simple-start-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin: 1.25rem 0 0; }
+    .simple-start-card { display: flex; min-height: 118px; flex-direction: column; justify-content: space-between; gap: .5rem; padding: 1rem; border: 0; border-top: 3px solid var(--ink); border-radius: 0; background: transparent; text-decoration: none; }
+    .simple-start-card strong { font-size: 1.02rem; }
+    .simple-start-card span { color: var(--muted); font-size: .84rem; }
+    .simple-start-card:hover { border-top-color: var(--accent); background: var(--accent-soft); }
+    .tool-details { margin-top: .35rem; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); }
+    .tool-details summary { min-height: 44px; padding: .65rem .75rem; }
+    .tool-details-body { display: grid; gap: .35rem; padding: 0 .75rem .75rem; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1rem; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
     .card {
@@ -225,11 +378,13 @@
       gap: .55rem;
       min-width: 0;
       padding: 1rem;
-      border: 2px solid var(--line);
-      background: var(--surface);
-      transition: transform .16s ease, box-shadow .16s ease;
+      border: 0;
+      border-top: 2px solid var(--ink);
+      border-radius: 0;
+      background: transparent;
+      transition: background .16s ease, border-color .16s ease;
     }
-    .card:hover { transform: translate(-3px, -3px); box-shadow: var(--shadow); }
+    .card:hover { border-top-color: var(--accent); background: color-mix(in srgb, var(--surface) 55%, transparent); }
     .card > p { margin: 0; }
     .card .button-row { margin-top: auto; padding-top: .4rem; }
     .card-title-row { display: flex; align-items: start; justify-content: space-between; gap: .6rem; }
@@ -244,7 +399,7 @@
       font-weight: 800;
       line-height: 1.35;
     }
-    .tag-accent { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .tag-accent { border-color: var(--accent-soft); background: var(--accent-soft); color: var(--accent); }
     .tag-ok { border-color: var(--green); color: var(--green); }
     .tag-unknown { border-style: dashed; color: var(--muted); }
     .filters { display: flex; flex-wrap: wrap; gap: .45rem; margin: 1rem 0; }
@@ -255,13 +410,13 @@
     .fav[aria-pressed="true"], .compare-toggle[aria-pressed="true"] { background: var(--accent); color: #fff; }
     .fav { min-width: 42px; }
     .empty-state { display: none; padding: 1rem; border: 2px dashed var(--line); color: var(--muted); }
-    .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); margin: 2.2rem 0 0; border: 2px solid var(--line); }
+    .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); margin: 2.2rem 0 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); overflow: hidden; }
     .stat-strip > div { padding: .8rem; border-right: 1px solid var(--line); }
     .stat-strip > div:last-child { border: 0; }
     .stat-strip strong { display: block; font: clamp(1.25rem, 3vw, 2rem) var(--display); }
     .split { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(250px, .8fr); gap: 1.2rem; align-items: start; }
     .path-card { position: relative; min-height: 190px; justify-content: space-between; overflow: hidden; }
-    .path-card::after { position: absolute; right: -15px; bottom: -65px; width: 180px; height: 180px; border: 18px solid var(--accent); border-radius: 50%; opacity: .16; content: ""; pointer-events: none; }
+    .path-card::after { display: none; }
     .path-steps { margin: .25rem 0 0; padding-left: 1.25rem; }
     .path-steps li { padding: .15rem 0; }
     .inline-link { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
@@ -293,25 +448,31 @@
     .palette { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .45rem; margin-top: .8rem; }
     .swatch { display: flex; min-height: 96px; flex-direction: column; justify-content: end; padding: .4rem; border: 1px solid var(--line); text-align: left; cursor: pointer; }
     .swatch span { width: fit-content; padding: .1rem .25rem; background: var(--surface); color: var(--ink); font-size: .7rem; font-weight: 800; }
+    .swatch strong { width: fit-content; margin-bottom: .2rem; padding: .12rem .25rem; background: var(--surface); color: var(--ink); font-size: .64rem; }
     .color-value-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; padding: .4rem 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 30%, transparent); }
     .color-value-row:last-child { border-bottom: 0; }
     .color-value-row .button { min-height: 32px; padding: .3rem .5rem; font-size: .75rem; }
     .contrast-sample { padding: 1.2rem; border: 2px solid var(--line); font-size: 1.3rem; font-weight: 700; }
     .preview-box { padding: 1rem; border: 1px dashed var(--line); background: var(--surface-2); }
     .font-preview { min-height: 130px; }
+    .pairing-recommendation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; margin-top: .75rem; }
+    .pairing-option { align-items: start; flex-direction: column; min-height: 82px; text-align: left; }
+    .pairing-option strong { font-size: .82rem; }
+    .pairing-option span { color: var(--muted); font-size: .72rem; }
+    .palette-note { margin-top: .7rem; }
     .file-preview { display: block; max-width: 100%; max-height: 220px; margin: .7rem 0; object-fit: contain; }
     .ratio-list { display: grid; gap: .5rem; margin-top: .8rem; }
     .ratio-row { display: grid; grid-template-columns: minmax(110px, .8fr) 1fr auto; gap: .5rem; align-items: center; font-size: .82rem; }
     .ratio-bar { height: 14px; border: 1px solid var(--line); background: var(--surface-2); }
     .ratio-bar span { display: block; height: 100%; background: var(--accent); }
-    details { border: 2px solid var(--line); background: var(--surface); }
+    details { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
     details + details { margin-top: .55rem; }
     summary { padding: .85rem 1rem; font-weight: 800; cursor: pointer; }
     details .details-body { padding: 0 1rem 1rem; }
     details .details-body p:last-child { margin-bottom: 0; }
     .format-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: .75rem; }
     .format-grid details { margin: 0; }
-    .format-grid details[open] { box-shadow: 3px 3px 0 var(--accent); }
+    .format-grid details[open] { box-shadow: 0 8px 22px rgba(32,37,34,.08); }
     .good { color: var(--green); font-weight: 700; }
     .bad { color: var(--accent); font-weight: 700; }
     .learn-card { min-height: 200px; }
@@ -376,6 +537,26 @@
       .header-main { flex-wrap: wrap; gap: .5rem; }
       .header-actions { flex: 1 1 100%; }
       .header-search { flex: 1; width: auto; }
+      .nav-scroll { overflow: visible; }
+      .main-nav { width: 100%; min-width: 0; align-items: center; }
+      .main-nav > a { display: none; }
+      .nav-scroll { overflow: visible; }
+      .main-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        gap: 0;
+        padding: .35rem 1rem .6rem;
+      }
+      .main-nav a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 22%, transparent);
+      }
+      .simple-start-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .section-head { align-items: start; flex-direction: column; }
       .split, .grid-2, .quiz-grid, .footer-inner { grid-template-columns: 1fr; }
       .lab-grid { grid-template-columns: minmax(0, 1fr); }
@@ -385,6 +566,7 @@
       .art-grid { grid-template-columns: repeat(2, 1fr); }
       .compare-panel { align-items: start; flex-direction: column; }
       .glossary { columns: 1; }
+      .pairing-recommendation { grid-template-columns: 1fr; }
       th, td { padding: .6rem; }
     }
     @media (max-width: 420px) {
@@ -403,35 +585,53 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-main">
-      <a class="brand" href="#home" aria-label="Free Design Toolkit home">FREE DESIGN<br>TOOLKIT<span class="accent-text">.</span></a>
+      <a class="brand" href="#home" aria-label="Free Design Toolkit home">Free Design<br>Toolkit<span class="accent-text">.</span></a>
       <div class="header-actions">
         <label class="visually-hidden" for="header-search">Search all pages</label>
-        <input class="header-search" id="header-search" type="search" placeholder="Search everything… ( / )" autocomplete="off">
+        <input class="header-search" id="header-search" type="search" placeholder="Search tools or topics…" autocomplete="off">
         <button class="theme-button" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle light and dark mode">◐</button>
       </div>
     </div>
     <div class="nav-scroll">
       <nav class="main-nav" aria-label="Main navigation">
-        <a href="#home">Home</a><a href="#tools">Tools</a><a href="#ai">AI</a><a href="#formats">Formats</a><a href="#learn">Learn</a><a href="#workflows">Workflows</a><a href="#prompts">Prompts</a><a href="#inspiration">Inspiration</a><a href="#resources">Resources</a><a href="#lab">Tools Lab</a><a href="#downloads">Downloads</a><a href="#alternatives">Alternatives</a><a href="#about">About / Contact</a>
+        <a href="#home" data-page-link="home">Home</a>
+        <a href="#tools" data-page-link="tools">Tools</a>
+        <a href="#learn" data-page-link="learn">Learn</a>
+        <a href="#lab" data-page-link="lab">Tools Lab</a>
+        <a href="#alternatives" data-page-link="alternatives">Alternatives</a>
+        <a href="#ai" data-page-link="ai">AI generators</a>
+        <a href="#formats" data-page-link="formats">File formats</a>
+        <a href="#workflows" data-page-link="workflows">Workflows</a>
+        <a href="#prompts" data-page-link="prompts">Prompts</a>
+        <a href="#inspiration" data-page-link="inspiration">Inspiration</a>
+        <a href="#resources" data-page-link="resources">Resources</a>
+        <a href="#downloads" data-page-link="downloads">Downloads</a>
+        <a href="#about" data-page-link="about">About / Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <p class="eyebrow">Good design. Open doors.</p>
-      <h1 id="hero-title">Everything a designer needs. <span>Zero cost.</span></h1>
-      <p class="hero-copy">A field guide to free tools, smarter workflows, and the little design details that make a big difference. Made for curious creators, not gatekeeping.</p>
+      <p class="eyebrow">Start with what you want to make</p>
+      <h1 id="hero-title">Find the right free design tool<span>.</span></h1>
+      <p class="hero-copy">Choose a task below or search for a tool. No account is needed to browse.</p>
       <div class="search-wrap">
-        <label for="hero-search">Search tools, guides, formats, prompts &amp; more</label>
+        <label for="hero-search">Search by tool, job, or topic</label>
         <div class="hero-search">
-          <input id="hero-search" type="search" placeholder="Try “logo”, “contrast”, “SVG”…" autocomplete="off">
+          <input id="hero-search" type="search" placeholder="Try “logo”, “font”, or “resize image”…" autocomplete="off">
           <button type="button" id="clear-search" aria-label="Clear search">Clear</button>
         </div>
-        <p class="search-status" id="search-status" role="status" aria-live="polite">Search every section. Press / or Ctrl+K to jump to search.</p>
+        <p class="search-status" id="search-status" role="status" aria-live="polite">Search all pages, tools, and guides.</p>
+      </div>
+      <div class="simple-start-grid" aria-label="Common design tasks">
+        <a class="simple-start-card" href="#tools" aria-label="Find tools for making a logo"><strong>Make a logo</strong><span>Generate ideas, edit vectors, export files</span></a>
+        <a class="simple-start-card" href="#lab" aria-label="Choose colors and fonts"><strong>Choose colors &amp; fonts</strong><span>Build palettes and test pairings</span></a>
+        <a class="simple-start-card" href="#workflows" aria-label="Follow a social post workflow"><strong>Create a social post</strong><span>Use a simple step-by-step workflow</span></a>
+        <a class="simple-start-card" href="#formats" aria-label="Learn which file format to use"><strong>Save or export a file</strong><span>Find the right format and settings</span></a>
       </div>
       <div class="hero-actions">
-        <a class="button button-primary" href="#tools">Explore the toolkit ↓</a>
+        <a class="button button-primary" href="#tools">Explore the toolkit</a>
         <a class="button" href="#lab">Open the tools lab</a>
       </div>
       <div class="quick-links" aria-label="Jump to a section">
@@ -439,9 +639,9 @@
       </div>
       <div class="stat-strip" aria-label="Toolkit overview">
         <div><strong>13</strong><span class="meta">toolkit sections</span></div>
-        <div><strong>0</strong><span class="meta">paywalls to browse</span></div>
-        <div><strong>∞</strong><span class="meta">ways to experiment</span></div>
-        <div><strong>100%</strong><span class="meta">check the terms first</span></div>
+        <div><strong>18</strong><span class="meta">directory entries</span></div>
+        <div><strong>9</strong><span class="meta">AI generators</span></div>
+        <div><strong>0</strong><span class="meta">independently verified</span></div>
       </div>
       <div class="notice notice-warning" style="margin-top:1.2rem">
         <strong>Verification note:</strong> product terms, free-plan limits, availability, and license details change. Entries marked <span class="tag tag-unknown">Unverified</span> have not been independently checked; dates shown are placeholders, not evidence of verification.
@@ -459,10 +659,10 @@
     <section aria-labelledby="week-title">
       <div class="split">
         <div data-search="Inkscape vector software free open source SVG logo illustration">
-          <p class="eyebrow">Tool of the week · rotating pick</p><h2 id="week-title">Inkscape<span class="accent-text">.</span></h2><p class="section-intro">A free, open-source vector editor for illustrations, icons, and scalable logo artwork. A solid place to learn vector thinking without a subscription.</p><div class="tag-row"><span class="tag">Vector software</span><span class="tag">Free / open source</span><span class="tag tag-ok">Commercial use OK · verify asset licenses</span></div><p class="meta">Last verified: <span class="tag tag-unknown">17 Nov 2026 · unverified placeholder</span></p><a class="button button-primary" href="https://inkscape.org/" target="_blank" rel="noopener noreferrer">Visit Inkscape ↗</a>
+          <p class="eyebrow">Editor’s pick</p><h2 id="week-title">Inkscape<span class="accent-text">.</span></h2><p class="section-intro">A free, open-source vector editor for illustrations, icons, and scalable logo artwork. A solid place to learn vector thinking without a subscription.</p><div class="tag-row"><span class="tag">Vector software</span><span class="tag">Free / open source</span><span class="tag tag-ok">Commercial use OK · verify asset licenses</span></div><p class="meta">Verification: <span class="tag tag-unknown">Not yet verified</span></p><a class="button button-primary" href="https://inkscape.org/" target="_blank" rel="noopener noreferrer">Visit Inkscape ↗</a>
         </div>
         <div class="card" data-search="What's new design lab palette contrast image QR ratios logo brand verification">
-          <p class="eyebrow">What's new</p><h3>Fresh from the toolkit</h3><ul class="path-steps"><li>New browser-based design lab for palettes, contrast, images, QR, and ratios.</li><li>Quick paths for logo and brand projects.</li><li>Every tool listing now flags verification status.</li></ul><p class="meta">Editorial feed · entries are not product release announcements.</p>
+          <p class="eyebrow">This edition</p><h3>What’s included</h3><ul class="path-steps"><li>13 standalone pages and 8 paid-tool alternative guides.</li><li>18 directory entries, with placeholders clearly labeled.</li><li>Browser-based color, contrast, QR, image, and ratio tools.</li></ul><p class="meta">A snapshot of the site—not a product release feed.</p>
         </div>
       </div>
     </section>
@@ -471,10 +671,10 @@
       <div class="section-head"><div><p class="eyebrow">No blank canvas panic</p><h2 id="paths-title">Pick a path<span class="accent-text">.</span></h2><p class="section-intro">A short route from idea to useful files. Make it yours as you go.</p></div></div>
       <div class="grid-2">
         <article class="card path-card" data-search="beginner logo mark vector logo export SVG PNG Recraft Inkscape">
-          <div><span class="tag tag-accent">Beginner path</span><h3 style="margin-top:.65rem">I'm making a logo</h3><ol class="path-steps"><li>Sketch a few shapes and wordmark ideas.</li><li><a class="inline-link" href="#tools">Explore Recraft</a> for concept directions (terms unverified).</li><li>Refine editable vectors with <a class="inline-link" href="#tools">Inkscape</a>.</li><li>Export SVG for scalable use and PNG for easy sharing.</li></ol></div><a class="inline-link" href="#formats">See the file-format guide →</a>
+          <div><span class="tag tag-accent">Beginner path · 4 steps</span><h3 style="margin-top:.65rem">I'm making a logo</h3><ol class="path-steps"><li>Sketch a few shapes and wordmark ideas.</li><li><a class="inline-link" href="tools.html#tool-recraft">Explore Recraft</a> for concept directions (terms unverified).</li><li>Refine editable vectors with <a class="inline-link" href="tools.html#tool-inkscape">Inkscape</a>.</li><li>Export SVG for scalable use and PNG for easy sharing.</li></ol></div><div class="button-row"><a class="inline-link" href="tools.html#tool-recraft">Start with Recraft →</a><a class="inline-link" href="#formats">See the file-format guide →</a></div>
         </article>
         <article class="card path-card" data-search="brand identity colors fonts logo brand kit Canva Google Fonts QR code">
-          <div><span class="tag tag-accent">Beginner path</span><h3 style="margin-top:.65rem">I'm starting a brand</h3><ol class="path-steps"><li>Choose a short list of colors and typefaces.</li><li>Build a simple logo and social layout in Canva or Adobe Express.</li><li>Collect approved assets in a tidy brand folder.</li><li>Check contrast, licenses, and export settings before sharing.</li></ol></div><a class="inline-link" href="#workflows">Follow the brand workflow →</a>
+          <div><span class="tag tag-accent">Beginner path · 4 steps</span><h3 style="margin-top:.65rem">I'm starting a brand</h3><ol class="path-steps"><li>Choose a short list of colors and typefaces.</li><li>Build a simple logo and social layout in <a class="inline-link" href="tools.html#tool-canva">Canva</a> or <a class="inline-link" href="tools.html#tool-adobe-express">Adobe Express</a>.</li><li>Collect approved assets in a tidy brand folder.</li><li>Check contrast, licenses, and export settings before sharing.</li></ol></div><a class="inline-link" href="#workflows">Follow the brand workflow →</a>
         </article>
       </div>
     </section>
@@ -483,7 +683,7 @@
       <div class="section-head"><div><p class="eyebrow">The directory</p><h2 id="tools-title">Tools worth knowing<span class="accent-text">.</span></h2><p class="section-intro">Filter by category, save favorites on this device, or compare a few options side by side.</p></div></div>
       <div class="notice notice-warning"><strong>Research status:</strong> tool descriptions below reflect the supplied brief and have not been independently verified. Free-plan limits and commercial-use terms are especially changeable; read the official terms before relying on them.</div>
       <div class="filters" id="tool-filters" role="group" aria-label="Filter tools by category"></div>
-      <div class="button-row" style="margin-bottom:1rem"><button id="favorites-filter" type="button" aria-pressed="false">♥ Show saved only</button><span class="meta" id="favorite-count">0 saved</span></div>
+      <div class="button-row" style="margin-bottom:1rem"><button id="favorites-filter" type="button" aria-pressed="false">♥ Show saved only</button><button id="favorites-clear" type="button" hidden>Clear saved tools</button><span class="meta" id="favorite-count">0 saved</span></div>
       <div class="grid" id="tool-grid"></div>
       <p class="empty-state" id="tools-empty">No tools match those filters. Try another category or search.</p>
       <div class="compare-panel" id="compare-panel" aria-live="polite"><p id="compare-count">Choose up to 3 tools to compare.</p><div class="button-row"><button type="button" id="compare-show" class="button-primary">Compare selected</button><button type="button" id="compare-clear">Clear</button></div></div>
@@ -492,14 +692,14 @@
 
     <section id="ai" aria-labelledby="ai-title">
       <div class="section-head"><div><p class="eyebrow">Make with intention</p><h2 id="ai-title">AI generators<span class="accent-text">.</span></h2><p class="section-intro">A practical comparison based on the supplied brief. This is not a guarantee of output rights or current product features.</p></div></div>
-      <div class="tag-row" style="margin-bottom:1rem"><span class="tag">Photorealistic · Meta AI</span><span class="tag">Logos / vectors · Recraft</span><span class="tag">Text in images · Ideogram</span><span class="tag">Commercial-safe intent · Firefly</span><span class="tag">Illustration · Leonardo</span></div>
+      <div class="tag-row" style="margin-bottom:1rem"><span class="tag">Photorealistic · Meta AI</span><span class="tag">Logos / vectors · Recraft</span><span class="tag">Text in images · Ideogram</span><span class="tag">Commercial-safe intent · Firefly</span><span class="tag">Illustration · Leonardo</span><span class="tag">Creative assistant · ChatGPT</span><span class="tag">Writing & critique · Claude</span></div>
       <div class="table-wrap"><table><thead><tr><th scope="col">Tool</th><th scope="col">Best for</th><th scope="col">Strengths</th><th scope="col">Weaknesses</th><th scope="col">Free limits</th><th scope="col">Commercial use?</th></tr></thead><tbody id="ai-body"></tbody></table></div>
       <div class="notice notice-warning" style="margin-top:1rem"><strong>Client-work tip:</strong> For client work, always read the tool's current terms on commercial use and ownership. Free limits change often. A “commercial-safe” label is not legal advice or a blanket guarantee.</div>
-      <p class="meta">Last updated: 17 Nov 2026 (editorial placeholder; details not independently verified).</p>
+      <p class="meta">Verification status: not independently checked. Free limits and terms change often.</p>
       <div class="panel" data-search="AI quiz choose generator best for text logo realistic photo illustration commercial safe social post general image" style="margin-top:1rem">
         <p class="eyebrow">Quick picker</p><h3>Which AI should I use?</h3>
         <div class="quiz-grid">
-          <div class="field"><label for="ai-need">What are you making?</label><select id="ai-need"><option value="photo">Realistic photo or quick idea</option><option value="vector">Logo, icon, or vector</option><option value="text">Poster with readable text</option><option value="commercial">Commercial-safe starting point</option><option value="illustration">Game art or illustration</option><option value="social">Social post or quick graphic</option><option value="general">General image or idea</option></select></div>
+          <div class="field"><label for="ai-need">What are you making?</label><select id="ai-need"><option value="photo">Realistic photo or quick idea</option><option value="vector">Logo, icon, or vector</option><option value="text">Poster with readable text</option><option value="commercial">Commercial-safe starting point</option><option value="illustration">Game art or illustration</option><option value="social">Social post or quick graphic</option><option value="general">General image or idea</option><option value="writing">Design copy or brand writing</option><option value="critique">Creative brief, critique, or planning</option></select></div>
           <div class="field"><label for="ai-priority">What matters most?</label><select id="ai-priority"><option value="easy">Ease and speed</option><option value="control">Creative control</option><option value="terms">Clearer commercial workflow</option></select></div>
         </div>
         <button type="button" id="ai-quiz-button">Show a starting point</button><div class="output-box" id="ai-quiz-result" role="status" aria-live="polite">Pick your needs to get a suggestion. Always verify current terms.</div>
@@ -542,7 +742,7 @@
         <div class="art-tile" role="img" aria-label="Abstract neutral palette with architectural blocks">Architecture · material palette</div>
       </div>
       <div class="grid-2" style="margin-top:1rem">
-        <article class="card" data-search="type specimen Playfair Display typography fonts serif"><h3>Type specimen</h3><p style="font:clamp(2rem,6vw,4rem)/1 'Playfair Display',serif">Make room<br>for the idea.</p><p class="meta">Playfair Display · editorial serif specimen. Browse usage and licenses at Google Fonts; verify each font's license.</p><a class="inline-link" href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">Explore Google Fonts ↗</a></article>
+        <article class="card" data-search="type specimen Newsreader typography fonts serif"><h3>Type specimen</h3><p style="font:clamp(2rem,6vw,4rem)/1 'Newsreader',Georgia,serif">Make room<br>for the idea.</p><p class="meta">Newsreader · editorial serif specimen. Browse usage and licenses at Google Fonts; verify each font's license.</p><a class="inline-link" href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">Explore Google Fonts ↗</a></article>
         <article class="card" data-search="color palette terracotta yellow navy cream olive"><h3>Palette study</h3><div class="palette-row" role="img" aria-label="Five-color palette: terracotta, pale yellow, deep navy, warm cream, and olive"><span style="background:#d85c3d"></span><span style="background:#f2c14e"></span><span style="background:#26364a"></span><span style="background:#f3ead9"></span><span style="background:#66734e"></span></div><p class="meta">A playful warm/cool mix to use as a moodboard seed—not a prescribed brand palette.</p><a class="inline-link" href="#lab">Remix this palette in the lab →</a></article>
       </div>
       <article class="quote-card" data-search="Virgil Abloh 3% rule Off-White quotation marks industrial labels remix design culture" style="margin-top:1rem">
@@ -560,9 +760,9 @@
     <section id="lab" aria-labelledby="lab-title">
       <div class="section-head"><div><p class="eyebrow">Small tools, right in your browser</p><h2 id="lab-title">Design tools lab<span class="accent-text">.</span></h2><p class="section-intro">These utilities run client-side in this page. Image files and QR content stay in your browser; no QR service is contacted.</p></div></div>
       <div class="lab-grid">
-        <article class="panel" data-search="color palette generator harmony HEX RGB HSL copy base color"><h3>Color palette generator</h3><p class="meta">Pick a base color, then copy HEX, RGB, or HSL values.</p><div class="field"><label for="base-color">Base color</label><input id="base-color" type="color" value="#ff4d00"></div><div class="field"><label for="palette-harmony">Harmony</label><select id="palette-harmony"><option value="complement">Complementary</option><option value="analogous">Analogous</option><option value="triadic">Triadic</option><option value="split">Split complementary</option></select></div><div class="palette" id="palette-output" aria-label="Generated palette"></div><div class="output-box" id="palette-values" aria-live="polite"></div></article>
+        <article class="panel" data-search="color palette generator harmony HEX RGB HSL copy base color brand editorial interface social packaging"><h3>Color palette generator</h3><p class="meta">Choose a project type, then build a practical five-color palette around a base color.</p><div class="form-grid"><div class="field"><label for="base-color">Base color</label><input id="base-color" type="color" value="#ff4d00"></div><div class="field"><label for="palette-purpose">Best for</label><select id="palette-purpose"><option value="brand">Brand identity</option><option value="editorial">Editorial and magazine</option><option value="interface">Digital product or interface</option><option value="social">Social and campaign</option><option value="packaging">Packaging and print</option></select></div></div><div class="field"><label for="palette-harmony">Harmony</label><select id="palette-harmony"><option value="complement">Complementary</option><option value="analogous">Analogous</option><option value="triadic">Triadic</option><option value="split">Split complementary</option></select></div><div class="palette" id="palette-output" aria-label="Generated palette"></div><p class="meta palette-note" id="palette-note" role="status" aria-live="polite"></p><div class="output-box" id="palette-values" aria-live="polite"></div><div class="button-row" style="margin-top:.6rem"><button type="button" class="copy-button" id="copy-palette-css">Copy CSS variables</button></div></article>
         <article class="panel" data-search="WCAG contrast checker text background color ratio AA AAA accessibility"><h3>Contrast checker</h3><p class="meta">WCAG contrast ratio estimate for the selected text and background colors.</p><div class="form-grid"><div class="field"><label for="contrast-fg">Text color</label><input id="contrast-fg" type="color" value="#171714"></div><div class="field"><label for="contrast-bg">Background</label><input id="contrast-bg" type="color" value="#ffffff"></div></div><div class="contrast-sample" id="contrast-sample">Readable is usable.</div><div class="output-box" id="contrast-result" role="status" aria-live="polite"></div><p class="meta">WCAG ratios are a guide; check the full interface, font size, and non-text contrast requirements.</p></article>
-        <article class="panel" data-search="font pairing tester Google Fonts typeface preview custom text heading body"><h3>Font pairing tester</h3><p class="meta">Preview Google Fonts pairings. Font download is served by Google Fonts; preview text stays on this page.</p><div class="form-grid"><div class="field"><label for="font-heading">Heading font</label><select id="font-heading"><option>Archivo Black</option><option>Manrope</option><option>Playfair Display</option><option>Space Grotesk</option><option>DM Sans</option></select></div><div class="field"><label for="font-body">Body font</label><select id="font-body"><option>Space Grotesk</option><option>DM Sans</option><option>Manrope</option><option>Playfair Display</option><option>Archivo Black</option></select></div></div><div class="field"><label for="font-copy">Your sample text</label><input id="font-copy" type="text" value="Make good things happen."></div><div class="preview-box font-preview"><h4 id="font-preview-heading">Make good things happen.</h4><p id="font-preview-body">The right type pairing can bring rhythm, clarity, and a little personality to a layout.</p></div></article>
+        <article class="panel" data-search="font pairing tester Google Fonts typeface preview custom text heading body brand editorial interface social poster luxury"><h3>Font pairing tester</h3><p class="meta">Start with a project type, or choose individual fonts for a custom test.</p><div class="field"><label for="font-purpose">What are you designing?</label><select id="font-purpose"><option value="brand">Brand identity / logo</option><option value="editorial">Editorial / magazine</option><option value="interface">App / dashboard / website</option><option value="social">Social post / campaign</option><option value="poster">Poster / event</option><option value="luxury">Luxury / boutique</option></select></div><div class="pairing-recommendation" id="pairing-recommendations" aria-label="Recommended font pairings"></div><div class="form-grid"><div class="field"><label for="font-heading">Heading font</label><select id="font-heading"><option>Newsreader</option><option>IBM Plex Mono</option><option>Public Sans</option><option>Georgia</option></select></div><div class="field"><label for="font-body">Body font</label><select id="font-body"><option>Public Sans</option><option>Newsreader</option><option>IBM Plex Mono</option><option>Trebuchet MS</option></select></div></div><div class="field"><label for="font-copy">Your sample text</label><input id="font-copy" type="text" value="Make good things happen."></div><p class="meta" id="pairing-note" role="status" aria-live="polite"></p><div class="preview-box font-preview"><h4 id="font-preview-heading">Make good things happen.</h4><p id="font-preview-body">The right type pairing can bring rhythm, clarity, and a little personality to a layout.</p></div></article>
         <article class="panel" data-search="image converter compress convert PNG JPG WebP browser canvas local file"><h3>Image converter</h3><p class="meta">Convert a local image to PNG, JPG, or WebP using the browser canvas.</p><div class="field"><label for="image-file">Choose an image</label><input id="image-file" type="file" accept="image/*"></div><div class="form-grid"><div class="field"><label for="image-type">Output format</label><select id="image-type"><option value="image/webp">WebP</option><option value="image/jpeg">JPG</option><option value="image/png">PNG</option></select></div><div class="field"><label for="image-quality">Quality (JPG/WebP)</label><input id="image-quality" type="number" min=".1" max="1" step=".1" value=".85"></div></div><button type="button" id="convert-image">Convert image</button><img id="image-preview" class="file-preview" alt="Preview of the selected image" hidden><div class="output-box" id="image-output" role="status" aria-live="polite">No image selected.</div><a id="image-download" class="button" hidden download="converted-image">Download converted image</a></article>
         <article class="panel" data-search="QR code generator QR Code Monkey link URL branded code browser"><h3>Quick QR code</h3><p class="meta">Create a simple QR code in-browser. For branded codes, try QR Code Monkey and verify its current terms.</p><div class="field"><label for="qr-content">Text or URL to encode</label><input id="qr-content" type="url" placeholder="https://example.com"></div><button type="button" id="make-qr">Generate QR code</button><div class="output-box" id="qr-output" role="status" aria-live="polite">Enter a URL or text. The content is encoded locally in your browser.</div><canvas id="qr-canvas" hidden aria-label="Generated QR code"></canvas><a id="qr-download" class="button" hidden download="design-toolkit-qr.png">Download PNG</a><p><a class="inline-link" href="https://www.qrcode-monkey.com/" target="_blank" rel="noopener noreferrer">Branded QR codes at QR Code Monkey ↗</a></p></article>
         <article class="panel" data-search="aspect ratio social media sizes calculator dimensions pixels square portrait story landscape"><h3>Aspect ratio &amp; social sizes</h3><p class="meta">Calculate a ratio and compare common canvas sizes. Platform specs may change; verify before publishing.</p><div class="form-grid"><div class="field"><label for="ratio-width">Width (px)</label><input id="ratio-width" type="number" min="1" value="1080"></div><div class="field"><label for="ratio-height">Height (px)</label><input id="ratio-height" type="number" min="1" value="1080"></div></div><button type="button" id="calculate-ratio">Calculate</button><div class="output-box" id="ratio-output" aria-live="polite"></div><div class="meta">Common starting points: square 1080×1080 · portrait 1080×1350 · story 1080×1920 · landscape 1200×630.</div></article>
@@ -602,16 +802,38 @@
       </div>
     </section>
   </main>
+  <a class="button back-to-top" href="#main" aria-label="Back to top">↑ Top</a>
+  <button class="assistant-launcher" id="assistant-launcher" type="button" aria-controls="assistant-panel" aria-expanded="false">Ask for help</button>
+  <aside class="assistant-panel" id="assistant-panel" aria-label="Design assistant" hidden>
+    <div class="assistant-heading">
+      <div><h2 id="assistant-title">Design helper</h2><p>Friendly guidance for your next design step</p></div>
+      <button class="assistant-close" id="assistant-close" type="button" aria-label="Close design assistant">Close</button>
+    </div>
+    <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text">
+      <div class="assistant-message" data-role="assistant"><p>Hi! Tell me what you’re making, and I’ll help you choose a next step, tool, color, or file type. You don’t need to know the technical terms.</p></div>
+    </div>
+    <div class="assistant-suggestions" id="assistant-suggestions" aria-label="Suggested questions">
+      <button type="button" data-assistant-prompt="I want to make a logo. Where should I start?">Make a logo</button>
+      <button type="button" data-assistant-prompt="Help me choose colors for a project.">Choose colors</button>
+      <button type="button" data-assistant-prompt="Which file format should I use for my design?">Pick a file type</button>
+    </div>
+    <p class="assistant-status" id="assistant-status" role="status" aria-live="polite"></p>
+    <form class="assistant-form" id="assistant-form">
+      <label class="visually-hidden" for="assistant-input">Ask the design assistant</label>
+      <textarea class="assistant-input" id="assistant-input" rows="1" maxlength="2000" placeholder="What are you trying to make?"></textarea>
+      <button class="assistant-send" id="assistant-send" type="submit">Send</button>
+    </form>
+  </aside>
   <footer class="footer">
     <div class="footer-inner">
-      <div><a class="brand" href="#home">FREE DESIGN TOOLKIT<span class="accent-text">.</span></a><p class="meta">Make more. Spend less. Verify the fine print.</p><p class="meta">© <span id="year"></span> Free Design Toolkit · Independent resource hub concept.</p></div>
+      <div><a class="brand" href="#home">Free Design Toolkit<span class="accent-text">.</span></a><p class="meta">Make more. Spend less. Verify the fine print.</p><p class="meta">© <span id="year"></span> Free Design Toolkit · A practical resource hub for creators.</p></div>
       <div><p><strong>Jump around</strong></p><div class="footer-links"><a href="#tools">Tools</a><a href="#learn">Learn</a><a href="#lab">Tools Lab</a><a href="#downloads">Downloads</a><a href="#about">Suggest a tool</a></div><p class="meta">Accessibility: semantic landmarks, keyboard navigation, visible focus, labels, and reduced-motion support are included. Please report issues through the suggestion form.</p></div>
     </div>
   </footer>
 
   <script>
     "use strict";
-    const VERIFIED_PLACEHOLDER = "17 Nov 2026 · unverified placeholder";
+    const VERIFIED_PLACEHOLDER = "Not yet verified";
     const tools = [
       {name:"Flaticon",category:"Icons",description:"A large icon library for interface and graphic projects.",best:"Quick icon sourcing",limits:"Free-plan attribution and download limits need verification.",pros:"Broad library; multiple formats may be available.",cons:"Attribution and asset-specific license may apply.",license:"Check each asset's current license.",url:"https://www.flaticon.com/",status:"Unverified"},
       {name:"QR Code Monkey",category:"QR Codes",description:"Generate QR codes with visual customization options.",best:"Branded QR concepts",limits:"Limits and reuse terms need verification.",pros:"Branding options; supports common QR use cases.",cons:"Check destination, tracking, and print quality before use.",license:"Verify current terms.",url:"https://www.qrcode-monkey.com/",status:"Unverified"},
@@ -619,6 +841,8 @@
       {name:"Adobe Express",category:"Design platforms",description:"Quick branded graphics and content in Adobe's web and mobile tools.",best:"Social graphics",limits:"Free and premium feature availability needs verification.",pros:"Templates and Adobe integrations.",cons:"Features and assets vary by plan and region.",license:"Verify terms for each asset and output.",url:"https://www.adobe.com/express/",status:"Unverified"},
       {name:"Recraft",category:"AI",description:"AI-assisted image generation with vector-oriented workflows.",best:"Logos, icons, vector concepts",limits:"Free tier and public-output rules need verification.",pros:"Vector workflow; style consistency is highlighted in the supplied brief.",cons:"Free limits and output visibility may change.",license:"Verify output ownership and commercial terms.",url:"https://www.recraft.ai/",status:"Unverified"},
       {name:"Adobe Firefly",category:"AI",description:"Adobe's generative AI tools for images and design workflows.",best:"Adobe-connected generation",limits:"Free credits and feature access need verification.",pros:"Integrates with Adobe apps; trained on licensed content according to Adobe's product positioning.",cons:"Credit limits; commercial terms depend on product and context.",license:"Review current Adobe terms; no blanket guarantee.",url:"https://firefly.adobe.com/",status:"Unverified"},
+      {name:"ChatGPT",category:"AI",description:"Conversational AI for briefs, concepts, copy, planning, and supported creative workflows.",best:"Creative planning and design copy",limits:"Free and paid tiers; usage limits and image features need verification.",pros:"Versatile; useful for ideation, critiques, and document work.",cons:"Generated visuals may need a specialized tool; outputs require review.",license:"Check current OpenAI terms for output ownership and commercial use.",url:"https://chatgpt.com/",status:"Unverified"},
+      {name:"Claude",category:"AI",description:"Conversational AI for writing, document analysis, critiques, and structured thinking.",best:"Writing and creative strategy",limits:"Free messages and feature availability need verification.",pros:"Strong long-form reasoning and useful structured feedback.",cons:"Primary strengths are text and analysis; image generation varies.",license:"Check current Anthropic terms for output use and commercial rights.",url:"https://claude.ai/",status:"Unverified"},
       {name:"Google Fonts",category:"Fonts",description:"Browse type families for web and design projects.",best:"Finding web-ready type",limits:"Free to browse and download; check the selected font's license.",pros:"Large searchable catalog; common web embed options.",cons:"Font quality and language coverage vary by family.",license:"Many families use open licenses; verify each font.",url:"https://fonts.google.com/",status:"Unverified"},
       {name:"Fonts In Use",category:"Fonts",description:"An archive of typefaces shown in real-world design.",best:"Typography research",limits:"Free to browse; not a font download service.",pros:"Useful visual references and context.",cons:"Reference entries do not grant rights to the displayed work or fonts.",license:"Reference only; follow the source licenses.",url:"https://fontsinuse.com/",status:"Unverified"},
       {name:"iLoveIMG",category:"Image tools",description:"Browser tools for resizing, compressing, converting, and cropping images.",best:"Quick image edits",limits:"File, batch, and plan limits need verification.",pros:"Convenient common image operations.",cons:"Check upload privacy, file-size limits, and retention terms.",license:"Use only files you have rights to; verify service terms.",url:"https://www.iloveimg.com/",status:"Unverified"},
@@ -637,7 +861,9 @@
       {name:"Ideogram",best:"Text inside images and posters",strengths:"Strong typography rendering (as described in the supplied brief).",weaknesses:"Daily limits; free images may be public.",limits:"Daily limits: verify.",commercial:"Verify current terms and visibility.",badge:"Text in images",url:"https://ideogram.ai/"},
       {name:"Leonardo AI",best:"Game art, concept art, illustration",strengths:"Many styles and models; fine control.",weaknesses:"Token-based daily limits.",limits:"Token allowance: verify.",commercial:"Verify current plan and output terms.",badge:"Illustration",url:"https://leonardo.ai/"},
       {name:"Microsoft Designer / Copilot",best:"Social posts and quick graphics",strengths:"Easy to use; free access with an account is stated in the supplied brief.",weaknesses:"Less artistic range.",limits:"Availability and account requirements: verify.",commercial:"Check Microsoft terms for the feature and output.",badge:"Quick graphics",url:"https://designer.microsoft.com/"},
-      {name:"Google ImageFX / Gemini",best:"General images and ideas",strengths:"Clean results and a simple interface (as described in the supplied brief).",weaknesses:"Availability varies by region.",limits:"Regional availability and limits: verify.",commercial:"Check current Google terms and regional rules.",badge:"General ideas",url:"https://gemini.google.com/"}
+      {name:"Google ImageFX / Gemini",best:"General images and ideas",strengths:"Clean results and a simple interface (as described in the supplied brief).",weaknesses:"Availability varies by region.",limits:"Regional availability and limits: verify.",commercial:"Check current Google terms and regional rules.",badge:"General ideas",url:"https://gemini.google.com/"},
+      {name:"ChatGPT",best:"Creative planning, design copy, and concept iteration",strengths:"Versatile conversation, image and document workflows vary by plan and feature.",weaknesses:"Visual generation and editing are less direct than specialized image tools.",limits:"Free tier availability and usage limits: verify.",commercial:"Check current OpenAI terms and workspace or plan rules.",badge:"Creative assistant",url:"https://chatgpt.com/"},
+      {name:"Claude",best:"Writing, critique, briefs, and structured creative thinking",strengths:"Strong long-form reasoning and document analysis.",weaknesses:"Image-generation features are not the primary tool; availability and limits vary.",limits:"Free message and usage limits: verify.",commercial:"Check current Anthropic terms and applicable plan rules.",badge:"Writing & critique",url:"https://claude.ai/"}
     ];
     const formats = [
       ["SVG","Logos, icons, and illustrations","Infinitely scalable; often small; editable vector paths.","Not suited to photos or complex raster textures.","Avoid for photographs, complex textures, or apps that do not support SVG."],
@@ -794,10 +1020,15 @@
         <div class="card-title-row"><h3>${safeText(tool.name)}</h3><span class="tag">${safeText(tool.category)}</span></div>
         <div class="tag-row"><span class="tag">${freeTag}</span><span class="tag ${commercialOk?"tag-ok":"tag-unknown"}">${commercialOk?"Commercial use OK · verify assets":"Commercial terms unverified"}</span>${tool.status==="Placeholder"?'<span class="tag tag-accent">Placeholder</span>':''}</div>
         <p>${safeText(tool.description)}</p><p class="meta"><strong>Best for:</strong> ${safeText(tool.best)}</p>
-        <p class="meta"><strong>Free-plan limits:</strong> ${safeText(tool.limits)}</p>
-        <p class="meta"><strong>Pros:</strong> ${safeText(tool.pros)}</p><p class="meta"><strong>Cons:</strong> ${safeText(tool.cons)}</p>
-        <p class="meta"><strong>License:</strong> ${safeText(tool.license)}</p>
-        <p class="meta"><strong>Last verified:</strong> <span class="tag tag-unknown">${VERIFIED_PLACEHOLDER}</span></p>
+        <details class="tool-details">
+          <summary>Free limits, pros &amp; license</summary>
+          <div class="tool-details-body">
+            <p class="meta"><strong>Free-plan limits:</strong> ${safeText(tool.limits)}</p>
+            <p class="meta"><strong>Pros:</strong> ${safeText(tool.pros)}</p><p class="meta"><strong>Cons:</strong> ${safeText(tool.cons)}</p>
+            <p class="meta"><strong>License:</strong> ${safeText(tool.license)}</p>
+          </div>
+        </details>
+        <p class="meta"><strong>Verification:</strong> <span class="tag tag-unknown">${VERIFIED_PLACEHOLDER}</span></p>
         <div class="row-bottom">${noUrl?'<span class="tag tag-unknown">Verify exact tool and URL</span>':`<a class="button" href="${safeText(tool.url)}" target="_blank" rel="noopener noreferrer">Visit ↗</a>`}
           <button type="button" class="fav" data-favorite="${safeText(tool.name)}" aria-pressed="${state.favorites.includes(tool.name)}" aria-label="${state.favorites.includes(tool.name)?"Remove":"Add"} ${safeText(tool.name)} ${state.favorites.includes(tool.name)?"from":"to"} favorites">${state.favorites.includes(tool.name)?"♥ Saved":"♡ Save"}</button>
           ${featured?"":`<button type="button" class="compare-toggle" data-compare="${safeText(tool.name)}" aria-pressed="${state.compare.has(tool.name)}" aria-label="Select ${safeText(tool.name)} for comparison">Compare</button>`}
@@ -817,6 +1048,11 @@
       $("#tool-grid").innerHTML=list.map(tool=>toolCard(tool)).join("");
       $("#tools-empty").style.display=list.length?"none":"block";
       $("#favorite-count").textContent=`${state.favorites.length} saved`;
+      const clearButton=$("#favorites-clear");
+      if(clearButton){
+        clearButton.hidden=state.favorites.length===0;
+        clearButton.disabled=state.favorites.length===0;
+      }
       $("#favorites-filter").setAttribute("aria-pressed",String(state.favoritesOnly));
       $("#favorites-filter").textContent=state.favoritesOnly?"♥ Show all tools":"♥ Show saved only";
       $("#compare-panel").classList.toggle("active",state.compare.size>0);
@@ -824,7 +1060,7 @@
     }
     function renderAI() {
       if(!$("#ai-body")) return;
-      $("#ai-body").innerHTML=aiTools.map(tool=>`<tr data-search="${safeText(Object.values(tool).join(" "))}"><td><a class="table-link" href="${safeText(tool.url)}" target="_blank" rel="noopener noreferrer">${safeText(tool.name)} ↗</a><br><span class="tag">${safeText(tool.badge)}</span><br><span class="meta">Last verified: ${VERIFIED_PLACEHOLDER}</span></td><td>${safeText(tool.best)}</td><td>${safeText(tool.strengths)}</td><td>${safeText(tool.weaknesses)}</td><td>${safeText(tool.limits)}</td><td>${safeText(tool.commercial)} <span class="tag tag-unknown">Unverified</span></td></tr>`).join("");
+      $("#ai-body").innerHTML=aiTools.map(tool=>`<tr data-search="${safeText(Object.values(tool).join(" "))}"><td><a class="table-link" href="${safeText(tool.url)}" target="_blank" rel="noopener noreferrer">${safeText(tool.name)} ↗</a><br><span class="tag">${safeText(tool.badge)}</span><br><span class="meta">Verification: ${VERIFIED_PLACEHOLDER}</span></td><td>${safeText(tool.best)}</td><td>${safeText(tool.strengths)}</td><td>${safeText(tool.weaknesses)}</td><td>${safeText(tool.limits)}</td><td>${safeText(tool.commercial)} <span class="tag tag-unknown">Unverified</span></td></tr>`).join("");
     }
     function renderFormats() {
       if(!$("#format-grid")) return;
@@ -884,8 +1120,16 @@
       const results=$("#global-search-results");
       if(results){
         const found=(window.FDT_PAGE_INDEX||[]).filter(item=>`${item.title} ${item.search}`.toLowerCase().includes(state.query)).slice(0,12);
-        results.innerHTML=state.query?found.map(item=>`<a class="search-result" href="${safeText((window.FDT_BASE_PATH||"")+item.url)}"><strong>${safeText(item.title)}</strong><span>${safeText(item.description)}</span></a>`).join(""):"";
-        results.hidden=!state.query||!found.length;
+        if(!state.query){
+          results.innerHTML="";
+          results.hidden=true;
+        }else if(found.length){
+          results.innerHTML=`<p class="search-results-heading">${found.length===12?"Top 12 results":"Matching pages"}</p>`+found.map(item=>`<a class="search-result" href="${safeText((window.FDT_BASE_PATH||"")+item.url)}"><strong>${safeText(item.title)}</strong><span>${safeText(item.description)}</span></a>`).join("");
+          results.hidden=false;
+        }else{
+          results.innerHTML=`<div class="search-empty"><strong>No results for “${safeText(query.trim())}”</strong><span>Try “logo”, “fonts”, “SVG”, or “contrast”.</span></div>`;
+          results.hidden=false;
+        }
       }
       const text=state.query?`${matches} items on this page; ${((window.FDT_PAGE_INDEX||[]).filter(item=>`${item.title} ${item.search}`.toLowerCase().includes(state.query)).length)} results across all pages.`:"Search every page. Press / or Ctrl+K to jump to search.";
       status(text);
@@ -894,7 +1138,7 @@
       if(!$("#comparison-output")) return;
       const selected=tools.filter(tool=>state.compare.has(tool.name));
       if (!selected.length) { $("#comparison-output").innerHTML=""; return; }
-      $("#comparison-output").innerHTML=`<h3>Tool comparison</h3><div class="table-wrap"><table><thead><tr><th scope="col">Detail</th>${selected.map(tool=>`<th scope="col">${safeText(tool.name)}</th>`).join("")}</tr></thead><tbody>${[["Category","category"],["Best for","best"],["Free-plan limits","limits"],["Pros","pros"],["Cons","cons"],["License","license"],["Last verified",null]].map(([label,key])=>`<tr><th scope="row">${label}</th>${selected.map(tool=>`<td>${key?safeText(tool[key]):VERIFIED_PLACEHOLDER}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+      $("#comparison-output").innerHTML=`<h3>Tool comparison</h3><div class="table-wrap"><table><thead><tr><th scope="col">Detail</th>${selected.map(tool=>`<th scope="col">${safeText(tool.name)}</th>`).join("")}</tr></thead><tbody>${[["Category","category"],["Best for","best"],["Free-plan limits","limits"],["Pros","pros"],["Cons","cons"],["License","license"],["Verification status",null]].map(([label,key])=>`<tr><th scope="row">${label}</th>${selected.map(tool=>`<td>${key?safeText(tool[key]):VERIFIED_PLACEHOLDER}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
     }
     function setTheme(theme) {
       document.documentElement.dataset.theme=theme;
@@ -935,6 +1179,15 @@
       state.category=button.dataset.categoryFilter; renderTools();
     });
     listen("#favorites-filter","click",()=>{state.favoritesOnly=!state.favoritesOnly;renderTools();});
+    listen("#favorites-clear","click",()=>{
+      if(!state.favorites.length)return;
+      state.favorites=[];
+      state.favoritesOnly=false;
+      saveFavorites();
+      renderFeatured();
+      renderTools();
+      status("All saved tools cleared.");
+    });
     document.addEventListener("click",event=>{
       const favorite=event.target.closest("[data-favorite]");
       if(favorite){
@@ -968,7 +1221,11 @@
       const tag=(event.target.tagName||"").toLowerCase();
       const typing=["input","textarea","select"].includes(tag)||event.target.isContentEditable;
       if ((event.key==="/"&&!typing)||(event.key.toLowerCase()==="k"&&(event.ctrlKey||event.metaKey))) { event.preventDefault();$("#header-search")?.focus(); }
-      if(event.key==="Escape"&&(document.activeElement===$("#header-search")||document.activeElement===$("#hero-search"))) syncSearch("");
+      if(event.key==="Escape"){
+        if(document.activeElement===$("#header-search")||document.activeElement===$("#hero-search")){
+          syncSearch("");
+        }
+      }
     });
     const navLinks=$$(".main-nav a");
     const currentPage=document.body.dataset.page;
@@ -987,20 +1244,45 @@
       if(h<60)rgb=[c,x,0];else if(h<120)rgb=[x,c,0];else if(h<180)rgb=[0,c,x];else if(h<240)rgb=[0,x,c];else if(h<300)rgb=[x,0,c];else rgb=[c,0,x];
       return rgbToHex({r:(rgb[0]+m)*255,g:(rgb[1]+m)*255,b:(rgb[2]+m)*255});
     }
+    let generatedPalette=[];
     function generatePalette() {
-      const color=$("#base-color").value;const {h,s,l}=rgbToHsl(hexToRgb(color));const mode=$("#palette-harmony").value;
-      const offsets=mode==="analogous"?[-30,-15,0,15,30]:mode==="triadic"?[0,120,240,180,60]:mode==="split"?[0,150,210,30,330]:[0,0,180,30,330];
-      const colors=offsets.map((offset,index)=>hslToHex(h+offset,Math.max(28,s),Math.max(22,Math.min(78,l+(index===0?0:(index%2?7:-7))))));
-      colors[0]=color.toUpperCase();
-      $("#palette-output").innerHTML=colors.map((hex,index)=>`<button class="swatch" type="button" style="background:${hex}" data-color="${hex}" aria-label="Copy color ${hex}"><span>${hex}</span></button>`).join("");
-      $("#palette-values").innerHTML=colors.map(hex=>{
+      const color=$("#base-color").value;const {h,s,l}=rgbToHsl(hexToRgb(color));const mode=$("#palette-harmony").value;const purpose=$("#palette-purpose")?.value||"brand";
+      const offsets=mode==="analogous"?[-28,-14,0,14,28]:mode==="triadic"?[0,120,240,30,210]:mode==="split"?[0,150,210,20,200]:[0,0,180,42,222];
+      const purposeStyle={
+        brand:{sat:0,lum:[0,18,-32,44,-18],label:"Use: primary, supporting, accent, light neutral, deep neutral"},
+        editorial:{sat:-8,lum:[0,24,-26,48,-20],label:"Use: headline, secondary, accent, paper, ink"},
+        interface:{sat:-15,lum:[0,28,-35,52,-24],label:"Use: action, hover, dark state, surface, text"},
+        social:{sat:12,lum:[0,16,-20,42,-12],label:"Use: hero, highlight, contrast, background, type"},
+        packaging:{sat:-3,lum:[0,20,-30,46,-16],label:"Use: label, detail, accent, substrate, ink"}
+      }[purpose];
+      const roles={
+        brand:["Primary","Support","Accent","Soft neutral","Deep neutral"],
+        editorial:["Headline","Secondary","Accent","Paper","Ink"],
+        interface:["Action","Hover","Dark state","Surface","Text"],
+        social:["Hero","Highlight","Contrast","Background","Type"],
+        packaging:["Label","Detail","Accent","Substrate","Ink"]
+      }[purpose];
+      generatedPalette=offsets.map((offset,index)=>{
+        if(index===0)return color.toUpperCase();
+        const saturation=Math.max(12,Math.min(92,s+purposeStyle.sat+(index===2?8:0)));
+        const lightness=Math.max(8,Math.min(88,l+purposeStyle.lum[index]));
+        return hslToHex(h+offset,saturation,lightness);
+      });
+      $("#palette-output").innerHTML=generatedPalette.map((hex,index)=>`<button class="swatch" type="button" style="background:${hex}" data-color="${hex}" aria-label="Copy ${roles[index]} color ${hex}"><strong>${roles[index]}</strong><span>${hex}</span></button>`).join("");
+      $("#palette-values").innerHTML=generatedPalette.map((hex,index)=>{
         const rgb=hexToRgb(hex),hsl=rgbToHsl(rgb);
         const values=[["HEX",hex],["RGB",`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`],["HSL",`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`]];
-        return `<div class="color-value-row"><strong>${hex}</strong>${values.map(([label,value])=>`<button class="button copy-button" type="button" data-copy="${safeText(value)}">${label}</button>`).join("")}</div>`;
+        return `<div class="color-value-row"><strong>${roles[index]} · ${hex}</strong>${values.map(([label,value])=>`<button class="button copy-button" type="button" data-copy="${safeText(value)}">${label}</button>`).join("")}</div>`;
       }).join("");
+      $("#palette-note").textContent=purposeStyle.label+". The deep/ink color is a candidate for text—check contrast against light surfaces.";
     }
-    listen("#base-color","input",generatePalette);listen("#palette-harmony","change",generatePalette);if($("#palette-output"))generatePalette();
+    listen("#base-color","input",generatePalette);listen("#palette-harmony","change",generatePalette);listen("#palette-purpose","change",generatePalette);if($("#palette-output"))generatePalette();
     listen("#palette-output","click",event=>{const swatch=event.target.closest("[data-color]");if(swatch)copyText(swatch.dataset.color,swatch);});
+    listen("#copy-palette-css","click",()=>{
+      if(!generatedPalette.length)return;
+      const names=["primary","support","accent","surface","ink"];
+      copyText(":root {\n"+generatedPalette.map((hex,index)=>`  --color-${names[index]}: ${hex};`).join("\n")+"\n}",$("#copy-palette-css"));
+    });
     function luminance(hex) {
       const rgb=hexToRgb(hex);
       const channels=[rgb.r,rgb.g,rgb.b].map(value=>{const c=value/255;return c<=.04045?c/12.92:((c+.055)/1.055)**2.4;});
@@ -1013,17 +1295,61 @@
       $("#contrast-result").textContent=`Contrast ratio: ${ratio.toFixed(2)}:1 · AA normal ${ratio>=4.5?"PASS":"FAIL"} · AA large ${ratio>=3?"PASS":"FAIL"} · AAA normal ${ratio>=7?"PASS":"FAIL"} · AAA large ${ratio>=4.5?"PASS":"FAIL"}`;
     }
     listen("#contrast-fg","input",updateContrast);listen("#contrast-bg","input",updateContrast);if($("#contrast-result"))updateContrast();
+    const fontPairings={
+      brand:[
+        {heading:"Newsreader",body:"Public Sans",note:"Editorial character with a clear, practical voice"},
+        {heading:"Public Sans",body:"Public Sans",note:"Consistent and understated for direct identities"}
+      ],
+      editorial:[
+        {heading:"Newsreader",body:"Public Sans",note:"Readable long-form contrast with a human rhythm"},
+        {heading:"Newsreader",body:"IBM Plex Mono",note:"Reference-like contrast for details and captions"}
+      ],
+      interface:[
+        {heading:"Public Sans",body:"Public Sans",note:"Consistent and highly usable across dense screens"},
+        {heading:"Newsreader",body:"Public Sans",note:"A calmer reading voice with restrained hierarchy"}
+      ],
+      social:[
+        {heading:"Newsreader",body:"Public Sans",note:"Direct headlines that feel crafted rather than loud"},
+        {heading:"Public Sans",body:"Public Sans",note:"Clean, repeatable text for campaign layouts"}
+      ],
+      poster:[
+        {heading:"Newsreader",body:"IBM Plex Mono",note:"Cultured contrast with useful technical detail"},
+        {heading:"Public Sans",body:"Newsreader",note:"Bold wayfinding with an expressive supporting voice"}
+      ],
+      luxury:[
+        {heading:"Newsreader",body:"Public Sans",note:"Premium editorial character without a generic corporate feel"},
+        {heading:"Georgia",body:"Public Sans",note:"Classic proportions with a familiar, credible voice"}
+      ]
+    };
+    function applyFontPairing(heading,body) {
+      $("#font-heading").value=heading;
+      $("#font-body").value=body;
+      updateFontPreview();
+    }
+    function updateFontRecommendations() {
+      const purpose=$("#font-purpose")?.value||"brand";
+      const pairings=fontPairings[purpose];
+      $("#pairing-recommendations").innerHTML=pairings.map((pair,index)=>`<button type="button" class="pairing-option" data-heading="${safeText(pair.heading)}" data-body="${safeText(pair.body)}" aria-label="Use ${safeText(pair.heading)} with ${safeText(pair.body)}"><strong>${safeText(pair.heading)} + ${safeText(pair.body)}</strong><span>${safeText(pair.note)}</span></button>`).join("");
+      $("#pairing-note").textContent=`Recommended for ${$("#font-purpose").selectedOptions[0].textContent}—choose a pairing or test your own fonts.`;
+      if($("#pairing-recommendations"))applyFontPairing(pairings[0].heading,pairings[0].body);
+    }
     function updateFontPreview() {
       const heading=$("#font-heading").value,body=$("#font-body").value,text=$("#font-copy").value||"Your type specimen.";
       $("#font-preview-heading").textContent=text;$("#font-preview-heading").style.fontFamily=`"${heading}", sans-serif`;
       $("#font-preview-body").style.fontFamily=`"${body}", sans-serif`;
-      $("#font-preview-heading").style.fontWeight=heading==="Archivo Black"?"400":"700";
-      const families=[heading,body].map(name=>name.replaceAll(" ","+")).filter((name,index,array)=>array.indexOf(name)===index);
+      $("#font-preview-heading").style.fontWeight=heading==="Public Sans"?"700":"400";
+      const families=[heading,body].map(name=>name.replaceAll(" ","+")).filter((name,index,array)=>array.indexOf(name)===index&&!["Georgia","Trebuchet+MS"].includes(name));
       let link=$("#dynamic-fonts");
       if(!link){link=document.createElement("link");link.id="dynamic-fonts";link.rel="stylesheet";document.head.append(link);}
-      link.href=`https://fonts.googleapis.com/css2?${families.map(name=>`family=${name}:wght@400;500;700`).join("&")}&display=swap`;
+      link.href=families.length?`https://fonts.googleapis.com/css2?${families.map(name=>name==="Newsreader"?`family=${name}:opsz,wght@6..72,400;6..72,700`:`family=${name}:wght@400;500;700;600`).join("&")}&display=swap`:"";
     }
-    ["font-heading","font-body","font-copy"].forEach(id=>listen("#"+id,"input",updateFontPreview));if($("#font-preview-heading"))updateFontPreview();
+    ["font-heading","font-body","font-copy"].forEach(id=>listen("#"+id,"input",updateFontPreview));
+    listen("#font-purpose","change",updateFontRecommendations);
+    listen("#pairing-recommendations","click",event=>{
+      const option=event.target.closest("[data-heading]");
+      if(option)applyFontPairing(option.dataset.heading,option.dataset.body);
+    });
+    if($("#font-preview-heading"))updateFontRecommendations();
     let convertedUrl="";
     listen("#convert-image","click",()=>{
       const file=$("#image-file").files[0];if(!file){$("#image-output").textContent="Choose an image file first.";return;}
@@ -1211,8 +1537,116 @@
     listen("#lab-format-button","click",()=>$("#lab-format-output").textContent=formatRecs[$("#lab-format-use").value==="motion"?"animation":$("#lab-format-use").value]);
     listen("#ai-quiz-button","click",()=>{
       const need=$("#ai-need").value,priority=$("#ai-priority").value;
-      const pick=priority==="terms"?"Adobe Firefly":({photo:"Meta AI",vector:"Recraft",text:"Ideogram",commercial:"Adobe Firefly",illustration:"Leonardo AI",social:"Microsoft Designer / Copilot",general:"Google ImageFX / Gemini"})[need];
+      const pick=priority==="terms"?"Adobe Firefly":({photo:"Meta AI",vector:"Recraft",text:"Ideogram",commercial:"Adobe Firefly",illustration:"Leonardo AI",social:"Microsoft Designer / Copilot",general:"Google ImageFX / Gemini",writing:"ChatGPT",critique:"Claude"})[need];
       $("#ai-quiz-result").textContent=`Starting point: ${pick}. This is a discovery suggestion, not an endorsement. Verify availability, free limits, privacy, output ownership, and commercial terms before use.`;
+    });
+    const assistantHistory=[{role:"assistant",content:"Hi! Tell me what you’re making, and I’ll help you choose a next step, tool, color, or file type. You don’t need to know the technical terms."}];
+    function appendAssistantInline(parent,text) {
+      const pattern=/\*\*([^*]+)\*\*|`([^`]+)`|\*([^*\n]+)\*/g;
+      let offset=0,match;
+      while((match=pattern.exec(text))) {
+        parent.append(document.createTextNode(text.slice(offset,match.index)));
+        const tag=match[1]!==undefined?"strong":match[2]!==undefined?"code":"em";
+        const formatted=document.createElement(tag);
+        formatted.textContent=match[1]??match[2]??match[3];
+        parent.append(formatted);
+        offset=pattern.lastIndex;
+      }
+      parent.append(document.createTextNode(text.slice(offset)));
+    }
+    function renderAssistantText(container,text) {
+      let list=null,listTag="";
+      for(const line of String(text).replace(/\r/g,"").split("\n")) {
+        const bullet=line.match(/^\s*[-*]\s+(.+)$/);
+        const numbered=line.match(/^\s*\d+[.)]\s+(.+)$/);
+        if(bullet||numbered) {
+          const nextTag=bullet?"ul":"ol";
+          if(!list||listTag!==nextTag) {
+            list=document.createElement(nextTag);
+            container.append(list);
+            listTag=nextTag;
+          }
+          const item=document.createElement("li");
+          appendAssistantInline(item,(bullet||numbered)[1]);
+          list.append(item);
+          continue;
+        }
+        list=null;
+        listTag="";
+        if(!line.trim())continue;
+        const heading=line.match(/^#{1,3}\s+(.+)$/);
+        const paragraph=document.createElement("p");
+        appendAssistantInline(paragraph,heading?heading[1]:line);
+        if(heading)paragraph.className="assistant-subheading";
+        container.append(paragraph);
+      }
+    }
+    function addAssistantMessage(role,text) {
+      const message=document.createElement("div");
+      message.className="assistant-message";
+      message.dataset.role=role;
+      if(role==="assistant")renderAssistantText(message,text);
+      else message.textContent=text;
+      $("#assistant-messages").append(message);
+      $("#assistant-messages").scrollTop=$("#assistant-messages").scrollHeight;
+    }
+    function openAssistant() {
+      $("#assistant-panel").hidden=false;
+      $("#assistant-launcher").setAttribute("aria-expanded","true");
+      $("#assistant-input").focus();
+    }
+    function closeAssistant() {
+      $("#assistant-panel").hidden=true;
+      $("#assistant-launcher").setAttribute("aria-expanded","false");
+      $("#assistant-launcher").focus();
+    }
+    async function sendAssistantMessage(text) {
+      const question=text.trim();
+      if(!question||$("#assistant-send").disabled)return;
+      $("#assistant-suggestions").hidden=true;
+      addAssistantMessage("user",question);
+      assistantHistory.push({role:"user",content:question});
+      const messages=assistantHistory.slice(-12);
+      $("#assistant-input").value="";
+      $("#assistant-send").disabled=true;
+      $("#assistant-status").textContent="Thinking…";
+      try {
+        const endpoint=window.FDT_CHAT_ENDPOINT||`${window.FDT_BASE_PATH||""}api/chat`;
+        const response=await fetch(endpoint,{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({messages})
+        });
+        let result;
+        try { result=await response.json(); }
+        catch (error) { throw new Error("The assistant server returned an unreadable response. Make sure its server is running, then try again."); }
+        if(!response.ok)throw new Error(result.error||`The assistant service returned an error (${response.status}).`);
+        if(typeof result.reply!=="string"||!result.reply.trim())throw new Error("The assistant returned an empty reply. Please try again.");
+        assistantHistory.push({role:"assistant",content:result.reply});
+        addAssistantMessage("assistant",result.reply);
+        $("#assistant-status").textContent="";
+      } catch(error) {
+        const detail=error instanceof TypeError
+          ?"I couldn’t connect to the assistant service. Make sure the assistant server is running, then try again."
+          :error.message;
+        $("#assistant-status").textContent=detail;
+      } finally {
+        $("#assistant-send").disabled=false;
+        $("#assistant-input").focus();
+      }
+    }
+    listen("#assistant-launcher","click",openAssistant);
+    listen("#assistant-close","click",closeAssistant);
+    listen("#assistant-form","submit",event=>{event.preventDefault();sendAssistantMessage($("#assistant-input").value);});
+    listen("#assistant-input","keydown",event=>{
+      if(event.key==="Enter"&&!event.shiftKey){event.preventDefault();$("#assistant-form").requestSubmit();}
+    });
+    document.addEventListener("click",event=>{
+      const suggestion=event.target.closest("[data-assistant-prompt]");
+      if(suggestion)sendAssistantMessage(suggestion.dataset.assistantPrompt);
+    });
+    document.addEventListener("keydown",event=>{
+      if(event.key==="Escape"&&!$("#assistant-panel").hidden)closeAssistant();
     });
     function openSheet(index) {
       const sheet=sheets[index];if(!sheet){status("That cheat sheet is unavailable.");return;}

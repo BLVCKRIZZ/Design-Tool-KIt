@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f6f3ee">
+  <meta name="theme-color" content="#ad442d">
   <meta name="description" content="Free alternatives to Photoshop, with best-for notes, tradeoffs, and license reminders.">
   <meta property="og:title" content="Alternatives to Photoshop · Free Design Toolkit">
   <meta property="og:description" content="Free alternatives to Photoshop, with best-for notes, tradeoffs, and license reminders.">
@@ -11,35 +11,58 @@
   <title>Alternatives to Photoshop · Free Design Toolkit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/site.css">
   <script>window.FDT_BASE_PATH="../";</script>
   <script src="../assets/search-index.js" defer></script>
+  <script src="../assets/chat-config.js" defer></script>
   <script src="../assets/site.js" defer></script>
 </head>
 <body data-page="alternatives" data-alternative="photoshop">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-main">
-      <a class="brand" href="../index.html" aria-label="Free Design Toolkit home">FREE DESIGN<br>TOOLKIT<span class="accent-text">.</span></a>
+      <a class="brand" href="../index.html" aria-label="Free Design Toolkit home">Free Design<br>Toolkit<span class="accent-text">.</span></a>
       <div class="header-actions">
         <div class="search-shell">
-          <label class="visually-hidden" for="header-search">Search all pages</label>
-          <input class="header-search" id="header-search" type="search" placeholder="Search every page… ( / )" autocomplete="off" aria-controls="global-search-results">
+          <label class="visually-hidden" for="header-search">Search for a tool or topic</label>
+          <input class="header-search" id="header-search" type="search" placeholder="Search tools or topics…" autocomplete="off" aria-controls="global-search-results">
           <div class="search-results" id="global-search-results" role="list" aria-label="Search results" hidden></div>
         </div>
         <button class="theme-button" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle light and dark mode">◐</button>
       </div>
       <p class="visually-hidden" id="search-status" role="status" aria-live="polite">Search every page. Press / or Ctrl+K to jump to search.</p>
     </div>
-    <div class="nav-scroll"><nav class="main-nav" aria-label="Main navigation"><a href="../index.html" data-page-link="home">Home</a><a href="../tools.html" data-page-link="tools">Tools</a><a href="../ai-generators.html" data-page-link="ai">AI</a><a href="../file-formats.html" data-page-link="formats">Formats</a><a href="../learn.html" data-page-link="learn">Learn</a><a href="../workflows.html" data-page-link="workflows">Workflows</a><a href="../prompt-library.html" data-page-link="prompts">Prompts</a><a href="../inspiration.html" data-page-link="inspiration">Inspiration</a><a href="../resources.html" data-page-link="resources">Resources</a><a href="../design-tools-lab.html" data-page-link="lab">Tools Lab</a><a href="../downloads.html" data-page-link="downloads">Downloads</a><a href="../alternatives.html" data-page-link="alternatives">Alternatives</a><a href="../about.html" data-page-link="about">About / Contact</a></nav></div>
+    <div class="nav-scroll"><nav class="main-nav" aria-label="Main navigation"><a href="../index.html" data-page-link="home">Home</a><a href="../tools.html" data-page-link="tools">Tools</a><a href="../learn.html" data-page-link="learn">Learn</a><a href="../design-tools-lab.html" data-page-link="lab">Tools Lab</a><a href="../alternatives.html" data-page-link="alternatives">Alternatives</a><a href="../ai-generators.html" data-page-link="ai">AI generators</a><a href="../file-formats.html" data-page-link="formats">File formats</a><a href="../workflows.html" data-page-link="workflows">Workflows</a><a href="../prompt-library.html" data-page-link="prompts">Prompts</a><a href="../inspiration.html" data-page-link="inspiration">Inspiration</a><a href="../resources.html" data-page-link="resources">Resources</a><a href="../downloads.html" data-page-link="downloads">Downloads</a><a href="../about.html" data-page-link="about">About / Contact</a></nav></div>
   </header>
   <main id="main" class="page-content">
     <section id="alternative-detail" aria-labelledby="alternative-detail-heading"><div id="alternative-detail-content"></div></section>
   </main>
+  <a class="button back-to-top" href="#main" aria-label="Back to top">↑ Top</a>
+  <button class="assistant-launcher" id="assistant-launcher" type="button" aria-controls="assistant-panel" aria-expanded="false">Ask for help</button>
+  <aside class="assistant-panel" id="assistant-panel" aria-label="Design assistant" hidden>
+    <div class="assistant-heading">
+      <div><h2 id="assistant-title">Design helper</h2><p>Friendly guidance for your next design step</p></div>
+      <button class="assistant-close" id="assistant-close" type="button" aria-label="Close design assistant">Close</button>
+    </div>
+    <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text">
+      <div class="assistant-message" data-role="assistant"><p>Hi! Tell me what you’re making, and I’ll help you choose a next step, tool, color, or file type. You don’t need to know the technical terms.</p></div>
+    </div>
+    <div class="assistant-suggestions" id="assistant-suggestions" aria-label="Suggested questions">
+      <button type="button" data-assistant-prompt="I want to make a logo. Where should I start?">Make a logo</button>
+      <button type="button" data-assistant-prompt="Help me choose colors for a project.">Choose colors</button>
+      <button type="button" data-assistant-prompt="Which file format should I use for my design?">Pick a file type</button>
+    </div>
+    <p class="assistant-status" id="assistant-status" role="status" aria-live="polite"></p>
+    <form class="assistant-form" id="assistant-form">
+      <label class="visually-hidden" for="assistant-input">Ask the design assistant</label>
+      <textarea class="assistant-input" id="assistant-input" rows="1" maxlength="2000" placeholder="What are you trying to make?"></textarea>
+      <button class="assistant-send" id="assistant-send" type="submit">Send</button>
+    </form>
+  </aside>
   <footer class="footer">
     <div class="footer-inner">
-      <div><a class="brand" href="../index.html#home">FREE DESIGN TOOLKIT<span class="accent-text">.</span></a><p class="meta">Make more. Spend less. Verify the fine print.</p><p class="meta">© <span id="year"></span> Free Design Toolkit · Independent resource hub concept.</p></div>
+      <div><a class="brand" href="../index.html#home">Free Design Toolkit<span class="accent-text">.</span></a><p class="meta">Make more. Spend less. Verify the fine print.</p><p class="meta">© <span id="year"></span> Free Design Toolkit · A practical resource hub for creators.</p></div>
       <div><p><strong>Jump around</strong></p><div class="footer-links"><a href="../tools.html#tools">Tools</a><a href="../learn.html#learn">Learn</a><a href="../design-tools-lab.html#lab">Tools Lab</a><a href="../downloads.html#downloads">Downloads</a><a href="../about.html#about">Suggest a tool</a></div><p class="meta">Accessibility: semantic landmarks, keyboard navigation, visible focus, labels, and reduced-motion support are included. Please report issues through the suggestion form.</p></div>
     </div>
   </footer>

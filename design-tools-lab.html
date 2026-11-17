@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f6f3ee">
+  <meta name="theme-color" content="#ad442d">
   <meta name="description" content="Browser-based color, contrast, image, QR, and aspect-ratio utilities.">
   <meta property="og:title" content="Design tools lab · Free Design Toolkit">
   <meta property="og:description" content="Browser-based color, contrast, image, QR, and aspect-ratio utilities.">
@@ -11,36 +11,37 @@
   <title>Design tools lab · Free Design Toolkit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
   <script>window.FDT_BASE_PATH="";</script>
   <script src="assets/search-index.js" defer></script>
+  <script src="assets/chat-config.js" defer></script>
   <script src="assets/site.js" defer></script>
 </head>
 <body data-page="lab">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-main">
-      <a class="brand" href="index.html" aria-label="Free Design Toolkit home">FREE DESIGN<br>TOOLKIT<span class="accent-text">.</span></a>
+      <a class="brand" href="index.html" aria-label="Free Design Toolkit home">Free Design<br>Toolkit<span class="accent-text">.</span></a>
       <div class="header-actions">
         <div class="search-shell">
-          <label class="visually-hidden" for="header-search">Search all pages</label>
-          <input class="header-search" id="header-search" type="search" placeholder="Search every page… ( / )" autocomplete="off" aria-controls="global-search-results">
+          <label class="visually-hidden" for="header-search">Search for a tool or topic</label>
+          <input class="header-search" id="header-search" type="search" placeholder="Search tools or topics…" autocomplete="off" aria-controls="global-search-results">
           <div class="search-results" id="global-search-results" role="list" aria-label="Search results" hidden></div>
         </div>
         <button class="theme-button" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle light and dark mode">◐</button>
       </div>
       <p class="visually-hidden" id="search-status" role="status" aria-live="polite">Search every page. Press / or Ctrl+K to jump to search.</p>
     </div>
-    <div class="nav-scroll"><nav class="main-nav" aria-label="Main navigation"><a href="index.html" data-page-link="home">Home</a><a href="tools.html" data-page-link="tools">Tools</a><a href="ai-generators.html" data-page-link="ai">AI</a><a href="file-formats.html" data-page-link="formats">Formats</a><a href="learn.html" data-page-link="learn">Learn</a><a href="workflows.html" data-page-link="workflows">Workflows</a><a href="prompt-library.html" data-page-link="prompts">Prompts</a><a href="inspiration.html" data-page-link="inspiration">Inspiration</a><a href="resources.html" data-page-link="resources">Resources</a><a href="design-tools-lab.html" data-page-link="lab">Tools Lab</a><a href="downloads.html" data-page-link="downloads">Downloads</a><a href="alternatives.html" data-page-link="alternatives">Alternatives</a><a href="about.html" data-page-link="about">About / Contact</a></nav></div>
+    <div class="nav-scroll"><nav class="main-nav" aria-label="Main navigation"><a href="index.html" data-page-link="home">Home</a><a href="tools.html" data-page-link="tools">Tools</a><a href="learn.html" data-page-link="learn">Learn</a><a href="design-tools-lab.html" data-page-link="lab">Tools Lab</a><a href="alternatives.html" data-page-link="alternatives">Alternatives</a><a href="ai-generators.html" data-page-link="ai">AI generators</a><a href="file-formats.html" data-page-link="formats">File formats</a><a href="workflows.html" data-page-link="workflows">Workflows</a><a href="prompt-library.html" data-page-link="prompts">Prompts</a><a href="inspiration.html" data-page-link="inspiration">Inspiration</a><a href="resources.html" data-page-link="resources">Resources</a><a href="downloads.html" data-page-link="downloads">Downloads</a><a href="about.html" data-page-link="about">About / Contact</a></nav></div>
   </header>
   <main id="main" class="page-content">
     <section id="lab" aria-labelledby="lab-title">
       <div class="section-head"><div><p class="eyebrow">Small tools, right in your browser</p><h2 id="lab-title">Design tools lab<span class="accent-text">.</span></h2><p class="section-intro">These utilities run client-side in this page. Image files and QR content stay in your browser; no QR service is contacted.</p></div></div>
       <div class="lab-grid">
-        <article class="panel" data-search="color palette generator harmony HEX RGB HSL copy base color"><h3>Color palette generator</h3><p class="meta">Pick a base color, then copy HEX, RGB, or HSL values.</p><div class="field"><label for="base-color">Base color</label><input id="base-color" type="color" value="#ff4d00"></div><div class="field"><label for="palette-harmony">Harmony</label><select id="palette-harmony"><option value="complement">Complementary</option><option value="analogous">Analogous</option><option value="triadic">Triadic</option><option value="split">Split complementary</option></select></div><div class="palette" id="palette-output" aria-label="Generated palette"></div><div class="output-box" id="palette-values" aria-live="polite"></div></article>
+        <article class="panel" data-search="color palette generator harmony HEX RGB HSL copy base color brand editorial interface social packaging"><h3>Color palette generator</h3><p class="meta">Choose a project type, then build a practical five-color palette around a base color.</p><div class="form-grid"><div class="field"><label for="base-color">Base color</label><input id="base-color" type="color" value="#ff4d00"></div><div class="field"><label for="palette-purpose">Best for</label><select id="palette-purpose"><option value="brand">Brand identity</option><option value="editorial">Editorial and magazine</option><option value="interface">Digital product or interface</option><option value="social">Social and campaign</option><option value="packaging">Packaging and print</option></select></div></div><div class="field"><label for="palette-harmony">Harmony</label><select id="palette-harmony"><option value="complement">Complementary</option><option value="analogous">Analogous</option><option value="triadic">Triadic</option><option value="split">Split complementary</option></select></div><div class="palette" id="palette-output" aria-label="Generated palette"></div><p class="meta palette-note" id="palette-note" role="status" aria-live="polite"></p><div class="output-box" id="palette-values" aria-live="polite"></div><div class="button-row" style="margin-top:.6rem"><button type="button" class="copy-button" id="copy-palette-css">Copy CSS variables</button></div></article>
         <article class="panel" data-search="WCAG contrast checker text background color ratio AA AAA accessibility"><h3>Contrast checker</h3><p class="meta">WCAG contrast ratio estimate for the selected text and background colors.</p><div class="form-grid"><div class="field"><label for="contrast-fg">Text color</label><input id="contrast-fg" type="color" value="#171714"></div><div class="field"><label for="contrast-bg">Background</label><input id="contrast-bg" type="color" value="#ffffff"></div></div><div class="contrast-sample" id="contrast-sample">Readable is usable.</div><div class="output-box" id="contrast-result" role="status" aria-live="polite"></div><p class="meta">WCAG ratios are a guide; check the full interface, font size, and non-text contrast requirements.</p></article>
-        <article class="panel" data-search="font pairing tester Google Fonts typeface preview custom text heading body"><h3>Font pairing tester</h3><p class="meta">Preview Google Fonts pairings. Font download is served by Google Fonts; preview text stays on this page.</p><div class="form-grid"><div class="field"><label for="font-heading">Heading font</label><select id="font-heading"><option>Archivo Black</option><option>Manrope</option><option>Playfair Display</option><option>Space Grotesk</option><option>DM Sans</option></select></div><div class="field"><label for="font-body">Body font</label><select id="font-body"><option>Space Grotesk</option><option>DM Sans</option><option>Manrope</option><option>Playfair Display</option><option>Archivo Black</option></select></div></div><div class="field"><label for="font-copy">Your sample text</label><input id="font-copy" type="text" value="Make good things happen."></div><div class="preview-box font-preview"><h4 id="font-preview-heading">Make good things happen.</h4><p id="font-preview-body">The right type pairing can bring rhythm, clarity, and a little personality to a layout.</p></div></article>
+        <article class="panel" data-search="font pairing tester Google Fonts typeface preview custom text heading body brand editorial interface social poster luxury"><h3>Font pairing tester</h3><p class="meta">Start with a project type, or choose individual fonts for a custom test.</p><div class="field"><label for="font-purpose">What are you designing?</label><select id="font-purpose"><option value="brand">Brand identity / logo</option><option value="editorial">Editorial / magazine</option><option value="interface">App / dashboard / website</option><option value="social">Social post / campaign</option><option value="poster">Poster / event</option><option value="luxury">Luxury / boutique</option></select></div><div class="pairing-recommendation" id="pairing-recommendations" aria-label="Recommended font pairings"></div><div class="form-grid"><div class="field"><label for="font-heading">Heading font</label><select id="font-heading"><option>Newsreader</option><option>IBM Plex Mono</option><option>Public Sans</option><option>Georgia</option></select></div><div class="field"><label for="font-body">Body font</label><select id="font-body"><option>Public Sans</option><option>Newsreader</option><option>IBM Plex Mono</option><option>Trebuchet MS</option></select></div></div><div class="field"><label for="font-copy">Your sample text</label><input id="font-copy" type="text" value="Make good things happen."></div><p class="meta" id="pairing-note" role="status" aria-live="polite"></p><div class="preview-box font-preview"><h4 id="font-preview-heading">Make good things happen.</h4><p id="font-preview-body">The right type pairing can bring rhythm, clarity, and a little personality to a layout.</p></div></article>
         <article class="panel" data-search="image converter compress convert PNG JPG WebP browser canvas local file"><h3>Image converter</h3><p class="meta">Convert a local image to PNG, JPG, or WebP using the browser canvas.</p><div class="field"><label for="image-file">Choose an image</label><input id="image-file" type="file" accept="image/*"></div><div class="form-grid"><div class="field"><label for="image-type">Output format</label><select id="image-type"><option value="image/webp">WebP</option><option value="image/jpeg">JPG</option><option value="image/png">PNG</option></select></div><div class="field"><label for="image-quality">Quality (JPG/WebP)</label><input id="image-quality" type="number" min=".1" max="1" step=".1" value=".85"></div></div><button type="button" id="convert-image">Convert image</button><img id="image-preview" class="file-preview" alt="Preview of the selected image" hidden><div class="output-box" id="image-output" role="status" aria-live="polite">No image selected.</div><a id="image-download" class="button" hidden download="converted-image">Download converted image</a></article>
         <article class="panel" data-search="QR code generator QR Code Monkey link URL branded code browser"><h3>Quick QR code</h3><p class="meta">Create a simple QR code in-browser. For branded codes, try QR Code Monkey and verify its current terms.</p><div class="field"><label for="qr-content">Text or URL to encode</label><input id="qr-content" type="url" placeholder="https://example.com"></div><button type="button" id="make-qr">Generate QR code</button><div class="output-box" id="qr-output" role="status" aria-live="polite">Enter a URL or text. The content is encoded locally in your browser.</div><canvas id="qr-canvas" hidden aria-label="Generated QR code"></canvas><a id="qr-download" class="button" hidden download="design-toolkit-qr.png">Download PNG</a><p><a class="inline-link" href="https://www.qrcode-monkey.com/" target="_blank" rel="noopener noreferrer">Branded QR codes at QR Code Monkey ↗</a></p></article>
         <article class="panel" data-search="aspect ratio social media sizes calculator dimensions pixels square portrait story landscape"><h3>Aspect ratio &amp; social sizes</h3><p class="meta">Calculate a ratio and compare common canvas sizes. Platform specs may change; verify before publishing.</p><div class="form-grid"><div class="field"><label for="ratio-width">Width (px)</label><input id="ratio-width" type="number" min="1" value="1080"></div><div class="field"><label for="ratio-height">Height (px)</label><input id="ratio-height" type="number" min="1" value="1080"></div></div><button type="button" id="calculate-ratio">Calculate</button><div class="output-box" id="ratio-output" aria-live="polite"></div><div class="meta">Common starting points: square 1080×1080 · portrait 1080×1350 · story 1080×1920 · landscape 1200×630.</div></article>
@@ -48,9 +49,31 @@
       </div>
     </section>
   </main>
+  <a class="button back-to-top" href="#main" aria-label="Back to top">↑ Top</a>
+  <button class="assistant-launcher" id="assistant-launcher" type="button" aria-controls="assistant-panel" aria-expanded="false">Ask for help</button>
+  <aside class="assistant-panel" id="assistant-panel" aria-label="Design assistant" hidden>
+    <div class="assistant-heading">
+      <div><h2 id="assistant-title">Design helper</h2><p>Friendly guidance for your next design step</p></div>
+      <button class="assistant-close" id="assistant-close" type="button" aria-label="Close design assistant">Close</button>
+    </div>
+    <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text">
+      <div class="assistant-message" data-role="assistant"><p>Hi! Tell me what you’re making, and I’ll help you choose a next step, tool, color, or file type. You don’t need to know the technical terms.</p></div>
+    </div>
+    <div class="assistant-suggestions" id="assistant-suggestions" aria-label="Suggested questions">
+      <button type="button" data-assistant-prompt="I want to make a logo. Where should I start?">Make a logo</button>
+      <button type="button" data-assistant-prompt="Help me choose colors for a project.">Choose colors</button>
+      <button type="button" data-assistant-prompt="Which file format should I use for my design?">Pick a file type</button>
+    </div>
+    <p class="assistant-status" id="assistant-status" role="status" aria-live="polite"></p>
+    <form class="assistant-form" id="assistant-form">
+      <label class="visually-hidden" for="assistant-input">Ask the design assistant</label>
+      <textarea class="assistant-input" id="assistant-input" rows="1" maxlength="2000" placeholder="What are you trying to make?"></textarea>
+      <button class="assistant-send" id="assistant-send" type="submit">Send</button>
+    </form>
+  </aside>
   <footer class="footer">
     <div class="footer-inner">
-      <div><a class="brand" href="index.html#home">FREE DESIGN TOOLKIT<span class="accent-text">.</span></a><p class="meta">Make more. Spend less. Verify the fine print.</p><p class="meta">© <span id="year"></span> Free Design Toolkit · Independent resource hub concept.</p></div>
+      <div><a class="brand" href="index.html#home">Free Design Toolkit<span class="accent-text">.</span></a><p class="meta">Make more. Spend less. Verify the fine print.</p><p class="meta">© <span id="year"></span> Free Design Toolkit · A practical resource hub for creators.</p></div>
       <div><p><strong>Jump around</strong></p><div class="footer-links"><a href="tools.html#tools">Tools</a><a href="learn.html#learn">Learn</a><a href="design-tools-lab.html#lab">Tools Lab</a><a href="downloads.html#downloads">Downloads</a><a href="about.html#about">Suggest a tool</a></div><p class="meta">Accessibility: semantic landmarks, keyboard navigation, visible focus, labels, and reduced-motion support are included. Please report issues through the suggestion form.</p></div>
     </div>
   </footer>
