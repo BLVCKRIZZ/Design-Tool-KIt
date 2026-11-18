@@ -11,4 +11,4 @@ services:
       - key: OPENROUTER_MODEL
         value: openrouter/auto
       - key: OPENROUTER_API_KEY
-      value: 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
+        value: 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
