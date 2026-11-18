@@ -1604,6 +1604,7 @@
       const question=text.trim();
       if(!question||$("#assistant-send").disabled)return;
       $("#assistant-suggestions").hidden=true;
+      $("#assistant-suggestions").replaceChildren();
       addAssistantMessage("user",question);
       assistantHistory.push({role:"user",content:question});
       const messages=assistantHistory.slice(-12);
@@ -1624,6 +1625,18 @@
         if(typeof result.reply!=="string"||!result.reply.trim())throw new Error("The assistant returned an empty reply. Please try again.");
         assistantHistory.push({role:"assistant",content:result.reply});
         addAssistantMessage("assistant",result.reply);
+        const suggestions=$("#assistant-suggestions");
+        const options=Array.isArray(result.options)
+          ?result.options.filter(option=>typeof option==="string"&&option.trim()&&option.length<=80).slice(0,3)
+          :[];
+        for(const option of options) {
+          const button=document.createElement("button");
+          button.type="button";
+          button.dataset.assistantPrompt=option;
+          button.textContent=option;
+          suggestions.append(button);
+        }
+        suggestions.hidden=options.length===0;
         $("#assistant-status").textContent="";
       } catch(error) {
         const detail=error instanceof TypeError

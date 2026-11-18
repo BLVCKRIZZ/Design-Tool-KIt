@@ -45,16 +45,24 @@ SYSTEM_MESSAGE = (
     "they have already provided; do not ask for them again or introduce "
     "unnecessary detours. "
     "Use plain language and short steps for people new to design or technology. "
+    "Talk like a supportive person, not a long article. Usually use 1 to 3 "
+    "short sentences or a few brief steps; give more detail only when the "
+    "visitor asks or it is needed to complete the task. Explain unfamiliar "
+    "design terms simply when they first matter, with a quick example. "
+    "When there is a useful next choice, offer up to 3 short, clickable options "
+    "that can naturally be sent as the visitor's next message. Do not add "
+    "filler choices; use an empty options array when no choice is useful. "
     "Recommend relevant pages or tools from the website when useful. "
     "Do not invent current prices, free-plan limits, availability, licenses, or "
     "commercial-use rights; clearly say when the visitor should verify a detail "
     "on the provider's current website. Do not claim to perform actions on the "
     "visitor's behalf. Keep replies practical, respectful, and concise. "
     "Do not end every reply with a question. "
-    "Use plain text without Markdown markers: do not use asterisks, backticks, "
-    "hyphen bullets, or heading markers. For steps, use short numbered lines; "
-    "for suggestions, write simple labeled lines such as "
-    "'Deep navy (#1F3A5F): a strong main color.'"
+    "Keep the reply plain and readable, without Markdown markers, asterisks, "
+    "backticks, hyphen bullets, or heading markers. Return only one valid JSON "
+    "object with exactly two fields: reply, a string containing the message, "
+    "and options, an array of up to 3 short strings. Do not wrap the JSON in "
+    "Markdown or add text outside it."
 )
 
 
@@ -204,14 +212,33 @@ class AssistantHandler(SimpleHTTPRequestHandler):
             return
 
         try:
-            reply = result["choices"][0]["message"]["content"]
+            content = result["choices"][0]["message"]["content"]
         except (KeyError, IndexError, TypeError):
-            reply = None
-        if not isinstance(reply, str) or not reply.strip():
+            content = None
+        if not isinstance(content, str) or not content.strip():
             print("OpenRouter response did not contain a text reply.", file=sys.stderr)
             self.send_json(502, {"error": "The AI service did not return a text reply. Please try again."})
             return
-        self.send_json(200, {"reply": reply.strip()})
+        try:
+            structured_reply = json.loads(content)
+        except json.JSONDecodeError:
+            structured_reply = None
+        if isinstance(structured_reply, dict) and isinstance(structured_reply.get("reply"), str):
+            reply = structured_reply["reply"].strip()
+            raw_options = structured_reply.get("options", [])
+            options = [
+                option.strip()
+                for option in raw_options
+                if isinstance(option, str) and 0 < len(option.strip()) <= 80
+            ][:3] if isinstance(raw_options, list) else []
+        else:
+            reply = content.strip()
+            options = []
+        if not reply:
+            print("OpenRouter response did not contain a text reply.", file=sys.stderr)
+            self.send_json(502, {"error": "The AI service did not return a text reply. Please try again."})
+            return
+        self.send_json(200, {"reply": reply, "options": options})
 
 
 if __name__ == "__main__":
