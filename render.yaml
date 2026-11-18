@@ -10,5 +10,7 @@ services:
         value: 0.0.0.0
       - key: OPENROUTER_MODEL
         value: openrouter/auto
-    - key: OPENROUTER_API_KEY
-      sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: FRONTEND_ORIGINS
+        value: https://blvckrizz.github.io
